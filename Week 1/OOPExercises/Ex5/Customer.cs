@@ -7,7 +7,7 @@
             FullName = fname;
         }
 
-        public string FullName { get; protected set; }
+        public string FullName { get; private set; }
 
         public override string ToString()
         {

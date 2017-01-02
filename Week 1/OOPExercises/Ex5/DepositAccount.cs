@@ -2,16 +2,17 @@
 {
     public class DepositAccount : Account
     {
-        public DepositAccount(Customer customer, double balance, double interestRate) : base(customer, balance, interestRate)
+        public DepositAccount(Customer customer, double balance, double interestRate)
+            : base(customer, balance, interestRate)
         {
         }
 
-        public void WithDraw(double money)
+        public void Withdraw(double money)
         {
             Balance -= money;
         }
 
-        public override double InterestAmount(int period)
+        public override double CalculateInterestAmount(int period)
         {
             if ((Balance >= 0) && (Balance < 1000))
             {
@@ -19,7 +20,7 @@
             }
             else
             {
-                return base.InterestAmount(period);
+                return base.CalculateInterestAmount(period);
             }
         }
     }

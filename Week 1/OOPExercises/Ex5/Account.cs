@@ -21,7 +21,7 @@
             return "Deposit money done!";
         }
 
-        public virtual double InterestAmount(int period)
+        public virtual double CalculateInterestAmount(int period)
         {
             if (period > 0)
             {

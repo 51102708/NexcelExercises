@@ -2,23 +2,24 @@
 {
     public class LoanAccount : Account
     {
-        public LoanAccount(Customer customer, double balance, double interestRate) : base(customer, balance, interestRate)
+        public LoanAccount(Customer customer, double balance, double interestRate)
+            : base(customer, balance, interestRate)
         {
         }
 
-        public override double InterestAmount(int period)
+        public override double CalculateInterestAmount(int period)
         {
             if (Customer is IndividualCustomer)
             {
-                return base.InterestAmount(period - 3);
+                return base.CalculateInterestAmount(period - 3);
             }
 
             if (Customer is CompanyCustomer)
             {
-                return base.InterestAmount(period - 2);
+                return base.CalculateInterestAmount(period - 2);
             }
 
-            return base.InterestAmount(period);
+            return base.CalculateInterestAmount(period);
         }
     }
 }

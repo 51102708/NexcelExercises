@@ -24,16 +24,16 @@ namespace Ex5
             DepositAccount dpa = (DepositAccount)arrAccount[0];
             dpa.Deposit(500000);
             Console.WriteLine(dpa);
-            dpa.WithDraw(200000);
+            dpa.Withdraw(200000);
             Console.WriteLine(dpa);
             ////
             Console.WriteLine("****************************");
-            Console.WriteLine(arrAccount[1].InterestAmount(3));
-            Console.WriteLine(arrAccount[1].InterestAmount(4));
-            Console.WriteLine(arrAccount[2].InterestAmount(6));
-            Console.WriteLine(arrAccount[2].InterestAmount(7));
-            Console.WriteLine(arrAccount[5].InterestAmount(12));
-            Console.WriteLine(arrAccount[5].InterestAmount(14));
+            Console.WriteLine(arrAccount[1].CalculateInterestAmount(3));
+            Console.WriteLine(arrAccount[1].CalculateInterestAmount(4));
+            Console.WriteLine(arrAccount[2].CalculateInterestAmount(6));
+            Console.WriteLine(arrAccount[2].CalculateInterestAmount(7));
+            Console.WriteLine(arrAccount[5].CalculateInterestAmount(12));
+            Console.WriteLine(arrAccount[5].CalculateInterestAmount(14));
             Console.ReadLine();
         }
     }
