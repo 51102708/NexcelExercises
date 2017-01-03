@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace Ex4
+﻿namespace Ex4
 {
+    using System;
+    using System.Linq;
+
     internal class Program
     {
         private static void Main()

@@ -2,7 +2,7 @@
 {
     public abstract class Account
     {
-        public Account(Customer customer, double balance, double interestRate)
+        protected Account(Customer customer, double balance, double interestRate)
         {
             Customer = customer;
             Balance = balance;

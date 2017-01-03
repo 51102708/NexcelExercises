@@ -2,8 +2,8 @@
 {
     public class Rectangle : Shape
     {
-        public Rectangle(int _width, int _height)
-            : base(_width, _height)
+        public Rectangle(int width, int height)
+            : base(width, height)
         {
         }
 
@@ -11,10 +11,5 @@
         {
             return Width * Height;
         }
-
-        //public override string ToString()
-        //{
-        //    return "Rectangle - " + base.ToString();
-        //}
     }
 }

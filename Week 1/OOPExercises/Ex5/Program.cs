@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace Ex5
+﻿namespace Ex5
 {
+    using System;
+
     public class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            Account[] arrAccount = new Account[]
+            var arrAccount = new Account[]
             {
                 new DepositAccount(new IndividualCustomer("RaymondLe"), 1000000, 0.005),
                 new LoanAccount(new IndividualCustomer("RaymondLe"), 2000, 0.007),
@@ -14,14 +14,14 @@ namespace Ex5
 
                 new DepositAccount(new CompanyCustomer("ANguyenVan"), 5000000, 0.007),
                 new LoanAccount(new CompanyCustomer("ANguyenVan"), 4000, 0.0085),
-                new MortgageAccount(new CompanyCustomer("ANguyenVan"), 6000, 0.006),
+                new MortgageAccount(new CompanyCustomer("ANguyenVan"), 6000, 0.006)
             };
 
-            Bank bankABC = new Bank("ABC Bank", arrAccount);
+            var bankABC = new Bank("ABC Bank", arrAccount);
             Console.WriteLine(bankABC);
             Console.WriteLine("****************************");
             ////
-            DepositAccount dpa = (DepositAccount)arrAccount[0];
+            var dpa = (DepositAccount)arrAccount[0];
             dpa.Deposit(500000);
             Console.WriteLine(dpa);
             dpa.Withdraw(200000);

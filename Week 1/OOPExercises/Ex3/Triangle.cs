@@ -2,8 +2,8 @@
 {
     internal class Triangle : Shape
     {
-        public Triangle(int parwidth, int parheight)
-            : base(parwidth, parheight)
+        public Triangle(int width, int height)
+            : base(width, height)
         {
         }
 

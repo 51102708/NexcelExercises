@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Ex3
+﻿namespace Ex3
 {
+    using System;
+
     public class Circle : Shape
     {
         public Circle(int width)

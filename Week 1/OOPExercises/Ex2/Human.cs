@@ -8,9 +8,9 @@
             LastName = lastName;
         }
 
-        private string FirstName { get; set; }
+        public string FirstName { get; private set; }
 
-        private string LastName { get; set; }
+        public string LastName { get; private set; }
 
         public override string ToString()
         {

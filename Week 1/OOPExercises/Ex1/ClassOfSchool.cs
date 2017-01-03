@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Ex1
+﻿namespace Ex1
 {
+    using System.Collections.Generic;
+
     public class ClassOfSchool
     {
         public ClassOfSchool(List<Teacher> teachers, List<Student> students, string id, string name)

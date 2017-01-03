@@ -2,7 +2,7 @@
 {
     public abstract class Customer
     {
-        public Customer(string fname)
+        protected Customer(string fname)
         {
             FullName = fname;
         }

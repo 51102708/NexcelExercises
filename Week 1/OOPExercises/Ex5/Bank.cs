@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Ex5
+﻿namespace Ex5
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     internal class Bank
     {
         public Bank(string name)
@@ -28,13 +28,13 @@ namespace Ex5
 
         public override string ToString()
         {
-            StringBuilder str = new StringBuilder();
+            var str = new StringBuilder();
             foreach (Account acc in Accounts)
             {
-                str.Append(acc.ToString() + "\n");
+                str.Append(acc + "\n");
             }
 
-            return string.Format("Bank: {0} \n {1}", Name, str.ToString());
+            return string.Format("Bank: {0} \n {1}", Name, str);
         }
     }
 }

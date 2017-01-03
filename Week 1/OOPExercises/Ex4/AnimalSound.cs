@@ -3,7 +3,6 @@
 namespace Ex4
 {
     public static class AnimalSound
-
     {
         public const string Dog = "Gaugaugau";
         public const string Frog = "Opopop";

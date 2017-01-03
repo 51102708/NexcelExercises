@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace Ex3
+﻿namespace Ex3
 {
+    using System;
+    using System.Linq;
+
     internal class Program
     {
         private static void Main()
