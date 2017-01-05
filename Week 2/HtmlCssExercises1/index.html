@@ -1,40 +1,44 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
+
 <head>
-	<title>Display</title>
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/style.css">
+    <title>HTML/CSS Exercise 1</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
-	<div class="main-wrapper">	
-		<header class="main-header">
-			<h1 class="main-logo"><a href="#">Logo</a></h1>
-			<ul class="main-nav">
-				<li><a href="#">Link 1</a></li>
-				<li><a href="#">Link 2</a></li>
-				<li><a href="#">Link 3</a></li>
-				<li><a href="#">Link 4</a></li>
-			</ul>
-		</header>
-		<div class="main-banner">
-			<h1>This is our Main Heading!</h1>
-			<p>Bacon ipsum dolor sit amet chicken pork</p>
-		</div>
-		<div class="primary-content col">
-			<h2>Primary Content</h2>
-			<p>Bacon ipsum dolor sit amet chicken pork ground round brisket corned beef ball tip shank tail salami filet mignon ham hock pork belly venison shankle. Pig kielbasa drumstick sausage pork chop boudin. Chicken t-bone salami pork chop, beef ribs kevin ham tri-tip beef venison biltong brisket.</p>
-			<p>Venison strip steak meatball chicken, brisket prosciutto sirloin. Capicola drumstick brisket tri-tip salami. Chicken beef jerky, tail turkey prosciutto cow ham sirloin boudin tenderloin. Meatloaf tri-tip turducken brisket andouille, pork belly corned beef fatback hamburger.</p>
-		</div>
-		<div class="secondary-content col">
-			<h3>Secondary Content</h3>
-			<p>Strip steak tenderloin kevin swine meatloaf capicola, doner beef turducken pancetta corned beef pork loin shoulder.</p>
-			<hr>
-			<p>Pork filet mignon leberkas, tail swine venison pancetta turkey shoulder brisket chalkers l	ikes hamburgers.</p>
-		</div>
-		<footer class="main-footer">
-			<p>&copy;2014 Example Layout</p>
-		</footer>
-	</div>
+    <div class="grid-container">
+        <header class="grid-12 main-header">
+            <h1 class="main-title">Get In Touch</h1>
+            <p class="main-description">Just an example description for this section</p>
+        </header>
+    </div>
+    <div class="grid-container">
+        <div class="grid-6 primary-content">
+            <p>Nam ultricles aliquam imperdiet. Pellentesque massa dui, varius non sodales quis, placerat ulliamcorper nisl. Donec pulvinar, arcu vel rhoncus commodo, neque lectus blandit elit, vel iaculis odio lectus sit amet metus.</p>
+            <p>1 (808) 350-1688</p>
+            <a href="#">support@yoursite.com</a>
+            <p>1600 amphitheatre Parkway, Mountain View, CA 94043</p>
+        </div>
+
+        <div class="grid-6 secondary-content">
+            <form action="#">
+                <input type="text" name="yourname" placeholder="Your Name">
+                <input type="text" name="youremail" placeholder="Your Email">
+                <input type="number" name="phonenumber" placeholder="Phone Number">
+                <textarea name="yourmessage" placeholder="Your Message"></textarea>
+                <input type="submit" value="Send Email" name="sendemail">
+            </form>
+        </div>
+    </div>
+    <div class="main-map">
+        <img src="images/map.png" alt="Map for go." />
+    </div>
+
 </body>
+
 </html>

@@ -1,59 +1,36 @@
-
 /* Page Styles
 ================================ */
 
+* {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 body {
-	font: normal 1.1em/1.5 sans-serif;
-	color: #222;
-	background-color: #edeff0;
-
+    font: normal 13px/1.5 Arial, 'Segoe UI', Tahoma;
+    color: white;
+    background-color: #76acfc;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.main-wrapper {
-		width: 90%;
-	margin: auto;
-}
-/* Layout Element Colors
+
+/* Main Layout Styles
 ================================ */
 
-.main-header       { background-color: #384047; }
-.main-logo         { background-color: #5fcf80; }
-.main-nav li       { background-color: #3f8abf; }
-.primary-content   { background-color: #caebf6; }
-.secondary-content { background-color: #bfe3d0; }
-.main-footer       { background-color: #b7c0c7; }
-
-/* Header, Banner and Footer Layout
-================================ */
 .main-header {
-	padding: 20px;
-	white-space: nowrap;
+    text-align: center;
 }
 
-.main-logo,
-.main-nav,
-.main-nav li {
-	display: inline;
+.main-header h1 {
+    font-size: 24pt;
 }
 
-.main-logo,
-.main-nav li{
-	padding: 10px 20px;
-	border-radius: 5px;
+.primary-content {
+    max-width: 400px;
 }
 
-.main-nav li {
-	margin-right: -5px;
+.primary-content p {
+    margin: 0;
 }
-.main-logo {
-	margin-right: 50px;
-}
-
-.main-logo a, 
-.main-nav a {
-	color: white;
-	text-decoration: none;
-}
-
-
-
