@@ -7,12 +7,22 @@
 }
 
 body {
-    font: normal 12px/1.5 Arial, 'Segoe UI', Tahoma;
+    font: normal 13px Arial, 'Segoe UI', Tahoma;
     color: white;
     background-color: #76acfc;
-    max-width: 960px;
+    max-width: 970px;
     margin-left: auto;
     margin-right: auto;
+}
+
+input,
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+input {
+    height: 40px;
 }
 
 
@@ -33,12 +43,39 @@ body {
     margin: 0;
 }
 
+.info-list {
+    list-style: none;
+    margin-top: 30px;
+    padding: 0;
+}
 
-/*.primary-content a:before {
-    background: transparent url('/images/sprites.png') no-repeat left center;
-    vertical-align: middle;
-    margin-left: -20px;
-    padding-left: 0;
-    padding-right: 50px;
-    content: "";
-}*/
+.info-list li {
+    margin: 10px 50px 5px 0;
+}
+
+.info-list>.phone>span {
+    background-image: url(/images/sprites.png);
+    background-repeat: no-repeat;
+    background-position: 0px -6px;
+    padding: 3px 0 3px 20px;
+    margin-left: -6px;
+    margin-right: 5px;
+}
+
+.info-list>.email>span {
+    background-image: url(/images/sprites.png);
+    background-repeat: no-repeat;
+    background-position: -30px -6px;
+    padding: 3px 0 3px 20px;
+    margin-left: -6px;
+    margin-right: 5px;
+}
+
+.info-list>.address>span {
+    background-image: url(/images/sprites.png);
+    background-repeat: no-repeat;
+    background-position: -60px -6px;
+    padding: 3px 0 3px 20px;
+    margin-left: -6px;
+    margin-right: 5px;
+}

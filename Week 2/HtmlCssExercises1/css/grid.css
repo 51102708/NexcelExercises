@@ -4,8 +4,8 @@
 .grid-container {
     /*padding-left: 10px;
     padding-right: 10px;*/
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 img {
@@ -25,21 +25,25 @@ img {
 
 @media (min-width: 768px) {
     .main-content {
-        min-height: 150px;
+        min-height: 200px;
     }
     .primary-content {
-        max-width: 400px;
+        max-width: 480px;
+        padding-right: 80px;
+    }
+    .primary-content,
+    .secondary-content {
+        min-height: 150px;
     }
     .primary-content li {
         display: inline-block;
     }
+    .secondary-content>.form-info>input {}
     /* Columns
 	================================ */
     .grid-container>[class^="grid-"] {
         float: left;
         min-height: 1px;
-        /*padding-left: 10px;
-        padding-right: 10px;*/
         /*margin-left: 2%;*/
     }
     .grid-container>[class^="grid-"]:first-child {
@@ -51,6 +55,42 @@ img {
     /* Columns are 65px wide, with 20px gutters
 	=========================================== */
     .grid-1 {
+        width: 8.33%;
+    }
+    .grid-2 {
+        width: 16.66%;
+    }
+    .grid-3 {
+        width: 25%;
+    }
+    .grid-4 {
+        width: 33.33%;
+    }
+    .grid-5 {
+        width: 41.66%;
+    }
+    .grid-6 {
+        width: 50%;
+    }
+    .grid-7 {
+        width: 58.33%;
+    }
+    .grid-8 {
+        width: 66.66%;
+    }
+    .grid-9 {
+        width: 75%;
+    }
+    .grid-10 {
+        width: 83.33%;
+    }
+    .grid-11 {
+        width: 91.66%;
+    }
+    .grid-12 {
+        width: 100%;
+    }
+    /*.grid-1 {
         width: 6.5%;
     }
     .grid-2 {
@@ -85,7 +125,7 @@ img {
     }
     .grid-12 {
         width: 100%;
-    }
+    }*/
     /* Clearfix
 	================================ */
     .grid-container:after {
