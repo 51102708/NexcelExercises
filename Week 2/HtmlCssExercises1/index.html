@@ -8,83 +8,47 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css" />
-
-    <!--<style>
-        
-        li.doc>span {
-            background-image: url(images/sprites.png);
-            background-repeat: no-repeat;
-            background-position: 0 50%;
-        }
-        
-        li.text {
-            background-image: url(bullet_text.gif);
-            background-repeat: no-repeat;
-            background-position: 0 50%;
-            padding: 3px 0 3px 20px;
-            margin: .4em 0;
-        }
-        
-        li.htm {
-            background-image: url(bullet_htm.gif);
-            background-repeat: no-repeat;
-            background-position: 0 50%;
-            padding: 3px 0 3px 20px;
-            margin: .4em 0;
-        }
-    </style>-->
 </head>
 
 <body>
     <div class="grid-container">
         <header class="grid-12 main-header">
-            <h1 class="main-title">Get In Touch</h1>
-            <p class="main-description">Just an example description for this section</p>
+            <h1>Get In Touch</h1>
+            <p>Just an example description for this section</p>
         </header>
     </div>
+
     <div class="grid-container main-content">
         <div class="grid-6 primary-content">
             <p>Nam ultricles aliquam imperdiet. Pellentesque massa dui, varius non sodales quis, placerat ulliamcorper nisl. Donec pulvinar, arcu vel rhoncus commodo, neque lectus blandit elit, vel iaculis odio lectus sit amet metus.</p>
-
-            <ul class="info-list">
-                <li class="phone"><span></span>1 (808) 350-1688</li>
-                <li class="email"><span></span><a href="#">support@yoursite.com</a></li>
-                <li class="address"><span></span>1600 amphitheatre Parkway, Mountain View, CA 94043</li>
+            <ul class="contact-list">
+                <li><span id="icon-phone"></span>1 (808) 350-1688</li>
+                <li><span id="icon-email"></span><a href="#">support@yoursite.com</a></li>
+                <li><span id="icon-address"></span>1600 amphitheatre Parkway, Mountain View, CA 94043</li>
             </ul>
         </div>
 
         <div class="grid-6 secondary-content">
             <form action="#">
-                <div class="grid-container form-info">
+                <div class="grid-container info-form">
                     <div class="grid-4">
-                        <input type="text" name="yourname" placeholder="Your Name">
-                        <input type="text" name="youremail" placeholder="Your Email">
-                        <input type="number" name="phonenumber" placeholder="Phone Number">
+                        <input id="input-name" type="text" name="yourname" placeholder="Your Name">
+                        <input id="input-email" type="text" name="youremail" placeholder="Your Email">
+                        <input id="input-phone" type="number" name="phonenumber" placeholder="Phone Number">
                     </div>
-                    <div class="grid-8">
-                        <textarea name="yourmessage" placeholder="Your Message"></textarea>
-                    </div>
-                    <!--<input type="submit" value="Send Email" name="sendemail">-->
-                </div>
 
+                    <div class="grid-8">
+                        <textarea id="input-message" name="yourmessage" placeholder="Your Message"></textarea>
+                    </div>
+                    <input id="input-submit" type="submit" value="Send Email" name="sendemail">
+                </div>
             </form>
         </div>
     </div>
+
     <div class="grid-container main-map">
-        <img src="images/map.png" alt="Map for go." />
+        <img src="images/map.png" alt="Company Map" />
     </div>
-
-
-
-    <ul class="iconlist">
-        <li class="pdf"><span></span><a href="#">Milk</a></li>
-        <li class="text"><a href="#">Eggs</a></li>
-        <li class="htm"><a href="#">Cheese</a></li>
-        <li class="doc"><a href="#">Vegetables</a></li>
-        <li class="text"><a href="#">Fruit</a></li>
-    </ul>
-
-
 </body>
 
 </html>

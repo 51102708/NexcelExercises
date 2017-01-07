@@ -7,22 +7,15 @@
 }
 
 body {
-    font: normal 13px Arial, 'Segoe UI', Tahoma;
+    font: normal 13px 'Arial', Segoe UI, Tahoma;
     color: white;
     background-color: #76acfc;
-    max-width: 970px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 980px;
+    margin: 10px auto;
 }
 
-input,
-textarea {
-    box-sizing: border-box;
+img {
     width: 100%;
-}
-
-input {
-    height: 40px;
 }
 
 
@@ -31,6 +24,8 @@ input {
 
 .main-header {
     text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .main-header h1 {
@@ -43,39 +38,81 @@ input {
     margin: 0;
 }
 
-.info-list {
+.main-map {
+    margin-top: 40px;
+}
+
+.contact-list {
     list-style: none;
     margin-top: 30px;
     padding: 0;
 }
 
-.info-list li {
+.contact-list li {
     margin: 10px 50px 5px 0;
 }
 
-.info-list>.phone>span {
-    background-image: url(/images/sprites.png);
-    background-repeat: no-repeat;
-    background-position: 0px -6px;
+#icon-phone {
+    background: url(../images/sprites.png) no-repeat 0px -6px;
     padding: 3px 0 3px 20px;
     margin-left: -6px;
     margin-right: 5px;
 }
 
-.info-list>.email>span {
-    background-image: url(/images/sprites.png);
-    background-repeat: no-repeat;
-    background-position: -30px -6px;
+#icon-email {
+    background: url(../images/sprites.png) no-repeat -30px -6px;
     padding: 3px 0 3px 20px;
     margin-left: -6px;
     margin-right: 5px;
 }
 
-.info-list>.address>span {
-    background-image: url(/images/sprites.png);
-    background-repeat: no-repeat;
-    background-position: -60px -6px;
+#icon-address {
+    background: url(../images/sprites.png) no-repeat -60px -6px;
     padding: 3px 0 3px 20px;
     margin-left: -6px;
     margin-right: 5px;
+}
+
+.info-form {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.info-form input[type=text],
+.info-form input[type=number],
+.info-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 12px;
+    border: 0;
+    border-radius: 4px;
+    color: #a6a6a6;
+}
+
+#input-name,
+#input-email,
+#input-phone {
+    height: 42px;
+}
+
+#input-message {
+    height: 150px;
+    resize: none;
+}
+
+#input-name,
+#input-email {
+    margin-bottom: 12px;
+}
+
+#input-submit {
+    box-sizing: border-box;
+    padding: 12px 12px;
+    border: 1px solid #3dc264;
+    border-bottom: 3px solid #3dc264;
+    border-radius: 4px;
+    background-color: #64ce83;
+    color: white;
+    margin-top: 10px;
+    height: 40px;
 }
