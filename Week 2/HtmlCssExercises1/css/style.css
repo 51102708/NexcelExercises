@@ -2,16 +2,13 @@
 ================================ */
 
 * {
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 body {
-    font: normal 13px 'Arial', Segoe UI, Tahoma;
-    color: white;
+    font: normal 13px/1.5 Arial, 'Segoe UI', Tahoma;
+    color: #fff;
     background-color: #76acfc;
-    max-width: 980px;
-    margin: 10px auto;
 }
 
 img {
@@ -42,31 +39,48 @@ img {
     margin-top: 40px;
 }
 
+.main-header,
+.main-content,
+.main-map {
+    max-width: 960px;
+}
+
 .contact-list {
     list-style: none;
-    margin-top: 30px;
+    margin-top: 25px;
     padding: 0;
 }
 
 .contact-list li {
-    margin: 10px 50px 5px 0;
+    display: inline-block;
+    margin-top: 15px;
 }
 
-#icon-phone {
+.text-phone,
+.text-email {
+    margin-right: 50px;
+}
+
+.contact-list a,
+.contact-list a:visited {
+    color: #fff;
+}
+
+.icon-phone {
     background: url(../images/sprites.png) no-repeat 0px -6px;
     padding: 3px 0 3px 20px;
     margin-left: -6px;
     margin-right: 5px;
 }
 
-#icon-email {
+.icon-email {
     background: url(../images/sprites.png) no-repeat -30px -6px;
     padding: 3px 0 3px 20px;
     margin-left: -6px;
     margin-right: 5px;
 }
 
-#icon-address {
+.icon-address {
     background: url(../images/sprites.png) no-repeat -60px -6px;
     padding: 3px 0 3px 20px;
     margin-left: -6px;
@@ -79,40 +93,40 @@ img {
 }
 
 .info-form input[type=text],
-.info-form input[type=number],
 .info-form textarea {
     box-sizing: border-box;
     width: 100%;
-    padding: 12px 12px;
+    padding: 12px;
     border: 0;
     border-radius: 4px;
     color: #a6a6a6;
+    font: normal 13px/1.5 Arial, 'Segoe UI', Tahoma;
 }
 
-#input-name,
-#input-email,
-#input-phone {
+.name,
+.email,
+.phone {
     height: 42px;
 }
 
-#input-message {
+.message {
     height: 150px;
     resize: none;
 }
 
-#input-name,
-#input-email {
+.name,
+.email {
     margin-bottom: 12px;
 }
 
-#input-submit {
+.submit {
     box-sizing: border-box;
-    padding: 12px 12px;
+    padding: 12px;
     border: 1px solid #3dc264;
     border-bottom: 3px solid #3dc264;
     border-radius: 4px;
     background-color: #64ce83;
-    color: white;
+    color: #fff;
     margin-top: 10px;
     height: 40px;
 }
