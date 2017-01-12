@@ -1,0 +1,144 @@
+$primary-color: #737373;
+@mixin border-box {
+    box-sizing: border-box;
+}
+
+@mixin primary-font($style, $size, $color) {
+    font: $style $size Tahoma;
+    color: $color;
+}
+
+
+/* Page Styles
+================================ */
+
+* {
+    @include border-box;
+}
+
+body {
+    font: normal 14px Tahoma;
+}
+
+.main-header {
+    max-width: 930px;
+    text-align: center;
+    a {
+        text-decoration: none;
+    }
+    .main-logo {
+        margin: 20px 0 10px;
+    }
+    .main-nav {
+        $boder-stack: 1px solid $primary-color;
+        li {
+            border: $boder-stack;
+            border-bottom: none;
+        }
+        a {
+            @include primary-font(bold, 14px, $primary-color);
+            display: block;
+            padding: 10px 20px;
+            color: $primary-color;
+        }
+        .blog {
+            border-bottom: $boder-stack;
+        }
+    }
+    .demo-btn {
+        margin-bottom: 0px;
+        a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            @include border-box;
+            border: 1px solid #e73c50;
+            border-bottom: 3px solid #b5161e;
+            background-color: #e73c50;
+            height: 45px;
+        }
+    }
+    .main-nav,
+    .demo-btn {
+        // margin-left: 10px;
+        // margin-right: 10px;
+    }
+}
+
+.header-line {
+    width: 100%;
+    height: 3px;
+    background: #ccc;
+}
+
+.main-header {
+    margin: 0 auto;
+}
+
+
+/* Media Queries
+================================ */
+
+@media (min-width: 1px) and (max-width: 767px) {
+    .grid-container>[class^="grid-"] {
+        // padding-top: 5px;
+        // padding-bottom: 5px;
+    }
+    .info-form .submit {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .main-header {
+        .main-logo {
+            a {
+                float: left;
+            }
+        }
+        .main-nav {
+            margin-top: 25px;
+            a {
+                padding: 0;
+            }
+            li {
+                display: inline-block;
+                border: none;
+                margin: 0 20px;
+            }
+            .blog {
+                border: none;
+            }
+        }
+        .demo-btn {
+            a {
+                float: right;
+                width: 150px;
+            }
+        }
+    }
+    /* Grid Layout 
+	=========================================== */
+    .grid-container>[class^="grid-"] {
+        float: left;
+        min-height: 1px;
+    }
+    .grid-container>[class^="grid-"]:first-child {
+        margin-left: 0;
+    }
+    .grid-container>[class^="grid-"]:last-child {
+        float: right;
+    }
+    @for $i from 1 through 12 {
+        .grid-#{$i} {
+            width: 100% / 12 * $i;
+        }
+    }
+    /* Clearfix
+	================================ */
+    .grid-container:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
