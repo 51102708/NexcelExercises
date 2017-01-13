@@ -1,0 +1,117 @@
+$primary-color: #737373;
+@mixin border-box {
+    box-sizing: border-box;
+}
+
+@mixin primary-font($style, $size) {
+    font: $style $size Arial;
+    color: #fff;
+}
+
+
+/* Page Styles
+================================ */
+
+* {
+    @include border-box;
+}
+
+body {
+    font: normal 14px Tahoma;
+    background-color: #a5937b;
+}
+
+a {
+    text-decoration: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.line {
+    background-color: #ddd;
+    height: 1px;
+}
+
+.banner-content {
+    text-align: center;
+    background: url(../images/banner.jpg) no-repeat center center;
+    background-attachment: fixed;
+    max-width: 1263px;
+    max-height: 648px;
+    vertical-align: middle;
+}
+
+.main-content {
+    max-width: 880px;
+    input[type=text],
+    textarea {
+        box-sizing: border-box;
+        width: 100%;
+        border: 0;
+    }
+    .main-info,
+    .heading-info {
+        text-align: center;
+    }
+    .form-content {
+        .btn-send {
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            width: 250px;
+            height: 63px;
+            vertical-align: middle;
+        }
+    }
+}
+
+.icon-send {
+    background: url(../images/sprites.png) no-repeat -25px 6px;
+    padding: 5px 20px;
+    margin-right: 15px;
+}
+
+.banner-content,
+.main-content {
+    margin: 0 auto;
+}
+
+
+/* Media Queries
+================================ */
+
+@media (min-width: 1px) and (max-width: 767px) {
+    .grid-container>[class^="grid-"] {
+        // padding-top: 5px;
+        // padding-bottom: 5px;
+    }
+}
+
+@media (min-width: 768px) {
+    /* Grid Layout 
+	=========================================== */
+    .grid-container>[class^="grid-"] {
+        float: left;
+        min-height: 1px;
+    }
+    .grid-container>[class^="grid-"]:first-child {
+        margin-left: 0;
+    }
+    .grid-container>[class^="grid-"]:last-child {
+        float: right;
+    }
+    @for $i from 1 through 12 {
+        .grid-#{$i} {
+            width: 100% / 12 * $i;
+        }
+    }
+    /* Clearfix
+	================================ */
+    .grid-container:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
