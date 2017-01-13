@@ -16,23 +16,31 @@ $primary-color: #737373;
     @include border-box;
 }
 
+html {
+    background: #FAFAFA;
+}
+
 body {
     font: normal 14px Tahoma;
 }
 
+.header-content {
+    background: #fff;
+}
+
 .main-header {
-    max-width: 930px;
+    padding: 0 10px;
     text-align: center;
     a {
         text-decoration: none;
     }
     .main-logo {
-        margin: 20px 0 10px;
+        margin: 20px 0 5px;
     }
     .main-nav {
-        $boder-stack: 1px solid $primary-color;
+        $border-stack: 1px solid $primary-color;
         li {
-            border: $boder-stack;
+            border: $border-stack;
             border-bottom: none;
         }
         a {
@@ -42,10 +50,11 @@ body {
             color: $primary-color;
         }
         .blog {
-            border-bottom: $boder-stack;
+            border-bottom: $border-stack;
         }
     }
     .demo-btn {
+        margin-top: 15px;
         margin-bottom: 0px;
         a {
             display: block;
@@ -58,11 +67,6 @@ body {
             height: 45px;
         }
     }
-    .main-nav,
-    .demo-btn {
-        // margin-left: 10px;
-        // margin-right: 10px;
-    }
 }
 
 .header-line {
@@ -71,8 +75,106 @@ body {
     background: #ccc;
 }
 
-.main-header {
+.main-header,
+.main-content {
     margin: 0 auto;
+    max-width: 950px;
+}
+
+.main-content {
+    padding: 20px 10px;
+}
+
+.link {
+    @include primary-font(bold, 12px, #007299)
+}
+
+.primary-content {
+    display: inline-block;
+    .primary-image {
+        width: 100%;
+        border-bottom: 4px solid #ffa933;
+        display: block;
+    }
+    .date,
+    .author {
+        display: inline-block;
+        @include primary-font(normal, 11px, #c98715);
+    }
+    .left-heading {
+        @include primary-font(bold, 16px, #007299)
+    }
+    .left-paragraph {
+        @include primary-font(normal, 14px, #666)
+    }
+    .header-line {
+        margin-top: 20px;
+    }
+}
+
+.secondary-content {
+    display: inline-block;
+    .right-heading {
+        @include primary-font(normal, 24px, #007299)
+    }
+    .right-paragraph {
+        @include primary-font(normal, 18px, #4c4c4c);
+    }
+    .link {
+        text-decoration: none;
+    }
+}
+
+.icon-link {
+    background: url(../images/learnmore.png) no-repeat 0px 5px;
+    padding: 3px 0 3px 20px;
+    margin-left: 5px;
+}
+
+.footer-content {
+    background-color: #007299;
+    height: 150px;
+    text-align: center;
+    width: 100%;
+    .main-footer {
+        margin: auto;
+        padding-top: 30px;
+        max-width: 930px;
+    }
+    .primary-footer,
+    .secondary-footer {
+        padding: 0 10px;
+    }
+    .email {
+        width: 80%;
+        height: 45px;
+        border: none;
+        margin: 0;
+    }
+    .btn-go {
+        margin-left: -4px;
+        border: none;
+        width: 20%;
+        height: 45px;
+    }
+    // .primary-footer,
+    // .secondary-footer {
+    //     display: inline-block;
+    //     padding: 0 10px;
+    // }
+    // .secondary-footer {}
+    // .email {
+    //     width: 80%;
+    //     height: 45px;
+    //     border: none;
+    //     margin: 0;
+    // }
+    // .btn-go {
+    //     margin-left: -6px;
+    //     border: none;
+    //     width: 20%;
+    //     height: 45px;
+    // }
 }
 
 
@@ -84,12 +186,9 @@ body {
         // padding-top: 5px;
         // padding-bottom: 5px;
     }
-    .info-form .submit {
-        width: 100%;
-    }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 450px) {
     .main-header {
         .main-logo {
             a {
@@ -117,6 +216,20 @@ body {
             }
         }
     }
+    .primary-content {
+        max-width: 310px;
+        padding-left: 0;
+        padding-right: 20px;
+    }
+    .secondary-content {
+        max-width: 620px;
+    }
+    // .footer-content {
+    //     p,
+    //     form {
+    //         display: inline-block;
+    //     }
+    // }
     /* Grid Layout 
 	=========================================== */
     .grid-container>[class^="grid-"] {

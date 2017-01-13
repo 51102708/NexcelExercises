@@ -1,12 +1,13 @@
 ﻿var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
+var sass = require('gulp-sass');
 
-gulp.task('default', ['startServer'], function () {
+gulp.task('default', ['startServer', 'sass:watch'], function() {
     console.log("Gulp default: Finshed!")
 });
 
-gulp.task('startServer', ['nodemon'], function () {
+gulp.task('startServer', ['nodemon'], function() {
     browserSync.init(null, {
         proxy: "http://localhost:8081",
         files: ["./css/*", "./images/*", "*.html", "./app/*"],
@@ -15,13 +16,13 @@ gulp.task('startServer', ['nodemon'], function () {
     });
 });
 
-gulp.task('nodemon', function (cb) {
+gulp.task('nodemon', function(cb) {
 
     var started = false;
 
     return nodemon({
         script: 'web_server.js'
-    }).on('start', function () {
+    }).on('start', function() {
         // to avoid nodemon being started multiple times
         // thanks @matthisk
         if (!started) {
@@ -29,6 +30,16 @@ gulp.task('nodemon', function (cb) {
             started = true;
         }
     });
+});
+
+gulp.task('sass', function() {
+    return gulp.src('./scss/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./css'));
+});
+
+gulp.task('sass:watch', function() {
+    gulp.watch('./scss/**/*.scss', ['sass']);
 });
 
 //gulp.task('default', ['buildTs', 'webpack', 'watchTs'], function () {
