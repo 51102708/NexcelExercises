@@ -1,9 +1,9 @@
 ﻿var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
-var sass = require('gulp-sass');
-
-gulp.task('default', ['startServer', 'sass:watch'], function() {
+// var sass = require('gulp-sass');
+// gulp.task('default', ['startServer', 'sass:watch'], function() {
+gulp.task('default', ['startServer'], function() {
     console.log("Gulp default: Finshed!")
 });
 
@@ -32,15 +32,15 @@ gulp.task('nodemon', function(cb) {
     });
 });
 
-gulp.task('sass', function() {
-    return gulp.src('./scss/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./css'));
-});
+// gulp.task('sass', function() {
+//     return gulp.src('./scss/**/*.scss')
+//         .pipe(sass().on('error', sass.logError))
+//         .pipe(gulp.dest('./css'));
+// });
 
-gulp.task('sass:watch', function() {
-    gulp.watch('./scss/**/*.scss', ['sass']);
-});
+// gulp.task('sass:watch', function() {
+//     gulp.watch('./scss/**/*.scss', ['sass']);
+// });
 
 //gulp.task('default', ['buildTs', 'webpack', 'watchTs'], function () {
 //    console.log("Gulp default: Finshed!")

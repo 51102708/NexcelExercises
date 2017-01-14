@@ -3,6 +3,33 @@ $primary-color: #737373;
     box-sizing: border-box;
 }
 
+@mixin grid-layout {
+    /* Grid Layout 
+	=========================================== */
+    .grid-container>[class^="grid-"] {
+        float: left;
+        min-height: 1px;
+    }
+    .grid-container>[class^="grid-"]:first-child {
+        margin-left: 0;
+    }
+    .grid-container>[class^="grid-"]:last-child {
+        float: right;
+    }
+    @for $i from 1 through 12 {
+        .grid-#{$i} {
+            width: 100% / 12 * $i;
+        }
+    }
+    /* Clearfix
+	================================ */
+    .grid-container:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
 @mixin primary-font($style, $size, $color) {
     font: $style $size Tahoma;
     color: $color;
@@ -26,16 +53,19 @@ body {
 
 .header-content {
     background: #fff;
+    width: 100%;
 }
 
 .main-header {
-    padding: 0 10px;
+    padding: 0 15px;
     text-align: center;
     a {
         text-decoration: none;
     }
     .main-logo {
-        margin: 20px 0 5px;
+        img {
+            margin: 15px 0;
+        }
     }
     .main-nav {
         $border-stack: 1px solid $primary-color;
@@ -54,8 +84,8 @@ body {
         }
     }
     .demo-btn {
-        margin-top: 15px;
-        margin-bottom: 0px;
+        margin-top: 12px;
+        margin-bottom: 5px;
         a {
             display: block;
             padding: 10px 20px;
@@ -64,6 +94,7 @@ body {
             border: 1px solid #e73c50;
             border-bottom: 3px solid #b5161e;
             background-color: #e73c50;
+            border-radius: 5px;
             height: 45px;
         }
     }
@@ -73,16 +104,17 @@ body {
     width: 100%;
     height: 3px;
     background: #ccc;
+    margin-top: 15px;
 }
 
 .main-header,
 .main-content {
     margin: 0 auto;
-    max-width: 950px;
+    max-width: 960px;
 }
 
 .main-content {
-    padding: 20px 10px;
+    padding: 30px 15px;
 }
 
 .link {
@@ -96,10 +128,11 @@ body {
         border-bottom: 4px solid #ffa933;
         display: block;
     }
-    .date,
-    .author {
-        display: inline-block;
+    span {
         @include primary-font(normal, 11px, #c98715);
+    }
+    .author {
+        float: right;
     }
     .left-heading {
         @include primary-font(bold, 16px, #007299)
@@ -137,121 +170,155 @@ body {
     text-align: center;
     width: 100%;
     .main-footer {
-        margin: auto;
-        padding-top: 30px;
         max-width: 930px;
+        padding: 35px 0 0;
+        margin: 0 auto;
     }
-    .primary-footer,
-    .secondary-footer {
+    .primary-footer {
         padding: 0 10px;
+        margin: 0 0 10px;
+        @include primary-font(normal, 16px, #fff);
+        span {
+            font-weight: bold;
+        }
+    }
+    .secondary-footer {
+        max-width: 360px;
+        padding: 0 10px;
+        height: 45px;
+        margin: 0 auto;
     }
     .email {
-        width: 80%;
-        height: 45px;
         border: none;
-        margin: 0;
+        border-bottom: solid 2px #105476;
+        color: #06a7e2;
+        font-size: 16px;
+        float: left;
+        width: 285px / 360px * 100%;
+        padding: 15px;
+        height: 45px;
+    }
+    .email::-webkit-input-placeholder {
+        color: #06a7e2;
     }
     .btn-go {
-        margin-left: -4px;
         border: none;
-        width: 20%;
+        border-bottom: solid 2px #105476;
+        background-color: #06a7e2;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: -2px;
         height: 45px;
+        width: 75px / 360px * 100%;
     }
-    // .primary-footer,
-    // .secondary-footer {
-    //     display: inline-block;
-    //     padding: 0 10px;
-    // }
-    // .secondary-footer {}
-    // .email {
-    //     width: 80%;
-    //     height: 45px;
-    //     border: none;
-    //     margin: 0;
-    // }
-    // .btn-go {
-    //     margin-left: -6px;
-    //     border: none;
-    //     width: 20%;
-    //     height: 45px;
-    // }
 }
 
 
 /* Media Queries
 ================================ */
 
-@media (min-width: 1px) and (max-width: 767px) {
-    .grid-container>[class^="grid-"] {
-        // padding-top: 5px;
-        // padding-bottom: 5px;
+@media (min-width: 1px) and (max-width: 404px) {
+    .footer-content {
+        .main-footer {
+            padding: 28px 0 0;
+        }
     }
 }
 
-@media (min-width: 450px) {
+@media (min-width: 850px) {
     .main-header {
         .main-logo {
-            a {
-                float: left;
+            img {
+                margin: 15px 0 11px;
             }
         }
         .main-nav {
-            margin-top: 25px;
+            margin-top: 23px;
             a {
                 padding: 0;
             }
             li {
                 display: inline-block;
                 border: none;
-                margin: 0 20px;
+                margin: 0 3%;
             }
             .blog {
                 border: none;
             }
         }
         .demo-btn {
+            margin-top: 10px;
+            margin-bottom: 7px;
             a {
                 float: right;
                 width: 150px;
             }
         }
     }
-    .primary-content {
-        max-width: 310px;
-        padding-left: 0;
-        padding-right: 20px;
-    }
-    .secondary-content {
-        max-width: 620px;
-    }
-    // .footer-content {
-    //     p,
-    //     form {
-    //         display: inline-block;
-    //     }
-    // }
-    /* Grid Layout 
-	=========================================== */
-    .grid-container>[class^="grid-"] {
-        float: left;
-        min-height: 1px;
-    }
-    .grid-container>[class^="grid-"]:first-child {
-        margin-left: 0;
-    }
-    .grid-container>[class^="grid-"]:last-child {
-        float: right;
-    }
-    @for $i from 1 through 12 {
-        .grid-#{$i} {
-            width: 100% / 12 * $i;
+    .header-content {
+        position: fixed;
+        top: 0;
+        @include grid-layout;
+        .header-line {
+            margin-top: 0;
         }
     }
-    /* Clearfix
-	================================ */
-    .grid-container:after {
-        content: " ";
-        display: table;
-        clear: both;
+    .main-content {
+        margin-top: 65px;
+        padding-top: 40px;
+    }
+    .footer-content {
+        height: 150px;
+        .main-footer {
+            padding: 50px 0 0;
+            margin: 0 auto;
+        }
+        .primary-footer,
+        .secondary-footer {
+            display: inline-block;
+            padding: 0;
+            width: 49%;
+        }
+        .primary-footer {
+            text-align: initial;
+            padding-right: 3%;
+        }
+        .secondary-footer {
+            padding-left: 3%;
+        }
+    }
+}
+
+@media (min-width: 450px) {
+    .main-content {
+        margin-bottom: 150px;
+        .primary-content {
+            max-width: 300px;
+            background-color: #fff;
+            .left-heading,
+            .left-paragraph,
+            .link {
+                padding: 0 20px;
+            }
+            .date {
+                margin-left: 20px;
+            }
+            .author {
+                margin-right: 20px;
+            }
+            .header-line {
+                margin-top: 15px;
+            }
+        }
+        .secondary-content {
+            max-width: 620px;
+            padding-left: 8.3333%;
+        }
+        @include grid-layout;
+    }
+    .footer-content {
+        bottom: 0;
+        position: fixed;
     }
 }
