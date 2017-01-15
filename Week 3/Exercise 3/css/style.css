@@ -4,7 +4,7 @@
   box-sizing: border-box; }
 
 body {
-  font: normal 14px Tahoma;
+  font: normal 14px Arial;
   background-color: #a5937b; }
 
 a {
@@ -13,57 +13,156 @@ a {
 textarea {
   resize: none; }
 
-.line {
-  background-color: #ddd;
-  height: 1px; }
-
-.banner-content {
-  text-align: center;
-  background: url(../images/banner.jpg) no-repeat center center;
-  background-attachment: fixed;
-  max-width: 1263px;
-  max-height: 648px;
-  vertical-align: middle; }
-
-.main-content {
-  max-width: 880px; }
-  .main-content input[type=text],
-  .main-content textarea {
-    box-sizing: border-box;
-    width: 100%;
-    border: 0; }
-  .main-content .main-info,
-  .main-content .heading-info {
-    text-align: center; }
-  .main-content .form-content .btn-send {
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-    width: 250px;
-    height: 63px;
-    vertical-align: middle; }
-
-.icon-send {
-  background: url(../images/sprites.png) no-repeat -25px 6px;
-  padding: 5px 20px;
-  margin-right: 15px; }
-
-.banner-content,
+.header-content,
 .main-content {
   margin: 0 auto; }
 
+.header-content {
+  background: url(../images/banner.jpg) no-repeat center center;
+  height: 648px;
+  background-size: cover; }
+  .header-content .banner {
+    text-align: center;
+    margin: 0 10%;
+    padding-top: 107px; }
+    .header-content .banner .text-box {
+      max-width: 704px;
+      margin: 0 auto;
+      padding: 36px 8%;
+      border: solid 12px #fff;
+      background-color: #efc889;
+      font: bold 18px Arial;
+      color: #fff;
+      line-height: 30px; }
+    .header-content .banner .avatar {
+      background: url(../images/photo.png) no-repeat 0 0;
+      border: solid 3px #fff;
+      border-radius: 50%;
+      margin: -47.5px auto 23px;
+      height: 95px;
+      width: 95px; }
+    .header-content .banner .author {
+      margin: 0 0 3px;
+      font: normal 17px Arial;
+      color: #fff; }
+    .header-content .banner .btn-contact {
+      display: block;
+      border: solid 3px #fff;
+      border-radius: 4px;
+      background-color: #efc889;
+      font: bold 14px Arial;
+      color: #fff;
+      margin: 23px auto;
+      height: 58px;
+      width: 250px;
+      text-align: left; }
+      .header-content .banner .btn-contact .icon-phone {
+        background: url(../images/sprites.png) no-repeat 0 0;
+        width: 25px;
+        height: 25px;
+        float: left;
+        margin-left: 50px;
+        margin-right: 5px; }
+      .header-content .banner .btn-contact .btn-text {
+        margin-top: 5px;
+        float: left; }
+
+.main-content {
+  max-width: 900px; }
+  .main-content .heading-info {
+    text-align: center;
+    padding: 63px 10px 34px;
+    margin: 0;
+    font: bold 44px Arial;
+    color: #fff; }
+  .main-content .main-info {
+    text-align: center;
+    border-top: solid 1px #ddd;
+    border-bottom: solid 1px #ddd; }
+    .main-content .main-info h2 {
+      margin: 0 0 26px;
+      font: bold 19px Arial;
+      color: #fff; }
+    .main-content .main-info p {
+      margin: 0;
+      font: normal 17px Arial;
+      color: #fff; }
+    .main-content .main-info .left-info,
+    .main-content .main-info .middle-info,
+    .main-content .main-info .right-info {
+      margin: 33px 10px; }
+    .main-content .main-info .middle-info,
+    .main-content .main-info .right-info {
+      padding-top: 33px; }
+  .main-content .form-content {
+    margin-top: 33px;
+    padding: 0 10px; }
+    .main-content .form-content input[type=text],
+    .main-content .form-content textarea {
+      box-sizing: border-box;
+      width: 100%;
+      border: 0;
+      border-radius: 4px; }
+    .main-content .form-content input[type=text] {
+      height: 50px; }
+    .main-content .form-content .label {
+      margin: 0;
+      font: bold 17px Arial;
+      color: #fff; }
+    .main-content .form-content .left-content,
+    .main-content .form-content .middle-content,
+    .main-content .form-content .right-content {
+      margin-bottom: 33px; }
+    .main-content .form-content .message {
+      height: 304px; }
+    .main-content .form-content .btn-send {
+      display: block;
+      border: solid 3px #fff;
+      border-radius: 4px;
+      background-color: #a5937b;
+      font: normal 13px Arial;
+      color: #fff;
+      margin: 27px auto;
+      height: 57px;
+      width: 250px;
+      text-align: center; }
+      .main-content .form-content .btn-send .btn-text {
+        margin-top: 5px;
+        float: left; }
+      .main-content .form-content .btn-send .icon-send {
+        background: url(../images/sprites.png) no-repeat -25px 0;
+        width: 25px;
+        height: 25px;
+        float: left;
+        margin-left: 45px;
+        margin-right: 15px; }
+
 /* Media Queries
 ================================ */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
+  .main-content .main-info {
+    margin: 0 10px; }
+    .main-content .main-info .left-info,
+    .main-content .main-info .middle-info,
+    .main-content .main-info .right-info {
+      margin: 58px 0; }
+    .main-content .main-info .middle-info,
+    .main-content .main-info .right-info {
+      padding-top: 0; }
   /* Grid Layout 
 	=========================================== */
   .grid-container > [class^="grid-"] {
     float: left;
-    min-height: 1px; }
+    min-height: 1px;
+    padding: 0 14.66667px; }
   .grid-container > [class^="grid-"]:first-child {
-    margin-left: 0; }
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 29.33333px; }
   .grid-container > [class^="grid-"]:last-child {
-    float: right; }
+    float: right;
+    padding-right: 0;
+    padding-left: 29.33333px; }
   .grid-1 {
     width: 8.33333%; }
   .grid-2 {

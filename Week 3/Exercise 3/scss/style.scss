@@ -1,4 +1,5 @@
-$primary-color: #737373;
+$primary-color: #a5937b;
+$primary-width: 1263px;
 @mixin border-box {
     box-sizing: border-box;
 }
@@ -17,8 +18,8 @@ $primary-color: #737373;
 }
 
 body {
-    font: normal 14px Tahoma;
-    background-color: #a5937b;
+    font: normal 14px Arial;
+    background-color: $primary-color;
 }
 
 a {
@@ -29,53 +30,163 @@ textarea {
     resize: none;
 }
 
-.line {
-    background-color: #ddd;
-    height: 1px;
-}
-
-.banner-content {
-    text-align: center;
-    background: url(../images/banner.jpg) no-repeat center center;
-    background-attachment: fixed;
-    max-width: 1263px;
-    max-height: 648px;
-    vertical-align: middle;
-}
-
+.header-content,
 .main-content {
-    max-width: 880px;
-    input[type=text],
-    textarea {
-        box-sizing: border-box;
-        width: 100%;
-        border: 0;
-    }
-    .main-info,
-    .heading-info {
+    margin: 0 auto;
+}
+
+.header-content {
+    // text-align: center;
+    // background: url(../images/banner.jpg) no-repeat center center;
+    // background-attachment: fixed;
+    // max-width: 1263px;
+    // max-height: 648px;
+    // vertical-align: middle;
+    // .banner {
+    //     text-align: center;
+    //     margin: auto;
+    //     width: 704px / $primary-width * 100%;
+    //     .text-box {
+    //         margin: 0;
+    //         padding: 36px (62px/704px * 100%);
+    //         border: solid 13px #fff;
+    //         background-color: #efc889;
+    //         @include primary-font(bold, 19px);
+    //     }
+    // }
+    background: url(../images/banner.jpg) no-repeat center center;
+    height: 648px;
+    background-size: cover;
+    .banner {
         text-align: center;
-    }
-    .form-content {
-        .btn-send {
-            text-align: center;
-            display: block;
+        margin: 0 10%;
+        padding-top: 107px;
+        .text-box {
+            max-width: 704px;
             margin: 0 auto;
+            padding: 36px 8%;
+            border: solid 12px #fff;
+            background-color: #efc889;
+            @include primary-font(bold, 18px);
+            line-height: 30px;
+        }
+        .avatar {
+            background: url(../images/photo.png) no-repeat 0 0;
+            border: solid 3px #fff;
+            border-radius: 50%;
+            margin: -47.5px auto 23px;
+            height: 95px;
+            width: 95px;
+        }
+        .author {
+            margin: 0 0 3px;
+            @include primary-font(normal, 17px);
+        }
+        .btn-contact {
+            display: block;
+            border: solid 3px #fff;
+            border-radius: 4px;
+            background-color: #efc889;
+            @include primary-font(bold, 14px);
+            margin: 23px auto;
+            height: 58px;
             width: 250px;
-            height: 63px;
-            vertical-align: middle;
+            text-align: left;
+            .icon-phone {
+                background: url(../images/sprites.png) no-repeat 0 0;
+                width: 25px;
+                height: 25px;
+                float: left;
+                margin-left: 50px;
+                margin-right: 5px;
+            }
+            .btn-text {
+                margin-top: 5px;
+                float: left;
+            }
         }
     }
 }
 
-.icon-send {
-    background: url(../images/sprites.png) no-repeat -25px 6px;
-    padding: 5px 20px;
-    margin-right: 15px;
-}
-
-.banner-content,
 .main-content {
-    margin: 0 auto;
+    max-width: 900px;
+    .heading-info {
+        text-align: center;
+        padding: 63px 10px 34px;
+        margin: 0;
+        @include primary-font(bold, 44px);
+    }
+    .main-info {
+        text-align: center;
+        border-top: solid 1px #ddd;
+        border-bottom: solid 1px #ddd;
+        h2 {
+            margin: 0 0 26px;
+            @include primary-font(bold, 19px);
+        }
+        p {
+            margin: 0;
+            @include primary-font(normal, 17px);
+        }
+        .left-info,
+        .middle-info,
+        .right-info {
+            margin: 33px 10px;
+        }
+        .middle-info,
+        .right-info {
+            padding-top: 33px;
+        }
+    }
+    .form-content {
+        margin-top: 33px;
+        padding: 0 10px;
+        input[type=text],
+        textarea {
+            box-sizing: border-box;
+            width: 100%;
+            border: 0;
+            border-radius: 4px;
+        }
+        input[type=text] {
+            height: 50px;
+        }
+        .label {
+            margin: 0;
+            @include primary-font(bold, 17px)
+        }
+        .left-content,
+        .middle-content,
+        .right-content {
+            margin-bottom: 33px;
+        }
+        .message {
+            height: 304px;
+        }
+        .btn-send {
+            display: block;
+            border: solid 3px #fff;
+            border-radius: 4px;
+            background-color: $primary-color;
+            @include primary-font(normal, 13px);
+            margin: 27px auto;
+            height: 57px;
+            width: 250px;
+            text-align: center;
+            .btn-text {
+                margin-top: 5px;
+                float: left;
+            }
+            .icon-send {
+                background: url(../images/sprites.png) no-repeat -25px 0;
+                width: 25px;
+                height: 25px;
+                float: left;
+                margin-left: 45px;
+                margin-right: 15px;
+            }
+        }
+    }
 }
 
 
@@ -89,18 +200,37 @@ textarea {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
+    .main-content {
+        .main-info {
+            margin: 0 10px;
+            .left-info,
+            .middle-info,
+            .right-info {
+                margin: 58px 0;
+            }
+            .middle-info,
+            .right-info {
+                padding-top: 0;
+            }
+        }
+    }
     /* Grid Layout 
 	=========================================== */
     .grid-container>[class^="grid-"] {
         float: left;
         min-height: 1px;
+        padding: 0 (44px / 3);
     }
     .grid-container>[class^="grid-"]:first-child {
         margin-left: 0;
+        padding-left: 0;
+        padding-right: (44px / 3 * 2);
     }
     .grid-container>[class^="grid-"]:last-child {
         float: right;
+        padding-right: 0;
+        padding-left: (44px / 3 * 2);
     }
     @for $i from 1 through 12 {
         .grid-#{$i} {
