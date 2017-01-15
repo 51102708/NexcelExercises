@@ -1,5 +1,4 @@
 $primary-color: #a5937b;
-$primary-width: 1263px;
 @mixin border-box {
     box-sizing: border-box;
 }
@@ -36,24 +35,6 @@ textarea {
 }
 
 .header-content {
-    // text-align: center;
-    // background: url(../images/banner.jpg) no-repeat center center;
-    // background-attachment: fixed;
-    // max-width: 1263px;
-    // max-height: 648px;
-    // vertical-align: middle;
-    // .banner {
-    //     text-align: center;
-    //     margin: auto;
-    //     width: 704px / $primary-width * 100%;
-    //     .text-box {
-    //         margin: 0;
-    //         padding: 36px (62px/704px * 100%);
-    //         border: solid 13px #fff;
-    //         background-color: #efc889;
-    //         @include primary-font(bold, 19px);
-    //     }
-    // }
     background: url(../images/banner.jpg) no-repeat center center;
     height: 648px;
     background-size: cover;
@@ -91,7 +72,7 @@ textarea {
             margin: 23px auto;
             height: 58px;
             width: 250px;
-            text-align: left;
+            text-align: center;
             .icon-phone {
                 background: url(../images/sprites.png) no-repeat 0 0;
                 width: 25px;
@@ -112,7 +93,7 @@ textarea {
     max-width: 900px;
     .heading-info {
         text-align: center;
-        padding: 63px 10px 34px;
+        padding: 34px 10px;
         margin: 0;
         @include primary-font(bold, 44px);
     }
@@ -143,10 +124,11 @@ textarea {
         padding: 0 10px;
         input[type=text],
         textarea {
-            box-sizing: border-box;
+            @include border-box;
             width: 100%;
             border: 0;
             border-radius: 4px;
+            padding: 15px;
         }
         input[type=text] {
             height: 50px;
@@ -193,15 +175,23 @@ textarea {
 /* Media Queries
 ================================ */
 
-@media (min-width: 1px) and (max-width: 767px) {
-    .grid-container>[class^="grid-"] {
-        // padding-top: 5px;
-        // padding-bottom: 5px;
+@media (min-width: 1px) and (max-width: 357px) {
+    .header-content .banner {
+        padding-top: 60px;
+    }
+}
+
+@media (min-width: 358px) and (max-width: 435px) {
+    .header-content .banner {
+        padding-top: 80px;
     }
 }
 
 @media (min-width: 769px) {
     .main-content {
+        .heading-info {
+            padding: 63px 10px 34px;
+        }
         .main-info {
             margin: 0 10px;
             .left-info,
