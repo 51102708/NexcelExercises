@@ -4,7 +4,7 @@
   box-sizing: border-box; }
 
 body {
-  font: normal 14px Arial;
+  font: normal 14px Arial, Helvetica, sans-serif;
   background-color: #a5937b; }
 
 a {
@@ -31,7 +31,7 @@ textarea {
       padding: 36px 8%;
       border: solid 12px #fff;
       background-color: #efc889;
-      font: bold 18px Arial;
+      font: bold 18px Arial, Helvetica, sans-serif;
       color: #fff;
       line-height: 30px; }
     .header-content .banner .avatar {
@@ -43,14 +43,14 @@ textarea {
       width: 95px; }
     .header-content .banner .author {
       margin: 0 0 3px;
-      font: normal 17px Arial;
+      font: normal 17px Arial, Helvetica, sans-serif;
       color: #fff; }
     .header-content .banner .btn-contact {
       display: block;
       border: solid 3px #fff;
       border-radius: 4px;
       background-color: #efc889;
-      font: bold 14px Arial;
+      font: bold 14px Arial, Helvetica, sans-serif;
       color: #fff;
       margin: 23px auto;
       height: 58px;
@@ -73,7 +73,7 @@ textarea {
     text-align: center;
     padding: 34px 10px;
     margin: 0;
-    font: bold 44px Arial;
+    font: bold 44px Arial, Helvetica, sans-serif;
     color: #fff; }
   .main-content .main-info {
     text-align: center;
@@ -81,11 +81,11 @@ textarea {
     border-bottom: solid 1px #ddd; }
     .main-content .main-info h2 {
       margin: 0 0 26px;
-      font: bold 19px Arial;
+      font: bold 19px Arial, Helvetica, sans-serif;
       color: #fff; }
     .main-content .main-info p {
       margin: 0;
-      font: normal 17px Arial;
+      font: normal 17px Arial, Helvetica, sans-serif;
       color: #fff; }
     .main-content .main-info .left-info,
     .main-content .main-info .middle-info,
@@ -108,7 +108,7 @@ textarea {
       height: 50px; }
     .main-content .form-content .label {
       margin: 0;
-      font: bold 17px Arial;
+      font: bold 17px Arial, Helvetica, sans-serif;
       color: #fff; }
     .main-content .form-content .left-content,
     .main-content .form-content .middle-content,
@@ -121,7 +121,7 @@ textarea {
       border: solid 3px #fff;
       border-radius: 4px;
       background-color: #a5937b;
-      font: normal 13px Arial;
+      font: normal 13px Arial, Helvetica, sans-serif;
       color: #fff;
       margin: 27px auto;
       height: 57px;
@@ -143,11 +143,9 @@ textarea {
 @media (min-width: 1px) and (max-width: 357px) {
   .header-content .banner {
     padding-top: 60px; } }
-
 @media (min-width: 358px) and (max-width: 435px) {
   .header-content .banner {
     padding-top: 80px; } }
-
 @media (min-width: 769px) {
   .main-content .heading-info {
     padding: 63px 10px 34px; }
@@ -160,47 +158,65 @@ textarea {
     .main-content .main-info .middle-info,
     .main-content .main-info .right-info {
       padding-top: 0; }
-  /* Grid Layout 
+
+    /* Grid Layout
 	=========================================== */
   .grid-container > [class^="grid-"] {
     float: left;
     min-height: 1px;
     padding: 0 14.66667px; }
+
   .grid-container > [class^="grid-"]:first-child {
     margin-left: 0;
     padding-left: 0;
     padding-right: 29.33333px; }
+
   .grid-container > [class^="grid-"]:last-child {
     float: right;
     padding-right: 0;
     padding-left: 29.33333px; }
+
   .grid-1 {
     width: 8.33333%; }
+
   .grid-2 {
     width: 16.66667%; }
+
   .grid-3 {
     width: 25%; }
+
   .grid-4 {
     width: 33.33333%; }
+
   .grid-5 {
     width: 41.66667%; }
+
   .grid-6 {
     width: 50%; }
+
   .grid-7 {
     width: 58.33333%; }
+
   .grid-8 {
     width: 66.66667%; }
+
   .grid-9 {
     width: 75%; }
+
   .grid-10 {
     width: 83.33333%; }
+
   .grid-11 {
     width: 91.66667%; }
+
   .grid-12 {
     width: 100%; }
-  /* Clearfix
+
+    /* Clearfix
 	================================ */
   .grid-container:after {
     content: " ";
     display: table;
     clear: both; } }
+
+/*# sourceMappingURL=style.css.map */

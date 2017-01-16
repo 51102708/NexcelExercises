@@ -24,10 +24,10 @@ body {
     border: 1px solid #737373;
     border-bottom: none; }
   .main-header .main-nav a {
-    font: bold 14px Tahoma;
-    color: #737373;
     display: block;
     padding: 10px 20px;
+    color: #737373;
+    font: bold 14px Tahoma, Geneva, sans-serif;
     color: #737373; }
   .main-header .main-nav .blog {
     border-bottom: 1px solid #737373; }
@@ -36,14 +36,15 @@ body {
     margin-bottom: 5px; }
     .main-header .demo-btn a {
       display: block;
-      padding: 10px 20px;
-      color: #fff;
+      padding: 9px 20px;
       box-sizing: border-box;
       border: 1px solid #e73c50;
       border-bottom: 3px solid #b5161e;
       background-color: #e73c50;
       border-radius: 5px;
-      height: 45px; }
+      height: 45px;
+      font: normal 17px Tahoma, Geneva, sans-serif;
+      color: #fff; }
 
 .header-line {
   width: 100%;
@@ -60,7 +61,7 @@ body {
   padding: 30px 15px; }
 
 .link {
-  font: bold 12px Tahoma;
+  font: bold 12px Tahoma, Geneva, sans-serif;
   color: #007299; }
 
 .primary-content {
@@ -70,15 +71,15 @@ body {
     border-bottom: 4px solid #ffa933;
     display: block; }
   .primary-content span {
-    font: normal 11px Tahoma;
+    font: normal 11px Tahoma, Geneva, sans-serif;
     color: #c98715; }
   .primary-content .author {
     float: right; }
   .primary-content .left-heading {
-    font: bold 16px Tahoma;
+    font: bold 16px Tahoma, Geneva, sans-serif;
     color: #007299; }
   .primary-content .left-paragraph {
-    font: normal 14px Tahoma;
+    font: normal 14px Tahoma, Geneva, sans-serif;
     color: #666; }
   .primary-content .header-line {
     margin-top: 20px; }
@@ -86,10 +87,10 @@ body {
 .secondary-content {
   display: inline-block; }
   .secondary-content .right-heading {
-    font: normal 24px Tahoma;
+    font: normal 24px Tahoma, Geneva, sans-serif;
     color: #007299; }
   .secondary-content .right-paragraph {
-    font: normal 18px Tahoma;
+    font: normal 17px Tahoma, Geneva, sans-serif;
     color: #4c4c4c; }
   .secondary-content .link {
     text-decoration: none; }
@@ -111,9 +112,11 @@ body {
   .footer-content .primary-footer {
     padding: 0 10px;
     margin: 0 0 10px;
-    font: normal 16px Tahoma;
+    font: normal 16px Tahoma, Geneva, sans-serif;
     color: #fff; }
     .footer-content .primary-footer span {
+      font: bold 16px Tahoma, Geneva, sans-serif;
+      color: #fff;
       font-weight: bold; }
   .footer-content .secondary-footer {
     max-width: 360px;
@@ -170,7 +173,7 @@ body {
   .header-content {
     position: fixed;
     top: 0;
-    /* Grid Layout 
+    /* Grid Layout
 	=========================================== */
     /* Clearfix
 	================================ */ }
@@ -234,12 +237,13 @@ body {
 @media (min-width: 450px) {
   .main-content {
     margin-bottom: 150px;
-    /* Grid Layout 
+    padding: 30px 20px;
+    /* Grid Layout
 	=========================================== */
     /* Clearfix
 	================================ */ }
     .main-content .primary-content {
-      max-width: 300px;
+      max-width: 270px;
       background-color: #fff; }
       .main-content .primary-content .left-heading,
       .main-content .primary-content .left-paragraph,

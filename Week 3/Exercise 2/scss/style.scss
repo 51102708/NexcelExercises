@@ -1,21 +1,25 @@
 $primary-color: #737373;
+
 @mixin border-box {
     box-sizing: border-box;
 }
 
 @mixin grid-layout {
-    /* Grid Layout 
+    /* Grid Layout
 	=========================================== */
-    .grid-container>[class^="grid-"] {
+    .grid-container > [class^="grid-"] {
         float: left;
         min-height: 1px;
     }
-    .grid-container>[class^="grid-"]:first-child {
+
+    .grid-container > [class^="grid-"]:first-child {
         margin-left: 0;
     }
-    .grid-container>[class^="grid-"]:last-child {
+
+    .grid-container > [class^="grid-"]:last-child {
         float: right;
     }
+
     @for $i from 1 through 12 {
         .grid-#{$i} {
             width: 100% / 12 * $i;
@@ -31,10 +35,9 @@ $primary-color: #737373;
 }
 
 @mixin primary-font($style, $size, $color) {
-    font: $style $size Tahoma;
+    font: $style $size Tahoma, Geneva, sans-serif;
     color: $color;
 }
-
 
 /* Page Styles
 ================================ */
@@ -59,43 +62,51 @@ body {
 .main-header {
     padding: 0 15px;
     text-align: center;
+
     a {
         text-decoration: none;
     }
+
     .main-logo {
         img {
             margin: 15px 0;
         }
     }
+
     .main-nav {
         $border-stack: 1px solid $primary-color;
+
         li {
             border: $border-stack;
             border-bottom: none;
         }
+
         a {
-            @include primary-font(bold, 14px, $primary-color);
             display: block;
             padding: 10px 20px;
             color: $primary-color;
+            @include primary-font(bold, 14px, $primary-color);
         }
+
         .blog {
             border-bottom: $border-stack;
         }
     }
+
     .demo-btn {
         margin-top: 12px;
         margin-bottom: 5px;
+
         a {
             display: block;
-            padding: 10px 20px;
-            color: #fff;
+            padding: 9px 20px;
             @include border-box;
             border: 1px solid #e73c50;
             border-bottom: 3px solid #b5161e;
             background-color: #e73c50;
             border-radius: 5px;
             height: 45px;
+            @include primary-font(normal, 17px, #fff);
         }
     }
 }
@@ -123,23 +134,29 @@ body {
 
 .primary-content {
     display: inline-block;
+
     .primary-image {
         width: 100%;
         border-bottom: 4px solid #ffa933;
         display: block;
     }
+
     span {
         @include primary-font(normal, 11px, #c98715);
     }
+
     .author {
         float: right;
     }
+
     .left-heading {
         @include primary-font(bold, 16px, #007299)
     }
+
     .left-paragraph {
         @include primary-font(normal, 14px, #666)
     }
+
     .header-line {
         margin-top: 20px;
     }
@@ -147,12 +164,15 @@ body {
 
 .secondary-content {
     display: inline-block;
+
     .right-heading {
         @include primary-font(normal, 24px, #007299)
     }
+
     .right-paragraph {
-        @include primary-font(normal, 18px, #4c4c4c);
+        @include primary-font(normal, 17px, #4c4c4c);
     }
+
     .link {
         text-decoration: none;
     }
@@ -169,25 +189,31 @@ body {
     height: 150px;
     text-align: center;
     width: 100%;
+
     .main-footer {
         max-width: 930px;
         padding: 35px 0 0;
         margin: 0 auto;
     }
+
     .primary-footer {
         padding: 0 10px;
         margin: 0 0 10px;
         @include primary-font(normal, 16px, #fff);
+
         span {
+            @include primary-font(bold, 16px, #fff);
             font-weight: bold;
         }
     }
+
     .secondary-footer {
         max-width: 360px;
         padding: 0 10px;
         height: 45px;
         margin: 0 auto;
     }
+
     .email {
         border: none;
         border-bottom: solid 2px #105476;
@@ -198,9 +224,11 @@ body {
         padding: 15px;
         height: 45px;
     }
+
     .email::-webkit-input-placeholder {
         color: #06a7e2;
     }
+
     .btn-go {
         border: none;
         border-bottom: solid 2px #105476;
@@ -213,7 +241,6 @@ body {
         width: 75px / 360px * 100%;
     }
 }
-
 
 /* Media Queries
 ================================ */
@@ -233,57 +260,71 @@ body {
                 margin: 15px 0 11px;
             }
         }
+
         .main-nav {
             margin-top: 23px;
+
             a {
                 padding: 0;
             }
+
             li {
                 display: inline-block;
                 border: none;
                 margin: 0 3%;
             }
+
             .blog {
                 border: none;
             }
         }
+
         .demo-btn {
             margin-top: 10px;
             margin-bottom: 7px;
+
             a {
                 float: right;
                 width: 150px;
             }
         }
     }
+
     .header-content {
         position: fixed;
         top: 0;
         @include grid-layout;
+
         .header-line {
             margin-top: 0;
         }
     }
+
     .main-content {
         margin-top: 65px;
         padding-top: 40px;
     }
+
     .footer-content {
         height: 150px;
+
         .main-footer {
             padding: 50px 0 0;
             margin: 0 auto;
         }
+
         .primary-footer,
         .secondary-footer {
             display: inline-block;
             padding: 0;
             width: 49%;
         }
+
         .primary-footer {
             text-align: initial;
             padding-right: 3%;
         }
+
         .secondary-footer {
             padding-left: 3%;
         }
@@ -293,30 +334,39 @@ body {
 @media (min-width: 450px) {
     .main-content {
         margin-bottom: 150px;
+        padding: 30px 20px;
+
         .primary-content {
-            max-width: 300px;
+            max-width: 270px;
             background-color: #fff;
+
             .left-heading,
             .left-paragraph,
             .link {
                 padding: 0 20px;
             }
+
             .date {
                 margin-left: 20px;
             }
+
             .author {
                 margin-right: 20px;
             }
+
             .header-line {
                 margin-top: 15px;
             }
         }
+
         .secondary-content {
             max-width: 620px;
             padding-left: 8.3333%;
         }
+
         @include grid-layout;
     }
+
     .footer-content {
         bottom: 0;
         position: fixed;
