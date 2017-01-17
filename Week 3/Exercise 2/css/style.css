@@ -1,13 +1,20 @@
+@font-face {
+  font-family: Proxima;
+  src: url(../fonts/Proxima-Nova-Regular.otf) format("opentype"); }
+
+@font-face {
+  font-family: Proxima;
+  font-weight: bold;
+  src: url(../fonts/Proxima-Nova-Bold.otf) format("opentype"); }
+
 /* Page Styles
 ================================ */
 * {
   box-sizing: border-box; }
 
-html {
-  background: #FAFAFA; }
-
 body {
-  font: normal 14px Tahoma; }
+  font: normal 14px "Proxima", Geneva, sans-serif;
+  background: #FAFAFA; }
 
 .header-content {
   background: #fff;
@@ -27,7 +34,7 @@ body {
     display: block;
     padding: 10px 20px;
     color: #737373;
-    font: bold 14px Tahoma, Geneva, sans-serif;
+    font: bold 14px "Proxima", Geneva, sans-serif;
     color: #737373; }
   .main-header .main-nav .blog {
     border-bottom: 1px solid #737373; }
@@ -36,14 +43,14 @@ body {
     margin-bottom: 5px; }
     .main-header .demo-btn a {
       display: block;
-      padding: 9px 20px;
+      padding: 10px 20px;
       box-sizing: border-box;
       border: 1px solid #e73c50;
       border-bottom: 3px solid #b5161e;
       background-color: #e73c50;
       border-radius: 5px;
       height: 45px;
-      font: normal 17px Tahoma, Geneva, sans-serif;
+      font: normal 17px "Proxima", Geneva, sans-serif;
       color: #fff; }
 
 .header-line {
@@ -61,7 +68,7 @@ body {
   padding: 30px 15px; }
 
 .link {
-  font: bold 12px Tahoma, Geneva, sans-serif;
+  font: bold 11px "Proxima", Geneva, sans-serif;
   color: #007299; }
 
 .primary-content {
@@ -69,35 +76,40 @@ body {
   .primary-content .primary-image {
     width: 100%;
     border-bottom: 4px solid #ffa933;
-    display: block; }
+    display: block;
+    margin-bottom: 3px; }
   .primary-content span {
-    font: normal 11px Tahoma, Geneva, sans-serif;
+    font: normal 11px "Proxima", Geneva, sans-serif;
     color: #c98715; }
   .primary-content .author {
+    padding-top: 3px;
     float: right; }
   .primary-content .left-heading {
-    font: bold 16px Tahoma, Geneva, sans-serif;
+    margin: 25px 0 10px;
+    font: bold 16px "Proxima", Geneva, sans-serif;
     color: #007299; }
   .primary-content .left-paragraph {
-    font: normal 14px Tahoma, Geneva, sans-serif;
-    color: #666; }
+    font: normal 14px "Proxima", Geneva, sans-serif;
+    color: #666;
+    line-height: 20px; }
   .primary-content .header-line {
     margin-top: 20px; }
 
 .secondary-content {
   display: inline-block; }
   .secondary-content .right-heading {
-    font: normal 24px Tahoma, Geneva, sans-serif;
+    font: normal 24px "Proxima", Geneva, sans-serif;
     color: #007299; }
   .secondary-content .right-paragraph {
-    font: normal 17px Tahoma, Geneva, sans-serif;
-    color: #4c4c4c; }
+    font: normal 17px "Proxima", Geneva, sans-serif;
+    color: #4c4c4c;
+    line-height: 25px; }
   .secondary-content .link {
     text-decoration: none; }
 
 .icon-link {
-  background: url(../images/learnmore.png) no-repeat 0px 5px;
-  padding: 3px 0 3px 20px;
+  background: url(../images/learnmore.png) no-repeat 0px 2px;
+  padding: 3px 0 3px 15px;
   margin-left: 5px; }
 
 .footer-content {
@@ -112,10 +124,10 @@ body {
   .footer-content .primary-footer {
     padding: 0 10px;
     margin: 0 0 10px;
-    font: normal 16px Tahoma, Geneva, sans-serif;
+    font: normal 16px "Proxima", Geneva, sans-serif;
     color: #fff; }
     .footer-content .primary-footer span {
-      font: bold 16px Tahoma, Geneva, sans-serif;
+      font: bold 16px "Proxima", Geneva, sans-serif;
       color: #fff;
       font-weight: bold; }
   .footer-content .secondary-footer {
@@ -150,6 +162,7 @@ body {
 @media (min-width: 1px) and (max-width: 404px) {
   .footer-content .main-footer {
     padding: 28px 0 0; } }
+
 @media (min-width: 850px) {
   .main-header .main-logo img {
     margin: 15px 0 11px; }
@@ -169,7 +182,6 @@ body {
     .main-header .demo-btn a {
       float: right;
       width: 150px; }
-
   .header-content {
     position: fixed;
     top: 0;
@@ -214,11 +226,9 @@ body {
       clear: both; }
     .header-content .header-line {
       margin-top: 0; }
-
   .main-content {
     margin-top: 65px;
     padding-top: 40px; }
-
   .footer-content {
     height: 150px; }
     .footer-content .main-footer {
@@ -234,6 +244,7 @@ body {
       padding-right: 3%; }
     .footer-content .secondary-footer {
       padding-left: 3%; } }
+
 @media (min-width: 450px) {
   .main-content {
     margin-bottom: 150px;
@@ -243,7 +254,7 @@ body {
     /* Clearfix
 	================================ */ }
     .main-content .primary-content {
-      max-width: 270px;
+      max-width: 290px;
       background-color: #fff; }
       .main-content .primary-content .left-heading,
       .main-content .primary-content .left-paragraph,
@@ -293,9 +304,6 @@ body {
       content: " ";
       display: table;
       clear: both; }
-
   .footer-content {
     bottom: 0;
     position: fixed; } }
-
-/*# sourceMappingURL=style.css.map */
