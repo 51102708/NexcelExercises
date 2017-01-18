@@ -143,9 +143,11 @@ textarea {
 @media (min-width: 1px) and (max-width: 357px) {
   .header-content .banner {
     padding-top: 60px; } }
+
 @media (min-width: 358px) and (max-width: 435px) {
   .header-content .banner {
     padding-top: 80px; } }
+
 @media (min-width: 769px) {
   .main-content .heading-info {
     padding: 63px 10px 34px; }
@@ -158,65 +160,47 @@ textarea {
     .main-content .main-info .middle-info,
     .main-content .main-info .right-info {
       padding-top: 0; }
-
-    /* Grid Layout
+  /* Grid Layout
 	=========================================== */
   .grid-container > [class^="grid-"] {
     float: left;
     min-height: 1px;
     padding: 0 14.66667px; }
-
   .grid-container > [class^="grid-"]:first-child {
     margin-left: 0;
     padding-left: 0;
     padding-right: 29.33333px; }
-
   .grid-container > [class^="grid-"]:last-child {
     float: right;
     padding-right: 0;
     padding-left: 29.33333px; }
-
   .grid-1 {
     width: 8.33333%; }
-
   .grid-2 {
     width: 16.66667%; }
-
   .grid-3 {
     width: 25%; }
-
   .grid-4 {
     width: 33.33333%; }
-
   .grid-5 {
     width: 41.66667%; }
-
   .grid-6 {
     width: 50%; }
-
   .grid-7 {
     width: 58.33333%; }
-
   .grid-8 {
     width: 66.66667%; }
-
   .grid-9 {
     width: 75%; }
-
   .grid-10 {
     width: 83.33333%; }
-
   .grid-11 {
     width: 91.66667%; }
-
   .grid-12 {
     width: 100%; }
-
-    /* Clearfix
+  /* Clearfix
 	================================ */
   .grid-container:after {
     content: " ";
     display: table;
     clear: both; } }
-
-/*# sourceMappingURL=style.css.map */

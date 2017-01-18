@@ -1,34 +1,11 @@
-$primary-color: #737373;
-@mixin border-box {
-    box-sizing: border-box;
-}
-
-@mixin grid-layout {
-    /* Grid Layout
-	=========================================== */
-    .grid-container>[class^="grid-"] {
-        float: left;
-        min-height: 1px;
-    }
-    .grid-container>[class^="grid-"]:first-child {
-        margin-left: 0;
-    }
-    .grid-container>[class^="grid-"]:last-child {
-        float: right;
-    }
-    @for $i from 1 through 12 {
-        .grid-#{$i} {
-            width: 100% / 12 * $i;
-        }
-    }
-    /* Clearfix
-	================================ */
-    .grid-container:after {
-        content: " ";
-        display: table;
-        clear: both;
-    }
-}
+$nav-font-color: #737373;
+$background-color: #FAFAFA;
+$header-background-color: #fff;
+$header-border-color: #ccc;
+$btn-demo-color: #e73c50;
+$btn-font-color: #fff;
+$heading-color: #007299;
+$btn-go-background-color: #06a7e2;
 
 @font-face {
     font-family: Proxima;
@@ -41,11 +18,7 @@ $primary-color: #737373;
     src: url(../fonts/Proxima-Nova-Bold.otf) format("opentype");
 }
 
-@mixin primary-font($style, $size, $color) {
-    font: $style $size "Proxima", Geneva, sans-serif;
-    color: $color;
-}
-
+@import 'base';
 
 /* Page Styles
 ================================ */
@@ -56,54 +29,62 @@ $primary-color: #737373;
 
 body {
     font: normal 14px "Proxima", Geneva, sans-serif;
-    background: #FAFAFA;
+    background: $background-color;
 }
 
 .header-content {
-    background: #fff;
+    background: $header-background-color;
     width: 100%;
 }
 
 .main-header {
     padding: 0 15px;
     text-align: center;
+
     a {
         text-decoration: none;
     }
+
     .main-logo {
         img {
             margin: 15px 0;
         }
     }
+
     .main-nav {
-        $border-stack: 1px solid $primary-color;
+        $border-stack: 1px solid $nav-font-color;
+
         li {
             border: $border-stack;
             border-bottom: none;
         }
+
         a {
             display: block;
             padding: 10px 20px;
-            color: $primary-color;
-            @include primary-font(bold, 14px, $primary-color);
+            color: $nav-font-color;
+            @include primary-font(bold, 14px, $nav-font-color);
         }
+
         .blog {
             border-bottom: $border-stack;
         }
     }
+
     .demo-btn {
         margin-top: 12px;
         margin-bottom: 5px;
+
         a {
             display: block;
-            padding: 10px 20px;
+            padding: 13px 20px;
             @include border-box;
-            border: 1px solid #e73c50;
+            border: 1px solid $btn-demo-color;
             border-bottom: 3px solid #b5161e;
-            background-color: #e73c50;
+            background-color: $btn-demo-color;
             border-radius: 5px;
             height: 45px;
-            @include primary-font(normal, 17px, #fff);
+            @include primary-font(normal, 17px, $btn-font-color);
         }
     }
 }
@@ -111,7 +92,7 @@ body {
 .header-line {
     width: 100%;
     height: 3px;
-    background: #ccc;
+    background: $header-border-color;
     margin-top: 15px;
 }
 
@@ -126,32 +107,38 @@ body {
 }
 
 .link {
-    @include primary-font(bold, 11px, #007299)
+    @include primary-font(bold, 11px, $heading-color)
 }
 
 .primary-content {
     display: inline-block;
+
     .primary-image {
         width: 100%;
         border-bottom: 4px solid #ffa933;
         display: block;
         margin-bottom: 3px;
     }
+
     span {
         @include primary-font(normal, 11px, #c98715);
     }
+
     .author {
         padding-top: 3px;
         float: right;
     }
+
     .left-heading {
         margin: 25px 0 10px;
-        @include primary-font(bold, 16px, #007299);
+        @include primary-font(bold, 16px, $heading-color);
     }
+
     .left-paragraph {
         @include primary-font(normal, 14px, #666);
         line-height: 20px;
     }
+
     .header-line {
         margin-top: 20px;
     }
@@ -159,13 +146,16 @@ body {
 
 .secondary-content {
     display: inline-block;
+
     .right-heading {
-        @include primary-font(normal, 24px, #007299);
+        @include primary-font(normal, 24px, $heading-color);
     }
+
     .right-paragraph {
         @include primary-font(normal, 17px, #4c4c4c);
         line-height: 25px;
     }
+
     .link {
         text-decoration: none;
     }
@@ -178,48 +168,55 @@ body {
 }
 
 .footer-content {
-    background-color: #007299;
+    background-color: $heading-color;
     height: 150px;
     text-align: center;
     width: 100%;
+
     .main-footer {
         max-width: 930px;
         padding: 35px 0 0;
         margin: 0 auto;
     }
+
     .primary-footer {
         padding: 0 10px;
         margin: 0 0 10px;
         @include primary-font(normal, 16px, #fff);
+
         span {
             @include primary-font(bold, 16px, #fff);
             font-weight: bold;
         }
     }
+
     .secondary-footer {
         max-width: 360px;
         padding: 0 10px;
         height: 45px;
         margin: 0 auto;
     }
+
     .email {
         border: none;
         border-bottom: solid 2px #105476;
-        color: #06a7e2;
+        color: $btn-go-background-color;
         font-size: 16px;
         float: left;
         width: 285px / 360px * 100%;
         padding: 15px;
         height: 45px;
     }
+
     .email::-webkit-input-placeholder {
-        color: #06a7e2;
+        color: $btn-go-background-color;
     }
+
     .btn-go {
         border: none;
         border-bottom: solid 2px #105476;
-        background-color: #06a7e2;
-        color: #fff;
+        background-color: $btn-go-background-color;
+        color: $btn-font-color;
         font-weight: bold;
         font-size: 16px;
         margin-left: -2px;
@@ -227,7 +224,6 @@ body {
         width: 75px / 360px * 100%;
     }
 }
-
 
 /* Media Queries
 ================================ */
@@ -247,57 +243,71 @@ body {
                 margin: 15px 0 11px;
             }
         }
+
         .main-nav {
             margin-top: 23px;
+
             a {
                 padding: 0;
             }
+
             li {
                 display: inline-block;
                 border: none;
                 margin: 0 3%;
             }
+
             .blog {
                 border: none;
             }
         }
+
         .demo-btn {
             margin-top: 10px;
             margin-bottom: 7px;
+
             a {
                 float: right;
                 width: 150px;
             }
         }
     }
+
     .header-content {
         position: fixed;
         top: 0;
         @include grid-layout;
+
         .header-line {
             margin-top: 0;
         }
     }
+
     .main-content {
         margin-top: 65px;
         padding-top: 40px;
     }
+
     .footer-content {
         height: 150px;
+
         .main-footer {
             padding: 50px 0 0;
             margin: 0 auto;
         }
+
         .primary-footer,
         .secondary-footer {
             display: inline-block;
             padding: 0;
             width: 49%;
         }
+
         .primary-footer {
             text-align: initial;
             padding-right: 3%;
         }
+
         .secondary-footer {
             padding-left: 3%;
         }
@@ -308,30 +318,38 @@ body {
     .main-content {
         margin-bottom: 150px;
         padding: 30px 20px;
+
         .primary-content {
             max-width: 290px;
-            background-color: #fff;
+            background-color: $header-background-color;
+
             .left-heading,
             .left-paragraph,
             .link {
                 padding: 0 20px;
             }
+
             .date {
                 margin-left: 20px;
             }
+
             .author {
                 margin-right: 20px;
             }
+
             .header-line {
                 margin-top: 15px;
             }
         }
+
         .secondary-content {
             max-width: 620px;
             padding-left: 8.3333%;
         }
+
         @include grid-layout;
     }
+
     .footer-content {
         bottom: 0;
         position: fixed;

@@ -1,13 +1,7 @@
-$primary-color: #a5937b;
-
-@mixin border-box {
-    box-sizing: border-box;
-}
-
-@mixin primary-font($style, $size) {
-    font: $style $size Arial, Helvetica, sans-serif;
-    color: #fff;
-}
+$background-color: #a5937b;
+$primary-border-color: #fff;
+$banner-background-color: #efc889;
+@import 'base';
 
 /* Page Styles
 ================================ */
@@ -18,7 +12,7 @@ $primary-color: #a5937b;
 
 body {
     font: normal 14px Arial, Helvetica, sans-serif;
-    background-color: $primary-color;
+    background-color: $background-color;
 }
 
 a {
@@ -48,15 +42,15 @@ textarea {
             max-width: 704px;
             margin: 0 auto;
             padding: 36px 8%;
-            border: solid 12px #fff;
-            background-color: #efc889;
+            border: solid 12px $primary-border-color;
+            background-color: $banner-background-color;
             @include primary-font(bold, 18px);
             line-height: 30px;
         }
 
         .avatar {
             background: url(../images/photo.png) no-repeat 0 0;
-            border: solid 3px #fff;
+            border: solid 3px $primary-border-color;
             border-radius: 50%;
             margin: -47.5px auto 23px;
             height: 95px;
@@ -70,9 +64,9 @@ textarea {
 
         .btn-contact {
             display: block;
-            border: solid 3px #fff;
+            border: solid 3px $primary-border-color;
             border-radius: 4px;
-            background-color: #efc889;
+            background-color: $banner-background-color;
             @include primary-font(bold, 14px);
             margin: 23px auto;
             height: 58px;
@@ -167,9 +161,9 @@ textarea {
 
         .btn-send {
             display: block;
-            border: solid 3px #fff;
+            border: solid 3px $primary-border-color;
             border-radius: 4px;
-            background-color: $primary-color;
+            background-color: $background-color;
             @include primary-font(normal, 13px);
             margin: 27px auto;
             height: 57px;

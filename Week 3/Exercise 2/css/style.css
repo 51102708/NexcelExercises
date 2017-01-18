@@ -1,12 +1,10 @@
 @font-face {
   font-family: Proxima;
   src: url(../fonts/Proxima-Nova-Regular.otf) format("opentype"); }
-
 @font-face {
   font-family: Proxima;
   font-weight: bold;
   src: url(../fonts/Proxima-Nova-Bold.otf) format("opentype"); }
-
 /* Page Styles
 ================================ */
 * {
@@ -43,7 +41,7 @@ body {
     margin-bottom: 5px; }
     .main-header .demo-btn a {
       display: block;
-      padding: 10px 20px;
+      padding: 13px 20px;
       box-sizing: border-box;
       border: 1px solid #e73c50;
       border-bottom: 3px solid #b5161e;
@@ -162,7 +160,6 @@ body {
 @media (min-width: 1px) and (max-width: 404px) {
   .footer-content .main-footer {
     padding: 28px 0 0; } }
-
 @media (min-width: 850px) {
   .main-header .main-logo img {
     margin: 15px 0 11px; }
@@ -182,6 +179,7 @@ body {
     .main-header .demo-btn a {
       float: right;
       width: 150px; }
+
   .header-content {
     position: fixed;
     top: 0;
@@ -226,9 +224,11 @@ body {
       clear: both; }
     .header-content .header-line {
       margin-top: 0; }
+
   .main-content {
     margin-top: 65px;
     padding-top: 40px; }
+
   .footer-content {
     height: 150px; }
     .footer-content .main-footer {
@@ -244,7 +244,6 @@ body {
       padding-right: 3%; }
     .footer-content .secondary-footer {
       padding-left: 3%; } }
-
 @media (min-width: 450px) {
   .main-content {
     margin-bottom: 150px;
@@ -304,6 +303,9 @@ body {
       content: " ";
       display: table;
       clear: both; }
+
   .footer-content {
     bottom: 0;
     position: fixed; } }
+
+/*# sourceMappingURL=style.css.map */

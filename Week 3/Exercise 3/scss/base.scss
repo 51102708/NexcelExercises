@@ -1,0 +1,8 @@
+@mixin border-box {
+    box-sizing: border-box;
+}
+
+@mixin primary-font($style, $size) {
+    font: $style $size Arial, Helvetica, sans-serif;
+    color: #fff;
+}
