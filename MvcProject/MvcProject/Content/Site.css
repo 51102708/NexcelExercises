@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
 }
 
@@ -23,8 +23,160 @@ textarea {
     max-width: 280px;
 }
 
-/*#header  {
-     background: url("../images/header-full.png") no-repeat 50% 0;
-         height: 147px;
-         width: 100%;
-}*/
+.icon-app {
+    padding-right: 5px;
+}
+
+.banner {
+    background: url(../images/header-full.png) no-repeat center center;
+    height: 147px;
+    margin: 0;
+    position: relative;
+    width: 100%;
+}
+
+    .banner .dk {
+        padding-top: 5%;
+    }
+
+        .banner .dk h4 {
+            margin-left: 10px;
+            font-family: "Gill Sans MT","Gill Sans",Arial,Helvetica,freesans,sans-serif;
+            font-weight: normal;
+            color: #777777;
+        }
+/* Home - Index layout */
+
+.form-search {
+    text-align: center;
+    margin: 20px 0;
+}
+
+    .form-search .input-group {
+        display: inline;
+    }
+
+    .form-search .search-frame {
+        max-width: 30%;
+    }
+
+.result blockquote {
+    border-left: 5px solid #62bbb9;
+}
+
+.right-content {
+    margin: 30px auto;
+}
+
+    .right-content ul {
+        width: 100%;
+        padding-left: 0;
+    }
+
+        .right-content ul li {
+            width: 100%;
+            min-height: 30px;
+            margin-bottom: 2px;
+            background: #f4f4f4;
+            list-style: none;
+            padding: 10px;
+            font-family: "open sans", serif;
+            font-size: 12px;
+        }
+
+            .right-content ul li i {
+                font-size: 10px;
+                color: #ccc;
+                padding-right: 5px;
+            }
+
+            .right-content ul li a {
+                color: #4f4f4f;
+                display: block;
+                text-decoration: none;
+                width: 100%;
+            }
+
+            .right-content ul li:nth-child(1) {
+                border-right: 5px solid #8d54a3;
+            }
+
+            .right-content ul li:nth-child(2) {
+                border-right: 5px solid #6CC437;
+            }
+
+            .right-content ul li:nth-child(3) {
+                border-right: 5px solid #f28c1d;
+            }
+
+            .right-content ul li:nth-child(4) {
+                border-right: 5px solid #e94979;
+            }
+
+            .right-content ul li:nth-child(5) {
+                border-right: 5px solid #00B0F0;
+            }
+
+            .right-content ul li:nth-child(6) {
+                border-right: 5px solid #cc3333;
+            }
+
+            .right-content ul li:nth-child(7) {
+                border-right: 5px solid #FABE09;
+            }
+
+            .right-content ul li:nth-child(8) {
+                border-right: 5px solid #e94979;
+            }
+
+            .right-content ul li:nth-child(9) {
+                border-right: 5px solid #8d54a3;
+            }
+
+            .right-content ul li:nth-child(10) {
+                border-right: 5px solid #6CC437;
+            }
+
+            .right-content ul li:nth-child(11) {
+                border-right: 5px solid #f28c1d;
+            }
+
+            .right-content ul li:nth-child(12) {
+                border-right: 5px solid #e94979;
+            }
+
+            .right-content ul li:nth-child(13) {
+                border-right: 5px solid #00B0F0;
+            }
+
+            .right-content ul li:nth-child(14) {
+                border-right: 5px solid #F46652;
+            }
+
+            .right-content ul li:nth-child(15) {
+                border-right: 5px solid #FABE09;
+            }
+
+            .right-content ul li:nth-child(16) {
+                border-right: 5px solid #6CC437;
+            }
+
+            .right-content ul li:nth-child(17) {
+                border-right: 5px solid #f28c1d;
+            }
+
+            .right-content ul li:nth-child(18) {
+                border-right: 5px solid #e94979;
+            }
+
+            .right-content ul li:nth-child(19) {
+                border-right: 5px solid #00B0F0;
+            }
+
+            .right-content ul li:nth-child(20) {
+                border-right: 5px solid #F46652;
+            }
+
+            .right-content ul li:nth-child(21) {
+                border-right: 5px solid #FABE09;
+            }

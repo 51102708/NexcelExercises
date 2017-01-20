@@ -1,59 +1,66 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    ViewBag.test1 = "heheh";
 }
-@*<div class="container">
 
-    <div class="input-group">
-        <div class="input-group-btn search-panel">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span id="search_concept">Filter by</span> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#contains">Contains</a></li>
-                <li><a href="#its_equal">It's equal</a></li>
-                <li><a href="#greather_than">Greather than ></a></li>
-                <li><a href="#less_than">Less than < </a></li>
-                <li class="divider"></li>
-                <li><a href="#all">Anything</a></li>
-            </ul>
+<div class="row">
+    <div class="col-md-9 left-content">
+        @using (Html.BeginForm("Search", "MovieClient", FormMethod.Get, new { @class = "form-search" }))
+        {
+            <div class="input-group">
+                @*@Html.DropDownList("test1", null, "All", new { @class = "btn btn-default btn-block dropdown-toggle" })
+                    @Html.TextBox("test1", null, new { @class = "form-control", @placeholder = "Title" })*@
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span id="search_concept">Filter by</span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Topics</a></li>
+                    <li><a href="#">Sections</a></li>
+                    <li><a href="#">Pharses</a></li>
+                    <li><a href="#">Examples</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">All</a></li>
+                </ul>
+                <input type="text" class="form-control search-frame" placeholder="Search for...">
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+
+        }
+        <h4>Search Results</h4>
+        <p>345 results for search term "what"</p>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+        <div id="demo" class="collapse">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </div>
-        <input type="hidden" name="search_param" value="all" id="search_param">
-        <input type="text" class="form-control" name="x" placeholder="Search term...">
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-        </span>  style="width:0;"
     </div>
-    </div>*@
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span>Search</button>
-            </span>
-        </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-3 right-content">
+        <ul>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i>INTRODUCTIONS</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i>STARTING A SPEECH OR MEETING</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+            <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+        </ul>
     </div>
 </div>
+
+@*<div class="list-group">
+        <a href="#" class="list-group-item active " data-toggle="collapse" data-target="#demo">
+            <h5 class="list-group-item-heading">List group item heading</h5>
+            <p class="list-group-item-text"></p>
+        </a>
+    </div>*@
+
+@*<div class="result">
+        <p>ssss sadadw weqww</p>
+        <blockquote>
+            <p>Example: kajdklajdlkajdkldads</p>
+        </blockquote>
+    </div>*@
