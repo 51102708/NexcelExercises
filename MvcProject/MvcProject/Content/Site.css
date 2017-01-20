@@ -27,7 +27,28 @@ textarea {
     padding-right: 5px;
 }
 
-.banner {
+.navbar {
+    background-color: #00293d;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: aquamarine;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: aquamarine;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: aquamarine;
+    background-color: #00293d;
+}
+
+/*.banner {
     background: url(../images/header-full.png) no-repeat center center;
     height: 147px;
     margin: 0;
@@ -44,7 +65,7 @@ textarea {
             font-family: "Gill Sans MT","Gill Sans",Arial,Helvetica,freesans,sans-serif;
             font-weight: normal;
             color: #777777;
-        }
+        }*/
 /* Home - Index layout */
 
 .form-search {
