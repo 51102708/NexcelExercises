@@ -33,6 +33,10 @@
 }
 
 @mixin primary-font($style, $size, $color) {
-    font: $style $size "Proxima", Geneva, sans-serif;
+    @if ($style !="normal") {
+        font-weight: $style;
+    }
+
+    font-size: $size;
     color: $color;
 }

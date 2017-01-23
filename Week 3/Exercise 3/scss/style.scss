@@ -1,6 +1,7 @@
 $background-color: #a5937b;
 $primary-border-color: #fff;
 $banner-background-color: #efc889;
+$primary-font-color: #fff;
 @import 'base';
 
 /* Page Styles
@@ -12,6 +13,7 @@ $banner-background-color: #efc889;
 
 body {
     font: normal 14px Arial, Helvetica, sans-serif;
+    color: $primary-font-color;
     background-color: $background-color;
 }
 
@@ -71,7 +73,6 @@ textarea {
             margin: 23px auto;
             height: 58px;
             width: 250px;
-            text-align: center;
 
             .icon-phone {
                 background: url(../images/sprites.png) no-repeat 0 0;
@@ -85,6 +86,7 @@ textarea {
             .btn-text {
                 margin-top: 5px;
                 float: left;
+                color: $primary-font-color;
             }
         }
     }
@@ -173,6 +175,7 @@ textarea {
             .btn-text {
                 margin-top: 5px;
                 float: left;
+                color: $primary-font-color;
             }
 
             .icon-send {

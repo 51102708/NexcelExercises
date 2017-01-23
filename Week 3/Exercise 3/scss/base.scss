@@ -3,6 +3,9 @@
 }
 
 @mixin primary-font($style, $size) {
-    font: $style $size Arial, Helvetica, sans-serif;
-    color: #fff;
+    @if ($style !="normal") {
+        font-weight: $style;
+    }
+
+    font-size: $size;
 }

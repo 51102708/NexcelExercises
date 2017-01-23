@@ -1,10 +1,12 @@
 @font-face {
   font-family: Proxima;
   src: url(../fonts/Proxima-Nova-Regular.otf) format("opentype"); }
+
 @font-face {
   font-family: Proxima;
   font-weight: bold;
   src: url(../fonts/Proxima-Nova-Bold.otf) format("opentype"); }
+
 /* Page Styles
 ================================ */
 * {
@@ -16,7 +18,8 @@ body {
 
 .header-content {
   background: #fff;
-  width: 100%; }
+  width: 100%;
+  border-bottom: 3px solid #ccc; }
 
 .main-header {
   padding: 0 15px;
@@ -32,8 +35,7 @@ body {
     display: block;
     padding: 10px 20px;
     color: #737373;
-    font: bold 14px "Proxima", Geneva, sans-serif;
-    color: #737373; }
+    font-weight: bold; }
   .main-header .main-nav .blog {
     border-bottom: 1px solid #737373; }
   .main-header .demo-btn {
@@ -48,14 +50,8 @@ body {
       background-color: #e73c50;
       border-radius: 5px;
       height: 45px;
-      font: normal 17px "Proxima", Geneva, sans-serif;
+      font-size: 17px;
       color: #fff; }
-
-.header-line {
-  width: 100%;
-  height: 3px;
-  background: #ccc;
-  margin-top: 15px; }
 
 .main-header,
 .main-content {
@@ -66,28 +62,30 @@ body {
   padding: 30px 15px; }
 
 .link {
-  font: bold 11px "Proxima", Geneva, sans-serif;
+  font-weight: bold;
+  font-size: 11px;
   color: #007299; }
 
 .primary-content {
-  display: inline-block; }
+  display: inline-block;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #ccc; }
   .primary-content .primary-image {
     width: 100%;
     border-bottom: 4px solid #ffa933;
     display: block;
     margin-bottom: 3px; }
   .primary-content span {
-    font: normal 11px "Proxima", Geneva, sans-serif;
+    font-size: 11px;
     color: #c98715; }
   .primary-content .author {
     padding-top: 3px;
     float: right; }
   .primary-content .left-heading {
     margin: 25px 0 10px;
-    font: bold 16px "Proxima", Geneva, sans-serif;
+    font-size: 16px;
     color: #007299; }
   .primary-content .left-paragraph {
-    font: normal 14px "Proxima", Geneva, sans-serif;
     color: #666;
     line-height: 20px; }
   .primary-content .header-line {
@@ -96,17 +94,18 @@ body {
 .secondary-content {
   display: inline-block; }
   .secondary-content .right-heading {
-    font: normal 24px "Proxima", Geneva, sans-serif;
-    color: #007299; }
+    font-size: 24px;
+    color: #007299;
+    font-weight: normal; }
   .secondary-content .right-paragraph {
-    font: normal 17px "Proxima", Geneva, sans-serif;
+    font-size: 17px;
     color: #4c4c4c;
     line-height: 25px; }
   .secondary-content .link {
     text-decoration: none; }
 
 .icon-link {
-  background: url(../images/learnmore.png) no-repeat 0px 2px;
+  background: url(../images/learnmore.png) no-repeat 0 2px;
   padding: 3px 0 3px 15px;
   margin-left: 5px; }
 
@@ -114,20 +113,23 @@ body {
   background-color: #007299;
   height: 150px;
   text-align: center;
-  width: 100%; }
+  width: 100%;
+  margin: auto; }
   .footer-content .main-footer {
+    margin: 0 auto;
     max-width: 930px;
-    padding: 35px 0 0;
-    margin: 0 auto; }
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
   .footer-content .primary-footer {
     padding: 0 10px;
     margin: 0 0 10px;
-    font: normal 16px "Proxima", Geneva, sans-serif;
+    font-size: 16px;
     color: #fff; }
     .footer-content .primary-footer span {
-      font: bold 16px "Proxima", Geneva, sans-serif;
-      color: #fff;
-      font-weight: bold; }
+      font-weight: bold;
+      font-size: 16px;
+      color: #fff; }
   .footer-content .secondary-footer {
     max-width: 360px;
     padding: 0 10px;
@@ -157,10 +159,7 @@ body {
 
 /* Media Queries
 ================================ */
-@media (min-width: 1px) and (max-width: 404px) {
-  .footer-content .main-footer {
-    padding: 28px 0 0; } }
-@media (min-width: 850px) {
+@media (min-width: 1024px) {
   .main-header .main-logo img {
     margin: 15px 0 11px; }
   .main-header .main-nav {
@@ -179,7 +178,6 @@ body {
     .main-header .demo-btn a {
       float: right;
       width: 150px; }
-
   .header-content {
     position: fixed;
     top: 0;
@@ -224,27 +222,21 @@ body {
       clear: both; }
     .header-content .header-line {
       margin-top: 0; }
-
   .main-content {
     margin-top: 65px;
     padding-top: 40px; }
+  .footer-content .primary-footer,
+  .footer-content .secondary-footer {
+    display: inline-block;
+    padding: 0;
+    width: 49%; }
+  .footer-content .primary-footer {
+    text-align: initial;
+    padding-right: 3%; }
+  .footer-content .secondary-footer {
+    padding-left: 3%; } }
 
-  .footer-content {
-    height: 150px; }
-    .footer-content .main-footer {
-      padding: 50px 0 0;
-      margin: 0 auto; }
-    .footer-content .primary-footer,
-    .footer-content .secondary-footer {
-      display: inline-block;
-      padding: 0;
-      width: 49%; }
-    .footer-content .primary-footer {
-      text-align: initial;
-      padding-right: 3%; }
-    .footer-content .secondary-footer {
-      padding-left: 3%; } }
-@media (min-width: 450px) {
+@media (min-width: 768px) {
   .main-content {
     margin-bottom: 150px;
     padding: 30px 20px;
@@ -303,9 +295,6 @@ body {
       content: " ";
       display: table;
       clear: both; }
-
   .footer-content {
     bottom: 0;
     position: fixed; } }
-
-/*# sourceMappingURL=style.css.map */

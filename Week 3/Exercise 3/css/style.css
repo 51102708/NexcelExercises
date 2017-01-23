@@ -5,6 +5,7 @@
 
 body {
   font: normal 14px Arial, Helvetica, sans-serif;
+  color: #fff;
   background-color: #a5937b; }
 
 a {
@@ -31,8 +32,8 @@ textarea {
       padding: 36px 8%;
       border: solid 12px #fff;
       background-color: #efc889;
-      font: bold 18px Arial, Helvetica, sans-serif;
-      color: #fff;
+      font-weight: bold;
+      font-size: 18px;
       line-height: 30px; }
     .header-content .banner .avatar {
       background: url(../images/photo.png) no-repeat 0 0;
@@ -43,19 +44,17 @@ textarea {
       width: 95px; }
     .header-content .banner .author {
       margin: 0 0 3px;
-      font: normal 17px Arial, Helvetica, sans-serif;
-      color: #fff; }
+      font-size: 17px; }
     .header-content .banner .btn-contact {
       display: block;
       border: solid 3px #fff;
       border-radius: 4px;
       background-color: #efc889;
-      font: bold 14px Arial, Helvetica, sans-serif;
-      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
       margin: 23px auto;
       height: 58px;
-      width: 250px;
-      text-align: center; }
+      width: 250px; }
       .header-content .banner .btn-contact .icon-phone {
         background: url(../images/sprites.png) no-repeat 0 0;
         width: 25px;
@@ -65,7 +64,8 @@ textarea {
         margin-right: 5px; }
       .header-content .banner .btn-contact .btn-text {
         margin-top: 5px;
-        float: left; }
+        float: left;
+        color: #fff; }
 
 .main-content {
   max-width: 900px; }
@@ -73,20 +73,19 @@ textarea {
     text-align: center;
     padding: 34px 10px;
     margin: 0;
-    font: bold 44px Arial, Helvetica, sans-serif;
-    color: #fff; }
+    font-weight: bold;
+    font-size: 44px; }
   .main-content .main-info {
     text-align: center;
     border-top: solid 1px #ddd;
     border-bottom: solid 1px #ddd; }
     .main-content .main-info h2 {
       margin: 0 0 26px;
-      font: bold 19px Arial, Helvetica, sans-serif;
-      color: #fff; }
+      font-weight: bold;
+      font-size: 19px; }
     .main-content .main-info p {
       margin: 0;
-      font: normal 17px Arial, Helvetica, sans-serif;
-      color: #fff; }
+      font-size: 17px; }
     .main-content .main-info .left-info,
     .main-content .main-info .middle-info,
     .main-content .main-info .right-info {
@@ -108,8 +107,8 @@ textarea {
       height: 50px; }
     .main-content .form-content .label {
       margin: 0;
-      font: bold 17px Arial, Helvetica, sans-serif;
-      color: #fff; }
+      font-weight: bold;
+      font-size: 17px; }
     .main-content .form-content .left-content,
     .main-content .form-content .middle-content,
     .main-content .form-content .right-content {
@@ -121,15 +120,15 @@ textarea {
       border: solid 3px #fff;
       border-radius: 4px;
       background-color: #a5937b;
-      font: normal 13px Arial, Helvetica, sans-serif;
-      color: #fff;
+      font-size: 13px;
       margin: 27px auto;
       height: 57px;
       width: 250px;
       text-align: center; }
       .main-content .form-content .btn-send .btn-text {
         margin-top: 5px;
-        float: left; }
+        float: left;
+        color: #fff; }
       .main-content .form-content .btn-send .icon-send {
         background: url(../images/sprites.png) no-repeat -25px 0;
         width: 25px;
