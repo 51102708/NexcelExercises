@@ -46,8 +46,7 @@ img {
   .primary-content .contact-list li {
     display: inline-block;
     margin-top: 15px; }
-  .primary-content .contact-list a,
-  .primary-content .contact-list a:visited {
+  .primary-content .contact-list a {
     color: #fff;
     text-decoration: underline; }
   .primary-content .contact-list .text-phone,
@@ -124,8 +123,6 @@ img {
     padding-left: 20px; }
     .secondary-content .message {
       margin-top: 0; }
-    .secondary-content .left-form {
-      padding-right: 0; }
     .secondary-content .right-form {
       padding-left: 10px; }
     .secondary-content .submit {

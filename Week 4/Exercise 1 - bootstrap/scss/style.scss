@@ -59,8 +59,7 @@ img {
             display: inline-block;
             margin-top: 15px;
         }
-        a,
-        a:visited {
+        a {
             color: #fff;
             text-decoration: underline;
         }
@@ -158,9 +157,6 @@ img {
         padding-left: 20px;
         .message {
             margin-top: 0;
-        }
-        .left-form {
-            padding-right: 0;
         }
         .right-form {
             padding-left: 10px;
