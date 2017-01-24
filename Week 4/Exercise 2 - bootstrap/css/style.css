@@ -1,0 +1,169 @@
+@font-face {
+  font-family: Proxima;
+  src: url(../fonts/Proxima-Nova-Regular.otf) format("opentype"); }
+
+@font-face {
+  font-family: Proxima;
+  font-weight: bold;
+  src: url(../fonts/Proxima-Nova-Bold.otf) format("opentype"); }
+
+/* Page Styles  
+================================ */
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  font: normal 14px "Proxima", Geneva, sans-serif;
+  background: #FAFAFA; }
+
+.header-content {
+  background: #fff;
+  border-bottom: 3px solid #ccc; }
+
+.main-header,
+.main-content {
+  margin: 0 auto;
+  max-width: 930px; }
+
+.main-header {
+  text-align: center; }
+  .main-header .main-logo {
+    margin: 15px 0; }
+  .main-header .main-nav li {
+    border: 1px solid #737373;
+    border-bottom: none; }
+  .main-header .main-nav a {
+    display: block;
+    padding: 10px 20px;
+    color: #737373;
+    font-weight: bold; }
+  .main-header .main-nav .blog {
+    border-bottom: 1px solid #737373; }
+  .main-header .demo-btn {
+    margin-bottom: 10px; }
+    .main-header .demo-btn a {
+      text-decoration: none;
+      display: block;
+      padding: 13px 20px;
+      border: 1px solid #e73c50;
+      border-bottom: 3px solid #b5161e;
+      background-color: #e73c50;
+      border-radius: 5px;
+      height: 45px;
+      font-size: 17px;
+      color: #fff; }
+
+.link {
+  font-weight: bold;
+  font-size: 11px;
+  color: #007299;
+  text-decoration: underline; }
+
+.icon-link {
+  background: url(../images/learnmore.png) no-repeat 0 2px;
+  padding: 3px 0 3px 15px;
+  margin-left: 5px; }
+
+.main-content {
+  margin-top: 30px;
+  margin-bottom: 180px; }
+  .main-content .row {
+    margin-left: 0;
+    margin-right: 0; }
+  .main-content .primary-content {
+    padding: 0 0 12px;
+    border-bottom: 3px solid #ccc; }
+    .main-content .primary-content .primary-image {
+      width: 100%;
+      border-bottom: 4px solid #ffa933;
+      display: block;
+      margin-bottom: 3px; }
+    .main-content .primary-content .date,
+    .main-content .primary-content .author {
+      font-size: 11px;
+      color: #c98715; }
+    .main-content .primary-content .author {
+      float: right; }
+    .main-content .primary-content .left-heading {
+      margin: 25px 0 10px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #007299; }
+    .main-content .primary-content .left-paragraph {
+      color: #666;
+      line-height: 20px; }
+  .main-content .secondary-content {
+    padding: 0; }
+    .main-content .secondary-content .right-heading {
+      font-size: 24px;
+      color: #007299; }
+    .main-content .secondary-content .right-paragraph {
+      font-size: 17px;
+      color: #4c4c4c;
+      line-height: 30px;
+      margin-bottom: 15px; }
+    .main-content .secondary-content .link {
+      text-decoration: none; }
+
+.footer-content {
+  background-color: #007299;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  .footer-content .main-footer {
+    max-width: 930px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+  .footer-content .primary-footer {
+    font-size: 16px;
+    color: #fff; }
+    .footer-content .primary-footer span {
+      font-weight: bold; }
+  .footer-content .secondary-footer {
+    max-width: 360px;
+    height: 45px;
+    margin: 0 auto; }
+  .footer-content .email {
+    border: none;
+    border-bottom: solid 2px #105476;
+    color: #06a7e2;
+    font-size: 16px;
+    float: left;
+    width: 79.16667%;
+    padding: 15px;
+    height: 45px; }
+  .footer-content .email::-webkit-input-placeholder {
+    color: #06a7e2; }
+  .footer-content .btn-go {
+    border: none;
+    border-bottom: solid 2px #105476;
+    background-color: #06a7e2;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: -2px;
+    height: 45px;
+    width: 20.83333%; }
+
+/* Media Queries
+================================ */
+@media (min-width: 768px) {
+  .main-content .primary-content {
+    background-color: #fff; }
+    .main-content .primary-content .left-heading,
+    .main-content .primary-content .left-paragraph,
+    .main-content .primary-content .link {
+      padding: 0 20px; }
+    .main-content .primary-content .date {
+      margin-left: 20px; }
+    .main-content .primary-content .author {
+      margin-right: 20px; }
+  .main-content .secondary-content {
+    padding-right: 15px; } }
+
+@media (min-width: 992px) {
+  .footer-content .primary-footer {
+    margin-top: 10px; } }

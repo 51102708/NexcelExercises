@@ -1,3 +1,5 @@
+@import 'base';
+
 /* Page Styles
 ================================ */
 
@@ -97,16 +99,16 @@ img {
         margin-top: 10px;
     }
     .submit {
-        // box-sizing: border-box;
-        // padding: 10px;
         border: 1px solid #3dc264;
         border-bottom: 3px solid #3dc264;
         border-radius: 4px;
         background-color: #64ce83;
         color: #fff;
-        margin-top: 15px;
         height: 40px;
+        margin-top: 10px;
         width: 100%;
+        font-size: 13px;
+        font-weight: bold;
     }
 }
 
@@ -115,24 +117,15 @@ img {
 }
 
 .icon-phone {
-    background: url(../images/sprites.png) no-repeat 0 -6px;
-    padding: 3px 0 3px 20px;
-    margin-left: -6px;
-    margin-right: 5px;
+    @include icon-info (0, -6px);
 }
 
 .icon-email {
-    background: url(../images/sprites.png) no-repeat -30px -6px;
-    padding: 3px 0 3px 20px;
-    margin-left: -6px;
-    margin-right: 5px;
+    @include icon-info (-30px, -6px);
 }
 
 .icon-address {
-    background: url(../images/sprites.png) no-repeat -60px -6px;
-    padding: 3px 0 3px 20px;
-    margin-left: -6px;
-    margin-right: 5px;
+    @include icon-info (-60px, -6px);
 }
 
 

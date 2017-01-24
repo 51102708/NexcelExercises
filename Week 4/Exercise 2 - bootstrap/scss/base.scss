@@ -1,0 +1,7 @@
+@mixin primary-font($style, $size, $color) {
+    @if ($style !="normal") {
+        font-weight: $style;
+    }
+    font-size: $size;
+    color: $color;
+}
