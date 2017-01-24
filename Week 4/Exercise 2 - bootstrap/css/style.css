@@ -15,7 +15,7 @@ html {
 
 body {
   font: normal 14px "Proxima", Geneva, sans-serif;
-  background: #FAFAFA; }
+  background: #fafafa; }
 
 .header-content {
   background: #fff;
@@ -23,7 +23,8 @@ body {
 
 .main-header,
 .main-content {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 930px; }
 
 .main-header {
@@ -46,7 +47,6 @@ body {
       text-decoration: none;
       display: block;
       padding: 13px 20px;
-      border: 1px solid #e73c50;
       border-bottom: 3px solid #b5161e;
       background-color: #e73c50;
       border-radius: 5px;
@@ -97,7 +97,8 @@ body {
     padding: 0; }
     .main-content .secondary-content .right-heading {
       font-size: 24px;
-      color: #007299; }
+      color: #007299;
+      margin-bottom: 20px; }
     .main-content .secondary-content .right-paragraph {
       font-size: 17px;
       color: #4c4c4c;
@@ -123,7 +124,7 @@ body {
     .footer-content .primary-footer span {
       font-weight: bold; }
   .footer-content .secondary-footer {
-    max-width: 360px;
+    max-width: 400px;
     height: 45px;
     margin: 0 auto; }
   .footer-content .email {
@@ -153,17 +154,40 @@ body {
 @media (min-width: 768px) {
   .main-content .primary-content {
     background-color: #fff; }
-    .main-content .primary-content .left-heading,
-    .main-content .primary-content .left-paragraph,
-    .main-content .primary-content .link {
-      padding: 0 20px; }
     .main-content .primary-content .date {
       margin-left: 20px; }
     .main-content .primary-content .author {
       margin-right: 20px; }
-  .main-content .secondary-content {
-    padding-right: 15px; } }
+    .main-content .primary-content .left-heading,
+    .main-content .primary-content .left-paragraph,
+    .main-content .primary-content .link {
+      padding: 0 20px; }
+    .main-content .primary-content .left-paragraph {
+      margin-bottom: 20px; } }
 
 @media (min-width: 992px) {
+  .main-header .main-nav {
+    margin-top: 23px; }
+    .main-header .main-nav a {
+      padding: 0; }
+    .main-header .main-nav li {
+      display: inline-block;
+      border: none;
+      margin: 0 3%; }
+    .main-header .main-nav .blog {
+      border: none; }
+  .main-header .demo-btn {
+    margin-top: 10px;
+    margin-bottom: 5px; }
+    .main-header .demo-btn a {
+      width: 150px; }
+  .main-content {
+    padding-left: 20px;
+    padding-right: 20px; }
   .footer-content .primary-footer {
-    margin-top: 10px; } }
+    padding-left: 0;
+    padding-right: 30px;
+    margin-top: 10px; }
+  .footer-content .secondary-footer {
+    padding-right: 0;
+    padding-left: 60px; } }
