@@ -1,0 +1,13 @@
+@mixin primary-font($style, $size) {
+    @if ($style !="normal") {
+        font-weight: $style;
+    }
+    font-size: $size;
+}
+
+@mixin icon-info($xPos, $yPos) {
+    background: url(../images/sprites.png) no-repeat $xPos $yPos;
+    width: 25px;
+    height: 25px;
+    float: left;
+}
