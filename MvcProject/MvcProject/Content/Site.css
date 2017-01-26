@@ -1,7 +1,13 @@
-﻿body {
+﻿html {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+body {
     /*padding-top: 50px;*/
     overflow-x: hidden;
     padding-bottom: 20px;
+    font: 400 14px/1.8 Lato, sans-serif;
+    /*font-family: Roboto,GillSans,Calibri,Trebuchet,sans-serif;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -9,6 +15,7 @@
     /*padding-left: 15px;
     padding-right: 15px;
     padding-left: 0;*/
+    margin-top: 52px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -59,14 +66,11 @@ textarea {
     background-color: #00293d;
 }
 
-#wrapper {
+.display-inline-block {
+    display: inline-block;
 }
 
-/*#wrapper.toggled {
-    padding-left: 250px;
-}*/
-
-#sidebar-wrapper {
+.sidebar-wrapper {
     z-index: 1000;
     position: fixed;
     left: 250px;
@@ -85,7 +89,7 @@ textarea {
     width: 250px;
 }*/
 
-#page-content-wrapper {
+.page-content-wrapper {
     width: 100%;
     /*position: absolute;*/
     padding: 15px;
@@ -144,22 +148,23 @@ textarea {
                 background: none;
             }
 
+.pharse-content {
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0,0,0,.0785) !important;
+}
+
 @media(min-width:768px) {
     .body-content {
         padding-left: 250px;
     }
-    /*#wrapper.toggled {
-        padding-left: 0;
-    }*/
-    #sidebar-wrapper {
+
+    .sidebar-wrapper {
         width: 250px;
     }
-    /*#wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }*/
-    #page-content-wrapper {
+
+    .page-content-wrapper {
         padding: 20px;
-        position: relative;
+        /*position: relative;*/
     }
     /*#wrapper.toggled #page-content-wrapper {
         position: relative;
