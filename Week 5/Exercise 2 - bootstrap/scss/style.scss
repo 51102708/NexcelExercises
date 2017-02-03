@@ -1,0 +1,309 @@
+$nav-font-color: #737373;
+$background-color: #fafafa;
+$header-background-color: #fff;
+$header-border-color: #ccc;
+$btn-demo-color: #e73c50;
+$btn-font-color: #fff;
+$heading-color: #007299;
+$btn-go-background-color: #06a7e2;
+
+@font-face {
+    font-family: Proxima;
+    src: url(../fonts/Proxima-Nova-Regular.otf) format("opentype");
+}
+
+@font-face {
+    font-family: Proxima;
+    font-weight: bold;
+    src: url(../fonts/Proxima-Nova-Bold.otf) format("opentype");
+}
+
+@import 'base';
+
+/* Page Styles
+================================ */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font: normal 14px "Proxima", Geneva, sans-serif;
+    background: $background-color;
+}
+
+.header-content {
+    background: $header-background-color;
+    border-bottom: 3px solid $header-border-color;
+}
+
+.main-header,
+.main-content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 930px;
+}
+
+.main-header {
+    text-align: center;
+
+    .main-logo {
+        margin: 15px 0;
+    }
+
+    .main-nav {
+        margin-bottom: 15px;
+        $border-stack: 1px solid $nav-font-color;
+
+        li {
+            border: $border-stack;
+            border-bottom: none;
+        }
+
+        a {
+            display: block;
+            padding: 12px 20px;
+            color: $nav-font-color;
+            font-weight: bold;
+        }
+
+        .blog {
+            border-bottom: $border-stack;
+        }
+    }
+
+    .demo-btn {
+        margin-bottom: 15px;
+
+        a {
+            text-decoration: none;
+            display: block;
+            padding: 13px 20px;
+            border-bottom: 3px solid #b5161e;
+            background-color: $btn-demo-color;
+            border-radius: 5px;
+            height: 45px;
+            @include primary-font(normal, 17px, $btn-font-color);
+        }
+    }
+}
+
+.link {
+    @include primary-font(bold, 12px, $heading-color);
+    text-decoration: underline;
+}
+
+.icon-link {
+    background: url(../images/learnmore.png) no-repeat 0 2px;
+    padding: 3px 0 3px 15px;
+    margin-left: 5px;
+}
+
+.main-content {
+    margin-top: 30px;
+    margin-bottom: 180px;
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .primary-content {
+        padding: 0 0 12px;
+        border-bottom: 3px solid $header-border-color;
+
+        .primary-image {
+            width: 100%;
+            border-bottom: 5px solid #ffa933;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .date,
+        .author {
+            @include primary-font(normal, 11px, #c98715);
+        }
+
+        .author {
+            float: right;
+        }
+
+        .left-heading {
+            margin: 28px 0 12px;
+            @include primary-font(bold, 17px, $heading-color);
+        }
+
+        .left-paragraph {
+            font-size: 15px;
+            color: #666;
+            line-height: 25px;
+        }
+    }
+
+    .secondary-content {
+        padding: 0;
+
+        .right-heading {
+            @include primary-font(normal, 30px, $heading-color);
+            margin-bottom: 15px;
+        }
+
+        .right-paragraph {
+            @include primary-font(normal, 17px, #4c4c4c);
+            line-height: 28px;
+            margin-bottom: 15px;
+        }
+
+        .link {
+            text-decoration: none;
+        }
+    }
+}
+
+.footer-content {
+    background-color: $heading-color;
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    .main-footer {
+        max-width: 930px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .primary-footer {
+        @include primary-font(normal, 16px, #fff);
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .secondary-footer {
+        max-width: 400px;
+        height: 45px;
+        margin: 0 auto;
+    }
+
+    .email {
+        border: none;
+        border-bottom: solid 2px #105476;
+        color: $btn-go-background-color;
+        font-size: 16px;
+        float: left;
+        width: 285px / 360px * 100%;
+        padding: 15px;
+        height: 45px;
+    }
+
+    .email::-webkit-input-placeholder {
+        color: $btn-go-background-color;
+    }
+
+    .btn-go {
+        border: none;
+        border-bottom: solid 2px #105476;
+        background-color: $btn-go-background-color;
+        color: $btn-font-color;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: -2px;
+        height: 45px;
+        width: 75px / 360px * 100%;
+    }
+}
+
+/* Media Queries
+================================ */
+
+@media (min-width: 768px) {
+    .main-content {
+        margin-top: 45px;
+        margin-bottom: 200px;
+
+        .primary-content {
+            background-color: $header-background-color;
+
+            .date {
+                margin-left: 20px;
+            }
+
+            .author {
+                margin-right: 20px;
+            }
+
+            .left-heading,
+            .left-paragraph,
+            .link {
+                padding: 0 20px;
+            }
+
+            .left-paragraph {
+                margin-bottom: 20px;
+            }
+        }
+
+        .secondary-content {
+            .right-heading {
+                margin: 10px 0 25px;
+            }
+
+            .right-paragraph {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .main-header {
+        .main-nav {
+            margin-top: 23px;
+
+            a {
+                padding: 0;
+            }
+
+            li {
+                display: inline-block;
+                border: none;
+                margin: 0 3%;
+            }
+
+            .blog {
+                border: none;
+            }
+        }
+
+        .demo-btn {
+            margin-top: 10px;
+            margin-bottom: 5px;
+
+            a {
+                width: 150px;
+            }
+        }
+    }
+
+    .main-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .footer-content {
+        .primary-footer {
+            padding-left: 0;
+            padding-right: 30px;
+            margin-top: 10px;
+        }
+
+        .secondary-footer {
+            padding-right: 0;
+            padding-left: 60px;
+        }
+    }
+}

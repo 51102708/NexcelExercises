@@ -13,17 +13,14 @@ namespace MvcProject.Controllers
 
         public ActionResult Index()
         {
-            var Topics = new List<string>();
+            var Topics = from d in db.Topics
+                         orderby d.Id
+                         select d;
 
-            var TopicNames = from d in db.Topics
-                             orderby d.Name
-                             select d.Name;
+            BaseViewModel result = new BaseViewModel();
+            result.Topics = Topics;
 
-            Topics.AddRange(TopicNames.Distinct());
-            ViewBag.topicNames = new SelectList(TopicNames);
-            ViewBag.searchString = "Noanem";
-
-            return View();
+            return View(result);
         }
 
         public ActionResult About()

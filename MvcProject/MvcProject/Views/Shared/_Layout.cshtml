@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model MvcProject.Models.BaseViewModel
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -40,30 +41,34 @@
         <!-- Sidebar -->
         <div class="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li>
-                    <a data-toggle="collapse" data-target="#demo1"><i class="glyphicon glyphicon-chevron-right"></i>INTRODUCTIONS</a>
-                    <ul class="sub-menu collapse" id="demo1">
-                        <li class="active"><a href="#">CSS3 Animation</a></li>
-                        <li><a href="#">General</a></li>
-                        <li><a href="#">Buttons</a></li>
-                    </ul>
-                </li>
-                <li><a><i class="glyphicon glyphicon-chevron-right"></i>STARTING A SPEECH OR MEETING</a></li>
-                <li><a><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
-                <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                @foreach (var item in Model.Topics)
+                {
+                    <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i>@item.Name</a></li>
+                }
+                @*<li>
+                        <a data-toggle="collapse" data-target="#demo1"><i class="glyphicon glyphicon-chevron-right"></i>INTRODUCTIONS</a>
+                        <ul class="sub-menu collapse" id="demo1">
+                            <li class="active"><a href="#">CSS3 Animation</a></li>
+                            <li><a href="#">General</a></li>
+                            <li><a href="#">Buttons</a></li>
+                        </ul>
+                    </li>
+                    <li><a><i class="glyphicon glyphicon-chevron-right"></i>STARTING A SPEECH OR MEETING</a></li>
+                    <li><a><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-chevron-right"></i> MENU TITLE </a></li>*@
             </ul>
         </div>
         <!-- Page Content -->

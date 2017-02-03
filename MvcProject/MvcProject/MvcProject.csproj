@@ -168,6 +168,7 @@
     <Compile Include="Models\Pharse.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
