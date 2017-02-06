@@ -158,7 +158,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\ExamplesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PharsesController.cs" />
     <Compile Include="Controllers\SectionsController.cs" />
@@ -167,7 +166,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EnglishDbContext.cs" />
-    <Compile Include="Models\Example.cs" />
     <Compile Include="Models\Pharse.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Topic.cs" />
@@ -229,16 +227,13 @@
     <Content Include="Views\Sections\Details.cshtml" />
     <Content Include="Views\Sections\Edit.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
+    <Content Include="Views\Home\Contents.cshtml" />
     <Content Include="Views\Pharses\Create.cshtml" />
     <Content Include="Views\Pharses\Delete.cshtml" />
     <Content Include="Views\Pharses\Details.cshtml" />
     <Content Include="Views\Pharses\Edit.cshtml" />
     <Content Include="Views\Pharses\Index.cshtml" />
-    <Content Include="Views\Examples\Create.cshtml" />
-    <Content Include="Views\Examples\Delete.cshtml" />
-    <Content Include="Views\Examples\Details.cshtml" />
-    <Content Include="Views\Examples\Edit.cshtml" />
-    <Content Include="Views\Examples\Index.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

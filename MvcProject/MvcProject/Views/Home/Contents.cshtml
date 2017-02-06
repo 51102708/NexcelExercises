@@ -1,0 +1,14 @@
+﻿@model MvcProject.Models.BaseViewModel
+@{
+    ViewBag.Title = "Contents";
+}
+
+@section Sidebar {
+    @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
+}
+
+<h3 class="section">@Model.CurrentSection.Name</h3>
+<div class="pharse-content">
+    <p class="pharse"><strong>I'd like to introduce myself</strong></p>
+    <blockquote class="example">I'd like to introduce myself. I‟m Jack Todd from Dynacore.</blockquote>
+</div>
