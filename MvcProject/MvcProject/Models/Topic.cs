@@ -10,6 +10,7 @@ namespace MvcProject.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
         public IEnumerable<Section> Sections { get; set; }
     }
 }

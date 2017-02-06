@@ -8,5 +8,7 @@ namespace MvcProject.Models
     public class BaseViewModel
     {
         public IEnumerable<Topic> Topics { get; set; }
+
+        public int CurrentMenuId { get; set; }
     }
 }

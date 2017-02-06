@@ -9,6 +9,7 @@ namespace MvcProject.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
+        public int PharseId { get; set; }
         public Pharse Pharse { get; set; }
     }
 }

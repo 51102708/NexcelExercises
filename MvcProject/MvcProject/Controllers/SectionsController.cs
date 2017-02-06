@@ -17,7 +17,8 @@ namespace MvcProject.Controllers
         // GET: Sections
         public ActionResult Index()
         {
-            return View(db.Sections.ToList());
+            var sections = db.Sections.Include(s => s.Topic);
+            return View(sections.ToList());
         }
 
         // GET: Sections/Details/5
@@ -27,7 +28,8 @@ namespace MvcProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Section section = db.Sections.Find(id);
+            //Section section = db.Sections.Find(id);
+            var section = db.Sections.Include(s => s.Topic).Where(x => x.Id == id).First();
             if (section == null)
             {
                 return HttpNotFound();
@@ -38,15 +40,16 @@ namespace MvcProject.Controllers
         // GET: Sections/Create
         public ActionResult Create()
         {
+            ViewBag.TopicId = new SelectList(db.Topics, "Id", "Name");
             return View();
         }
 
         // POST: Sections/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Section section)
+        public ActionResult Create([Bind(Include = "Id,Name,TopicId")] Section section)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +58,7 @@ namespace MvcProject.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.TopicId = new SelectList(db.Topics, "Id", "Name", section.TopicId);
             return View(section);
         }
 
@@ -70,15 +74,16 @@ namespace MvcProject.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.TopicId = new SelectList(db.Topics, "Id", "Name", section.TopicId);
             return View(section);
         }
 
         // POST: Sections/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Section section)
+        public ActionResult Edit([Bind(Include = "Id,Name,TopicId")] Section section)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +91,7 @@ namespace MvcProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.TopicId = new SelectList(db.Topics, "Id", "Name", section.TopicId);
             return View(section);
         }
 

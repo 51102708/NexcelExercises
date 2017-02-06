@@ -1,16 +1,16 @@
 ﻿@model MvcProject.Models.Topic
 
 @{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Topic</h4>
         <hr />

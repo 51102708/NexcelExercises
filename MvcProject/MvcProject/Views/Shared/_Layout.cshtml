@@ -41,11 +41,22 @@
         <!-- Sidebar -->
         <div class="sidebar-wrapper">
             <ul class="sidebar-nav">
-                @foreach (var item in Model.Topics)
+                @foreach (var topic in Model.Topics)
                 {
-                    <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i>@item.Name</a></li>
+                    <li>
+                        <a data-toggle="collapse" data-target="#topic-@topic.Id"><i class="glyphicon glyphicon-chevron-right"></i>@topic.Name</a>
+                        <ul class="sub-menu collapse" id="topic-@topic.Id">
+                            @foreach (var sec in topic.Sections)
+                            {
+                                @*<li><a href="#">@sec.Name</a></li>*@
+                                @Html.ActionLink(sec.Name, "GetMenuContent", "Home", new { menuId = sec.Id }, null);
+                            }
+                        </ul>
+                    </li>
                 }
-                @*<li>
+
+                @*
+                     <li>
                         <a data-toggle="collapse" data-target="#demo1"><i class="glyphicon glyphicon-chevron-right"></i>INTRODUCTIONS</a>
                         <ul class="sub-menu collapse" id="demo1">
                             <li class="active"><a href="#">CSS3 Animation</a></li>

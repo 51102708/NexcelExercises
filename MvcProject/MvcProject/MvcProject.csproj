@@ -157,7 +157,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ExamplesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PharsesController.cs" />
     <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -174,6 +177,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\siteAdmin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -214,11 +218,27 @@
     <Content Include="Views\Topics\Details.cshtml" />
     <Content Include="Views\Topics\Edit.cshtml" />
     <Content Include="Views\Topics\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Sections\Create.cshtml" />
     <Content Include="Views\Sections\Delete.cshtml" />
     <Content Include="Views\Sections\Details.cshtml" />
     <Content Include="Views\Sections\Edit.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
+    <Content Include="Views\Pharses\Create.cshtml" />
+    <Content Include="Views\Pharses\Delete.cshtml" />
+    <Content Include="Views\Pharses\Details.cshtml" />
+    <Content Include="Views\Pharses\Edit.cshtml" />
+    <Content Include="Views\Pharses\Index.cshtml" />
+    <Content Include="Views\Examples\Create.cshtml" />
+    <Content Include="Views\Examples\Delete.cshtml" />
+    <Content Include="Views\Examples\Details.cshtml" />
+    <Content Include="Views\Examples\Edit.cshtml" />
+    <Content Include="Views\Examples\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

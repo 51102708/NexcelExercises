@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Data.Entity;
 using System.Web.Mvc;
 
 namespace MvcProject.Controllers
@@ -13,12 +15,17 @@ namespace MvcProject.Controllers
 
         public ActionResult Index()
         {
-            var Topics = from d in db.Topics
-                         orderby d.Id
-                         select d;
+            var topics = (from d in db.Topics
+                          orderby d.Id
+                          select d).ToList();
 
+            foreach (var topic in topics)
+            {
+                var sections = db.Sections.Include(s => s.Topic).Where(x => x.TopicId == topic.Id).ToList();
+                topic.Sections = sections;
+            }
             BaseViewModel result = new BaseViewModel();
-            result.Topics = Topics;
+            result.Topics = topics;
 
             return View(result);
         }
@@ -35,6 +42,11 @@ namespace MvcProject.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public PartialViewResult GetMenuContent(int menuId)
+        {
+            return PartialView("Contact");
         }
     }
 }
