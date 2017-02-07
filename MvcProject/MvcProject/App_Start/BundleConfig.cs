@@ -30,6 +30,9 @@ namespace MvcProject
             bundles.Add(new StyleBundle("~/Content/cssAdmin").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/siteAdmin.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/scriptAdmin").Include(
+                        "~/Scripts/scriptAdmin.js"));
         }
     }
 }

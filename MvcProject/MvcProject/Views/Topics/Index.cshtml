@@ -5,65 +5,69 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Topics</h2>
 <hr />
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@*<div class="panel panel-success">
-    <div class="panel-heading">Topics</div>
-    <div class="panel-body">*@
 <div class="panel panel-success">
     <div class="panel-heading">
-        Topics
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-        <div class="table-responsive table-bordered">
-            <table class="table table-striped">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-            {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        @*<td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>*@
-                        <td class="container text-center">
-                            <button class="btn btn-primary"
-                                    type="button"
-                                    onclick="location.href='@Url.Action("Edit", "Topics", new { id = item.Id })'">
-                                Edit
-                            </button>
-                            <button class="btn btn-info"
-                                    type="button"
-                                    onclick="location.href='@Url.Action("Details", "Topics", new { id = item.Id })'">
-                                Details
-                            </button>
-                            <button class="btn btn-danger"
-                                    type="button"
-                                    onclick="location.href='@Url.Action("Delete", "Topics", new { id = item.Id })'">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                }
-            </table>
+        <h3 class="panel-title">Topics</h3>
+        <div class="pull-right">
+            <span class="clickable filter" id="icon-filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                <i class="glyphicon glyphicon-filter"></i>
+            </span>
         </div>
-        <!-- /.table-responsive -->
     </div>
-    <!-- /.panel-body -->
+    <div class="panel-body">
+        <input type="text" class="form-control" id="topic-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Topic Name" />
+    </div>
+    <table class="table table-hover" id="task-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int rowNumber = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(rowNumber++)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+
+                    <td class="container text-right">
+                        <button class="btn btn-primary"
+                                type="button"
+                                onclick="location.href='@Url.Action("Edit", "Topics", new { id = item.Id })'">
+                            Edit
+                        </button>
+                        <button class="btn btn-info"
+                                type="button"
+                                onclick="location.href='@Url.Action("Details", "Topics", new { id = item.Id })'">
+                            Details
+                        </button>
+                        <button class="btn btn-danger"
+                                type="button"
+                                onclick="location.href='@Url.Action("Delete", "Topics", new { id = item.Id })'">
+                            Delete
+                        </button>
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
-@*</div>
-    </div>*@
+@section scripts{
+    @Scripts.Render("~/bundles/scriptAdmin")
+}
