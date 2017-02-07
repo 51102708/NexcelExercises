@@ -5,8 +5,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Topics</h2>
-<hr />
+@*<h2>Topics</h2>
+    <hr />*@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -14,13 +14,19 @@
     <div class="panel-heading">
         <h3 class="panel-title">Topics</h3>
         <div class="pull-right">
-            <span class="clickable filter" id="icon-filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+            <span class="clickable filter" id="icon-filter" title="Toggle table filter">
                 <i class="glyphicon glyphicon-filter"></i>
             </span>
         </div>
     </div>
-    <div class="panel-body">
-        <input type="text" class="form-control" id="topic-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Topic Name" />
+    <div class="panel-body form-inline">
+        @using (Html.BeginForm("Index", "Topics", FormMethod.Get, new { @class = "input-group" }))
+        {
+            @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Filter: Topic Name" })
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Filter</button>
+            </span>
+        }
     </div>
     <table class="table table-hover" id="task-table">
         <thead>
@@ -33,30 +39,40 @@
             </tr>
         </thead>
         <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td>No results found</td>
+                </tr>
+            }
             @{int rowNumber = 1;}
             @foreach (var item in Model)
             {
                 <tr>
                     <td>@(rowNumber++)</td>
                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
-
-                    <td class="container text-right">
-                        <button class="btn btn-primary"
-                                type="button"
-                                onclick="location.href='@Url.Action("Edit", "Topics", new { id = item.Id })'">
-                            Edit
-                        </button>
-                        <button class="btn btn-info"
-                                type="button"
-                                onclick="location.href='@Url.Action("Details", "Topics", new { id = item.Id })'">
-                            Details
-                        </button>
-                        <button class="btn btn-danger"
-                                type="button"
-                                onclick="location.href='@Url.Action("Delete", "Topics", new { id = item.Id })'">
-                            Delete
-                        </button>
+                    <td class="text-right">
+                        <a href="@Url.Action("Edit", "Topics", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a href="@Url.Action("Details", "Topics", new { id = item.Id })" class='btn btn-info'><span class="glyphicon glyphicon-list-alt"></span> Details</a>
+                        <a href="@Url.Action("Delete", "Topics", new { id = item.Id })" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                     </td>
+                    @*<td class="container text-right">
+                            <button class="btn btn-primary"
+                                    type="button"
+                                    onclick="location.href='@Url.Action("Edit", "Topics", new { id = item.Id })'">
+                                Edit
+                            </button>
+                            <button class="btn btn-info"
+                                    type="button"
+                                    onclick="location.href='@Url.Action("Details", "Topics", new { id = item.Id })'">
+                                Details
+                            </button>
+                            <button class="btn btn-danger"
+                                    type="button"
+                                    onclick="location.href='@Url.Action("Delete", "Topics", new { id = item.Id })'">
+                                Delete
+                            </button>
+                        </td>*@
                     @*<td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                             @Html.ActionLink("Details", "Details", new { id = item.Id }) |

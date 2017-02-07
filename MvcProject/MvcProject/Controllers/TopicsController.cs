@@ -15,9 +15,15 @@ namespace MvcProject.Controllers
         private EnglishDbContext db = new EnglishDbContext();
 
         // GET: Topics
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Topics.ToList());
+            var topics = db.Topics.ToList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                topics = topics.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+            return View(topics);
         }
 
         // GET: Topics/Details/5
@@ -42,7 +48,7 @@ namespace MvcProject.Controllers
         }
 
         // POST: Topics/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -74,7 +80,7 @@ namespace MvcProject.Controllers
         }
 
         // POST: Topics/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
