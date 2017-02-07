@@ -116,6 +116,14 @@ textarea {
         padding-left: 30px;
     }
 
+    .sidebar-nav .active {
+       
+                background: #e7e6dd;
+    }
+    .sidebar-nav .active a {
+         color: #fff;
+    }
+
     .sidebar-nav li {
         text-indent: 5px;
         line-height: 40px;
@@ -125,13 +133,14 @@ textarea {
             font-size: 12px;
             display: block;
             text-decoration: none;
-            color: #999999;
+            color: #00293d;
         }
 
             .sidebar-nav li a:hover {
                 text-decoration: none;
-                color: #fff;
-                background: #e7e6dd;
+                color: #00293d;
+               /*background: #e7e6dd;*/
+               background: aquamarine;
             }
 
             .sidebar-nav li a:active,

@@ -180,6 +180,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\app-logo.jpg" />
+    <Content Include="images\business-english-logo.png" />
+    <Content Include="images\header-full.png" />
+    <Content Include="images\header-mobile.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

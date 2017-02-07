@@ -8,7 +8,11 @@
 }
 
 <h3 class="section">@Model.CurrentSection.Name</h3>
-<div class="pharse-content">
-    <p class="pharse"><strong>I'd like to introduce myself</strong></p>
-    <blockquote class="example">I'd like to introduce myself. I‟m Jack Todd from Dynacore.</blockquote>
-</div>
+
+@foreach (var item in @Model.CurrentSection.Pharses)
+{
+    <div class="pharse-content">
+        <p class="pharse"><strong>@item.Name</strong></p>
+        <blockquote class="example">Ex: @item.Example</blockquote>
+    </div>
+}
