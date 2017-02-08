@@ -7,7 +7,9 @@
     @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
 }
 
-<h3 class="section">@Model.CurrentSection.Name</h3>
+<div class="section">
+    <h3 class="section">@Model.CurrentSection.Name</h3>
+</div>
 
 @foreach (var item in @Model.CurrentSection.Pharses)
 {

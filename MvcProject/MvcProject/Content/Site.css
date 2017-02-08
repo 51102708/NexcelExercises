@@ -70,6 +70,24 @@ textarea {
     display: inline-block;
 }
 
+.top-nav > li > a:hover,
+.top-nav > li > a:focus,
+.top-nav > .open > a,
+.top-nav > .open > a:hover,
+.top-nav > .open > a:focus {
+    color: #fff;
+    background-color: #000;
+}
+
+.top-nav a {
+    color: aquamarine;
+}
+
+.top-nav > li {
+    display: inline-block;
+    float: left;
+}
+
 .sidebar-wrapper {
     z-index: 1000;
     position: fixed;
@@ -117,12 +135,12 @@ textarea {
     }
 
     .sidebar-nav .active {
-       
-                background: #e7e6dd;
+        background: #e7e6dd;
     }
-    .sidebar-nav .active a {
-         color: #fff;
-    }
+
+        .sidebar-nav .active a {
+            /*color: #fff;*/
+        }
 
     .sidebar-nav li {
         text-indent: 5px;
@@ -139,8 +157,8 @@ textarea {
             .sidebar-nav li a:hover {
                 text-decoration: none;
                 color: #00293d;
-               /*background: #e7e6dd;*/
-               background: aquamarine;
+                /*background: #e7e6dd;*/
+                background: aquamarine;
             }
 
             .sidebar-nav li a:active,
@@ -164,8 +182,15 @@ textarea {
             }
 
 .section {
-    border-bottom: 1px solid rgba(0,0,0,.0785) !important;
+    border-bottom: 1px solid rgba(0,0,0,.0785);
 }
+
+    .section h3 {
+        font-weight: bold;
+        color: #fff;
+        padding: 8px 15px;
+        background-color: #008080;
+    }
 
 .pharse-content {
     padding: 10px 20px;

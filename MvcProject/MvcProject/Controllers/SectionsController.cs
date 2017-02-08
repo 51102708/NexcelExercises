@@ -15,9 +15,21 @@ namespace MvcProject.Controllers
         private EnglishDbContext db = new EnglishDbContext();
 
         // GET: Sections
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int? topicId)
         {
-            var sections = db.Sections.Include(s => s.Topic);
+            var sections = db.Sections.Include(s => s.Topic).OrderBy(x => x.Topic.Name).ToList();
+
+            if (!topicId.Equals(null))
+            {
+                sections = sections.Where(s => s.TopicId == topicId).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                sections = sections.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+            ViewBag.TopicId = new SelectList(db.Topics, "Id", "Name");
+
             return View(sections.ToList());
         }
 

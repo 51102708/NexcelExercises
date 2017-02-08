@@ -15,9 +15,22 @@ namespace MvcProject.Controllers
         private EnglishDbContext db = new EnglishDbContext();
 
         // GET: Pharses
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int? sectionId)
         {
-            var pharses = db.Pharses.Include(p => p.Section);
+            var pharses = db.Pharses.Include(p => p.Section).OrderBy(x => x.Section.Name).ToList();
+
+            if (!sectionId.Equals(null))
+            {
+                pharses = pharses.Where(s => s.SectionId == sectionId).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                pharses = pharses.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name");
+
             return View(pharses.ToList());
         }
 
@@ -44,7 +57,7 @@ namespace MvcProject.Controllers
         }
 
         // POST: Pharses/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -78,7 +91,7 @@ namespace MvcProject.Controllers
         }
 
         // POST: Pharses/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

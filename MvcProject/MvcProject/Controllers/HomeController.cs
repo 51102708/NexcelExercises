@@ -1,25 +1,26 @@
-﻿using MvcProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data;
-using System.Data.Entity;
-using System.Web.Mvc;
-
-namespace MvcProject.Controllers
+﻿namespace MvcProject.Controllers
 {
+    using System.Linq;
+    using System.Data;
+    using System.Web.Mvc;
+    using BusinessEnglish.Services;
+    using BusinessEnglish.Sites.Models;
+
     public class HomeController : Controller
     {
-        private EnglishDbContext db = new EnglishDbContext();
+        private TopicService topicService;
+
+        public HomeController()
+        {
+            topicService = new TopicService();
+        }
 
         public ActionResult Index()
         {
-            var topics = GetAllTopics();
-            BaseViewModel result = new BaseViewModel();
-            result.Topics = topics;
-
-            return View(result);
+            return View(new BaseViewModel
+            {
+                Topics = topicService.GetAllTopics()
+            });
         }
 
         public ActionResult About()
@@ -53,22 +54,6 @@ namespace MvcProject.Controllers
                 CurrentTopicId = (int)topicId,
                 CurrentSectionId = (int)sectionId
             });
-        }
-
-        [NonAction]
-        public IEnumerable<Topic> GetAllTopics()
-        {
-            var topics = (from d in db.Topics
-                          orderby d.Id
-                          select d).ToList();
-
-            foreach (var topic in topics)
-            {
-                var sections = db.Sections.Include(s => s.Topic).Where(x => x.TopicId == topic.Id).ToList();
-                topic.Sections = sections;
-            }
-
-            return topics;
         }
     }
 }
