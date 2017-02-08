@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BusinessEnglish.Models.Topic>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Topics</h2>
+    <hr />*@
+<h2 class="text-right">
+    <a href="#createModal" class='btn btn-default' data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-plus"></span> Create new</a>
+</h2>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Topics</h3>
+        <div class="pull-right">
+            <span class="clickable filter" id="icon-filter" title="Toggle table filter">
+                <i class="glyphicon glyphicon-filter"></i>
+            </span>
+        </div>
+    </div>
+    <div class="panel-body form-inline">
+        @using (Html.BeginForm("Index", "Topics", FormMethod.Get, new { @class = "input-group" }))
+        {
+            @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Filter: Topic Name" })
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Filter</button>
+            </span>
+        }
+    </div>
+    <table class="table table-hover" id="task-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td>No results found</td>
+                </tr>
+            }
+            @{int rowNumber = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(rowNumber++)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td class="text-right">
+                        <a href="@Url.Action("Edit", "Topics", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a href="@Url.Action("Details", "Topics", new { id = item.Id })" class='btn btn-info'><span class="glyphicon glyphicon-list-alt"></span> Details</a>
+                        <a href="@Url.Action("Delete", "Topics", new { id = item.Id })" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createModal" role="dialog">
+    <div class="modal-dialog">
+        @Html.Partial("_Create", new BusinessEnglish.Models.Topic())
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/scriptAdmin")
+
+}
