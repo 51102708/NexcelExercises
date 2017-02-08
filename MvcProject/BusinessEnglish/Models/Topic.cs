@@ -6,7 +6,6 @@
     using System.Web;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations;
-    using MvcProject.Models;
 
     public class Topic
     {

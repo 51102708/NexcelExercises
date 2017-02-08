@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MvcProject.Models;
+using BusinessEnglish.Models;
 
-namespace MvcProject.Controllers
+namespace BusinessEnglish.Controllers
 {
     public class SectionsController : Controller
     {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcProject.Models.Topic>
+﻿@model IEnumerable<BusinessEnglish.Models.Topic>
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -65,7 +65,7 @@
 <!-- Modal -->
 <div class="modal fade" id="createModal" role="dialog">
     <div class="modal-dialog">
-        @Html.Partial("_Create", new MvcProject.Models.Topic())
+        @Html.Partial("_Create", new BusinessEnglish.Models.Topic())
     </div>
 </div>
 @section scripts{

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcProject.Models.Section>
+﻿@model IEnumerable<BusinessEnglish.Models.Section>
 
 @{
     ViewBag.Title = "Index";
@@ -28,8 +28,7 @@
             <br />
             <div class="input-group">
                 <span class="input-group-addon">Section Name</span>
-                @Html.TextBox("searchString", null, new { @class = "form-control"})                        
-
+                @Html.TextBox("searchString", null, new { @class = "form-control" })
             </div>
             <br />
             <button class="btn btn-default" type="submit">Filter</button>
@@ -78,7 +77,7 @@
 <!-- Modal -->
 <div class="modal fade" id="createModal" role="dialog">
     <div class="modal-dialog">
-        @Html.Partial("_Create", new MvcProject.Models.Section())
+        @Html.Partial("_Create", new BusinessEnglish.Models.Section())
     </div>
 </div>
 @section scripts{

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcProject.Models.Pharse>
+﻿@model IEnumerable<BusinessEnglish.Models.Pharse>
 
 @{
     ViewBag.Title = "Index";
@@ -28,7 +28,7 @@
             <br />
             <div class="input-group">
                 <span class="input-group-addon">Pharse Name</span>
-                @Html.TextBox("searchString", null, new { @class = "form-control"})
+                @Html.TextBox("searchString", null, new { @class = "form-control" })
             </div>
             <br />
             <button class="btn btn-default" type="submit">Filter</button>
@@ -86,7 +86,7 @@
 <!-- Modal -->
 <div class="modal fade" id="createModal" role="dialog">
     <div class="modal-dialog">
-        @Html.Partial("_Create", new MvcProject.Models.Pharse())
+        @Html.Partial("_Create", new BusinessEnglish.Models.Pharse())
     </div>
 </div>
 @section scripts{

@@ -1,7 +1,6 @@
 ﻿namespace BusinessEnglish.Sites.Models
 {
     using BusinessEnglish.Models;
-    using MvcProject.Models;
     using System.Collections.Generic;
 
     public class BaseViewModel

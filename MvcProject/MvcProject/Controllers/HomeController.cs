@@ -1,14 +1,18 @@
-﻿namespace MvcProject.Controllers
+﻿namespace BusinessEnglish.Sites.Controllers
 {
     using System.Linq;
     using System.Data;
+    using System.Data.Entity;
     using System.Web.Mvc;
     using BusinessEnglish.Services;
     using BusinessEnglish.Sites.Models;
+    using BusinessEnglish.Models;
+    using System.Collections.Generic;
 
     public class HomeController : Controller
     {
         private TopicService topicService;
+        private EnglishDbContext db = new EnglishDbContext();
 
         public HomeController()
         {
@@ -19,7 +23,7 @@
         {
             return View(new BaseViewModel
             {
-                Topics = topicService.GetAllTopics()
+                Topics = GetAllTopics()
             });
         }
 
@@ -54,6 +58,22 @@
                 CurrentTopicId = (int)topicId,
                 CurrentSectionId = (int)sectionId
             });
+        }
+
+        [NonAction]
+        public IEnumerable<Topic> GetAllTopics()
+        {
+            var topics = (from d in db.Topics
+                          orderby d.Id
+                          select d).ToList();
+
+            foreach (var topic in topics)
+            {
+                var sections = db.Sections.Include(s => s.Topic).Where(x => x.TopicId == topic.Id).ToList();
+                topic.Sections = sections;
+            }
+
+            return topics;
         }
     }
 }

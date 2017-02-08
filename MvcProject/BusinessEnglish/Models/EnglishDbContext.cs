@@ -1,4 +1,4 @@
-﻿namespace MvcProject.Models
+﻿namespace BusinessEnglish.Models
 {
     using System;
     using System.Collections.Generic;

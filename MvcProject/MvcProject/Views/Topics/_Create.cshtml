@@ -1,4 +1,4 @@
-﻿@model MvcProject.Models.Topic
+﻿@model BusinessEnglish.Models.Topic
 
 <!-- Modal content-->
 <div class="modal-content">
@@ -14,15 +14,12 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Name)
 
-
                 @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                
             </div>
-            </div>
-        <div class="modal-footer">
-            <button class="btn btn-default" type="submit">Create</button>
         </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="submit">Create</button>
+            </div>
     }
 </div>
-
