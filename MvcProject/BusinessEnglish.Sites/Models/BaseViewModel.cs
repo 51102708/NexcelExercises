@@ -12,5 +12,7 @@
         public int CurrentTopicId { get; set; }
 
         public int CurrentSectionId { get; set; }
+
+        public SearchViewModel CurrentSearch { get; set; }
     }
 }

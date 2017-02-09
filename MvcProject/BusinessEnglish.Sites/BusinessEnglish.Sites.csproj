@@ -158,14 +158,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ClientUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PharsesController.cs" />
     <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Models\RegisterUser.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,9 +242,13 @@
     <Content Include="Views\Topics\_Create.cshtml" />
     <Content Include="Views\Sections\_Create.cshtml" />
     <Content Include="Views\Pharses\_Create.cshtml" />
+    <Content Include="Views\ClientUser\Details.cshtml" />
+    <Content Include="Views\ClientUser\_Register.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

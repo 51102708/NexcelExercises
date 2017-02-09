@@ -1,0 +1,31 @@
+﻿@model BusinessEnglish.Sites.Models.BaseViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+@section Sidebar {
+    @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
+}
+
+<h4>Search Result</h4>
+
+<hr />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <ul class="nav nav-pills search-tab">
+            <li role="presentation" class="active">@Html.ActionLink("Topics", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "topics" }, null)</li>
+            <li role="presentation">@Html.ActionLink("Sections", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "sections" }, null)</li>
+            <li role="presentation">@Html.ActionLink("Pharses", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "pharses" }, null)</li>
+            <li role="presentation">@Html.ActionLink("Examples", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "examples" }, null)</li>
+        </ul>
+    </div>
+    <div class="panel-body form-inline">
+        <p><strong>3</strong> results for search term <strong>"what"</strong></p>
+        <ul class="nav nav-stacked result-list">
+            <li role="presentation"><a href="#">STARTING A SPEECH OR MEETING</a></li>
+            <li role="presentation"><a href="#">ASKING</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+    </div>
+</div>

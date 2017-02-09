@@ -8,6 +8,7 @@
     using BusinessEnglish.Sites.Models;
     using BusinessEnglish.Models;
     using System.Collections.Generic;
+    using System;
 
     public class HomeController : Controller
     {
@@ -57,6 +58,27 @@
                 CurrentSection = section,
                 CurrentTopicId = (int)topicId,
                 CurrentSectionId = (int)sectionId
+            });
+        }
+
+        public ActionResult Search(string searchString)
+        {
+            var searchDataResult = new SearchViewModel
+            {
+                ResultLength = 69,
+                SearchString = searchString,
+                SearchType = ""
+            };
+            var topics = GetAllTopics();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                // topics = topics.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+            return View(new BaseViewModel
+            {
+                Topics = topics,
+                CurrentSearch = searchDataResult
             });
         }
 
