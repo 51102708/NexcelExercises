@@ -8,24 +8,31 @@
     @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
 }
 
-<h4>Search Result</h4>
+<h2>Search Resuls</h2>
 
 <hr />
 <div class="panel panel-default">
     <div class="panel-heading">
         <ul class="nav nav-pills search-tab">
-            <li role="presentation" class="active">@Html.ActionLink("Topics", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "topics" }, null)</li>
-            <li role="presentation">@Html.ActionLink("Sections", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "sections" }, null)</li>
-            <li role="presentation">@Html.ActionLink("Pharses", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "pharses" }, null)</li>
-            <li role="presentation">@Html.ActionLink("Examples", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "examples" }, null)</li>
+
+            <li class="@(Model.CurrentSearch.SearchType == "sections" ? "active" : "")">@Html.ActionLink("Sections", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "sections" }, null)</li>
+            <li class="@(Model.CurrentSearch.SearchType == "pharses" ? "active" : "")">@Html.ActionLink("Pharses", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "pharses" }, null)</li>
+            <li class="@(Model.CurrentSearch.SearchType == "examples" ? "active" : "")">@Html.ActionLink("Examples", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "examples" }, null)</li>
         </ul>
     </div>
     <div class="panel-body form-inline">
-        <p><strong>3</strong> results for search term <strong>"what"</strong></p>
+        <p><strong>@Model.CurrentSearch.ResultLength</strong> results for search term <strong>"@Model.CurrentSearch.SearchString"</strong></p>
+
         <ul class="nav nav-stacked result-list">
-            <li role="presentation"><a href="#">STARTING A SPEECH OR MEETING</a></li>
-            <li role="presentation"><a href="#">ASKING</a></li>
-            <li role="presentation"><a href="#">Messages</a></li>
+            @foreach (var item in Model.CurrentSearch.ResultDatas)
+            {
+                <li>
+                    <a href="@Url.Action("Contents", "Home", new { topicId = item.TopicId, sectionId = item.SectionId })">
+                        <p class="result-title">@item.ResultTitle</p>
+                        <p class="result-content">@item.ResultContent</p>
+                    </a>
+                </li>
+            }
         </ul>
     </div>
 </div>

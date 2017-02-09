@@ -61,25 +61,71 @@
             });
         }
 
-        public ActionResult Search(string searchString)
+        public ActionResult Search(string searchString, string searchType)
         {
             var searchDataResult = new SearchViewModel
             {
-                ResultLength = 69,
                 SearchString = searchString,
-                SearchType = ""
+                SearchType = searchType
             };
             var topics = GetAllTopics();
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (String.IsNullOrEmpty(searchString))
             {
-                // topics = topics.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+                return RedirectToAction("Index", "Home");
             }
-            return View(new BaseViewModel
+            else
             {
-                Topics = topics,
-                CurrentSearch = searchDataResult
-            });
+                string[] modelTypes = { "sections", "pharses", "examples" };
+                if (searchType == null) { searchType = ""; }
+                if (!modelTypes.Any(searchType.Equals))
+                {
+                    searchType = "sections";
+                }
+                searchType = searchType.ToLower();
+
+                if (searchType.Equals("sections"))
+                {
+                    var sections = db.Sections.Include(x => x.Topic).Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+                    searchDataResult.ResultLength = sections.Count;
+                    searchDataResult.SearchType = searchType;
+                    searchDataResult.ResultDatas = new List<ResultData>();
+                    foreach (var item in sections)
+                    {
+                        searchDataResult.ResultDatas.Add(new ResultData
+                        {
+                            ResultTitle = "TOPIC: " + item.Topic.Name,
+                            ResultContent = "Section - " + item.Name,
+                            TopicId = item.TopicId,
+                            SectionId = item.Id
+                        });
+                    }
+                }
+                if (searchType.Equals("pharses") || searchType.Equals("examples"))
+                {
+                    var pharses = db.Pharses.Include(x => x.Section).Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+                    searchDataResult.ResultLength = pharses.Count;
+                    searchDataResult.SearchType = searchType;
+                    searchDataResult.ResultDatas = new List<ResultData>();
+                    foreach (var item in pharses)
+                    {
+                        var topic = topics.Where(s => s.Id == item.Section.TopicId).First();
+                        searchDataResult.ResultDatas.Add(new ResultData
+                        {
+                            ResultTitle = topic.Name + " / " + item.Section.Name + (searchType.Equals("pharses") ? "" : (" / " + item.Name)),
+                            ResultContent = (searchType.Equals("pharses") ? ("Pharse - " + item.Name) : ("Example - " + item.Example)),
+                            TopicId = topic.Id,
+                            SectionId = item.Section.Id
+                        });
+                    }
+                }
+
+                return View(new BaseViewModel
+                {
+                    Topics = topics,
+                    CurrentSearch = searchDataResult
+                });
+            }
         }
 
         [NonAction]
