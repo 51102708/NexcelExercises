@@ -45,11 +45,11 @@
 
         @RenderBody()
     </div>
-    @*<footer class="navbar navbar-default navbar-static-bottom">
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/scriptAdmin")
     @RenderSection("scripts", required: false)
 </body>
 </html>

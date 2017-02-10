@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-
-namespace BusinessEnglish.Models
+﻿namespace BusinessEnglish.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Pharse
     {
         public int Id { get; set; }

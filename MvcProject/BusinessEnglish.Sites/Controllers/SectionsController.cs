@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessEnglish.Models;
 
-namespace BusinessEnglish.Controllers
+namespace BusinessEnglish.Sites.Controllers
 {
     public class SectionsController : Controller
     {
@@ -56,9 +56,6 @@ namespace BusinessEnglish.Controllers
             return View();
         }
 
-        // POST: Sections/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,TopicId")] Section section)

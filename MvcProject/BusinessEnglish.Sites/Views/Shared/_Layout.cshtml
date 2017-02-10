@@ -19,7 +19,6 @@
                 <a class="navbar-brand" href="/Home/Index"><small><span class="glyphicon glyphicon-briefcase icon-app"></span></small>English for Business</a>
             </div>
 
-
             @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "navbar-form navbar-left text-center" }))
             {
                 <div class="form-group display-inline-block">
@@ -45,7 +44,6 @@
                     </ul>
                 </li>
             </ul>
-
         </div>
     </div>
 
@@ -73,23 +71,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/scriptAdmin")
     @RenderSection("scripts", required: false)
-    <script type="text/javascript">
-        $("#btn-toggle").click(function () {
-            /*.body-content {
-                margin-top: 52px;
-                padding-left: 250px;
-            }
-        
-            .sidebar-wrapper {
-                width: 250px;
-            }*/
-            $(".body-content").css({
-                "margin-top": "52px",
-            "padding-left": "250px"
-            });
-            $(".sidebar-wrapper").css("width","250px");
-        });
-    </script>
+
 </body>
 </html>

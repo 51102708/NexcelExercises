@@ -1,20 +1,20 @@
-﻿@model BusinessEnglish.Sites.Models.BaseViewModel
-@{
-    ViewBag.Title = "Contents";
-}
+﻿@model BusinessEnglish.Sites.Models.HomeViewModel
+    @{
+        ViewBag.Title = "Contents";
+    }
 
-@section Sidebar {
-    @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
-}
+    @section Sidebar {
+        @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
+    }
 
-<div class="section">
-    <h3 class="section">@Model.CurrentSection.Name</h3>
-</div>
-
-@foreach (var item in @Model.CurrentSection.Pharses)
-{
-    <div class="pharse-content">
-        <p class="pharse"><strong>@item.Name</strong></p>
-        <blockquote class="example">Ex: @item.Example</blockquote>
+    <div class="section">
+        <h3 class="section">@Model.CurrentSection.Name</h3>
     </div>
-}
+
+    @foreach (var item in @Model.CurrentSection.Pharses)
+    {
+        <div class="pharse-content">
+            <p class="pharse"><strong>@item.Name</strong></p>
+            <blockquote class="example">Ex: @item.Example</blockquote>
+        </div>
+    }

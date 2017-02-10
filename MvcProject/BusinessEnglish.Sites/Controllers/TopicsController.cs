@@ -1,56 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using BusinessEnglish.Models;
-
-namespace BusinessEnglish.Controllers
+﻿namespace BusinessEnglish.Sites.Controllers
 {
+    using System.Data.Entity;
+    using System.Net;
+    using System.Web.Mvc;
+    using BusinessEnglish.Models;
+    using Services;
+    using System.Collections.Generic;
+
     public class TopicsController : Controller
     {
+        private TopicService topicService;
         private EnglishDbContext db = new EnglishDbContext();
 
-        // GET: Topics
+        public TopicsController()
+        {
+            topicService = new TopicService();
+        }
+
         public ActionResult Index(string searchString)
         {
-            var topics = db.Topics.ToList();
+            var topics = (IEnumerable<Topic>)topicService.GetAll();
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchString))
             {
-                topics = topics.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+                topics = (IEnumerable<Topic>)topicService.FilterTopicsWithName(topics, searchString);
             }
             return View(topics);
         }
 
-        // GET: Topics/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Topic topic = db.Topics.Find(id);
-            if (topic == null)
-            {
-                return HttpNotFound();
-            }
-            return View(topic);
-        }
-
-        // GET: Topics/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Topics/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name")] Topic topic)
         {

@@ -3,38 +3,22 @@
 }
 
 body {
-    /*padding-top: 50px;*/
     overflow-x: hidden;
     padding-bottom: 20px;
     font: 400 14px/1.8 Lato, sans-serif;
-    /*font-family: Roboto,GillSans,Calibri,Trebuchet,sans-serif;*/
 }
 
-/* Set padding to keep content from hitting the edges */
+
 .body-content {
-    /*padding-left: 15px;
-    padding-right: 15px;
-    padding-left: 0;*/
     margin-top: 177px;
-    /*-webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;*/
+
 }
 
-/* Override the default bootstrap behavior where horizontal description lists
-   will truncate terms that are too long to fit in the left column
-*/
+
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    /*max-width: 280px;*/
-}
 
 .icon-app {
     padding-right: 5px;
@@ -97,28 +81,15 @@ textarea {
     margin-left: -250px;
     overflow-y: auto;
     background: #f4f4f4;
-    /*-webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;*/
+    transition: all 0.5s ease;
 }
 
-/*#wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-}*/
 
 .page-content-wrapper {
     width: 100%;
-    /*position: absolute;*/
     padding: 15px;
 }
 
-/*#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
-}*/
-
-/* Sidebar Styles */
 
 .sidebar-nav {
     position: absolute;
@@ -139,7 +110,6 @@ textarea {
     }
 
         .sidebar-nav .active a {
-            /*color: #fff;*/
         }
 
     .sidebar-nav li {
@@ -173,7 +143,7 @@ textarea {
     }
 
         .sidebar-nav > .sidebar-brand a {
-            color: #999999;
+            color: #999;
         }
 
             .sidebar-nav > .sidebar-brand a:hover {
@@ -231,22 +201,24 @@ textarea {
             color: #000;
         }
 
+
+.toggle-sidebar-wrapper {
+    width: 250px;
+}
+
 @media(min-width:768px) {
-    /*.body-content {
+    .body-content {
         margin-top: 52px;
         padding-left: 250px;
     }
 
     .sidebar-wrapper {
         width: 250px;
-    }*/
+    }
 
     .page-content-wrapper {
         padding: 20px;
-        /*position: relative;*/
+
     }
-    /*#wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }*/
+
 }

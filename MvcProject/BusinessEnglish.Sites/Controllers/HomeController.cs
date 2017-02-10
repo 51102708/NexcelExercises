@@ -2,44 +2,31 @@
 {
     using System.Linq;
     using System.Data;
-    using System.Data.Entity;
     using System.Web.Mvc;
-    using BusinessEnglish.Services;
-    using BusinessEnglish.Sites.Models;
+    using Services;
+    using Models;
     using BusinessEnglish.Models;
     using System.Collections.Generic;
-    using System;
 
     public class HomeController : Controller
     {
         private TopicService topicService;
-        private EnglishDbContext db = new EnglishDbContext();
+        private SectionService sectionService;
+        private PharseService pharseService;
 
         public HomeController()
         {
             topicService = new TopicService();
+            sectionService = new SectionService();
+            pharseService = new PharseService();
         }
 
         public ActionResult Index()
         {
-            return View(new BaseViewModel
+            return View(new HomeViewModel
             {
-                Topics = GetAllTopics()
+                Topics = (IEnumerable<Topic>)topicService.GetAll()
             });
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your applicatiosdadasdadasdn description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
 
         public ActionResult Contents(int? sectionId, int? topicId)
@@ -48,14 +35,20 @@
             {
                 return RedirectToAction("Index");
             }
-            var topics = GetAllTopics();
 
-            var section = db.Sections.Where(s => s.TopicId == topicId && s.Id == sectionId).First();
-            section.Pharses = db.Pharses.Where(s => s.SectionId == sectionId).ToList();
-            return View(new BaseViewModel
+            var topics = (IEnumerable<Topic>)topicService.GetAll();
+            var sections = (IEnumerable<Section>)sectionService.GetAll();
+            var pharses = (IEnumerable<Pharse>)pharseService.GetAll();
+            sections = (IEnumerable<Section>)sectionService.FilterSectionsByTopicId(sections, (int)topicId);
+            sections = (IEnumerable<Section>)sectionService.FilterSectionsById(sections, (int)sectionId);
+
+            var currentSection = sections.First();
+            currentSection.Pharses = (IEnumerable<Pharse>)pharseService.FilterPharsesBySectionId(pharses, (int)sectionId);
+
+            return View(new HomeViewModel
             {
                 Topics = topics,
-                CurrentSection = section,
+                CurrentSection = currentSection,
                 CurrentTopicId = (int)topicId,
                 CurrentSectionId = (int)sectionId
             });
@@ -63,85 +56,72 @@
 
         public ActionResult Search(string searchString, string searchType)
         {
-            var searchDataResult = new SearchViewModel
+            if (string.IsNullOrEmpty(searchString))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var searchResult = new SearchResultModel
             {
                 SearchString = searchString,
                 SearchType = searchType
             };
-            var topics = GetAllTopics();
 
-            if (String.IsNullOrEmpty(searchString))
+            var topics = (IEnumerable<Topic>)topicService.GetAll();
+            string[] modelTypes = { "sections", "pharses", "examples" };
+            if (searchType == null) { searchType = ""; }
+            if (!modelTypes.Any(searchType.Equals))
             {
-                return RedirectToAction("Index", "Home");
+                searchType = "sections";
             }
-            else
-            {
-                string[] modelTypes = { "sections", "pharses", "examples" };
-                if (searchType == null) { searchType = ""; }
-                if (!modelTypes.Any(searchType.Equals))
-                {
-                    searchType = "sections";
-                }
-                searchType = searchType.ToLower();
+            searchType = searchType.ToLower();
 
-                if (searchType.Equals("sections"))
+            if (searchType.Equals("sections"))
+            {
+                var sections = (IEnumerable<Section>)sectionService.GetAll();
+                sections = (IEnumerable<Section>)sectionService.FilterSectionsWithName(sections, searchString);
+
+                searchResult.ResultLength = sections.Count();
+                searchResult.SearchType = searchType;
+                searchResult.ResultDatas = new List<ResultData>();
+                foreach (var item in sections)
                 {
-                    var sections = db.Sections.Include(x => x.Topic).Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
-                    searchDataResult.ResultLength = sections.Count;
-                    searchDataResult.SearchType = searchType;
-                    searchDataResult.ResultDatas = new List<ResultData>();
-                    foreach (var item in sections)
+                    searchResult.ResultDatas.Add(new ResultData
                     {
-                        searchDataResult.ResultDatas.Add(new ResultData
-                        {
-                            ResultTitle = "TOPIC: " + item.Topic.Name,
-                            ResultContent = "Section - " + item.Name,
-                            TopicId = item.TopicId,
-                            SectionId = item.Id
-                        });
-                    }
+                        ResultTitle = "TOPIC: " + item.Topic.Name,
+                        ResultContent = "Section - " + item.Name,
+                        TopicId = item.TopicId,
+                        SectionId = item.Id
+                    });
                 }
-                if (searchType.Equals("pharses") || searchType.Equals("examples"))
-                {
-                    var pharses = db.Pharses.Include(x => x.Section).Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
-                    searchDataResult.ResultLength = pharses.Count;
-                    searchDataResult.SearchType = searchType;
-                    searchDataResult.ResultDatas = new List<ResultData>();
-                    foreach (var item in pharses)
-                    {
-                        var topic = topics.Where(s => s.Id == item.Section.TopicId).First();
-                        searchDataResult.ResultDatas.Add(new ResultData
-                        {
-                            ResultTitle = topic.Name + " / " + item.Section.Name + (searchType.Equals("pharses") ? "" : (" / " + item.Name)),
-                            ResultContent = (searchType.Equals("pharses") ? ("Pharse - " + item.Name) : ("Example - " + item.Example)),
-                            TopicId = topic.Id,
-                            SectionId = item.Section.Id
-                        });
-                    }
-                }
-
-                return View(new BaseViewModel
-                {
-                    Topics = topics,
-                    CurrentSearch = searchDataResult
-                });
             }
-        }
 
-        [NonAction]
-        public IEnumerable<Topic> GetAllTopics()
-        {
-            var topics = (from d in db.Topics
-                          orderby d.Id
-                          select d).ToList();
-
-            foreach (var topic in topics)
+            if (searchType.Equals("pharses") || searchType.Equals("examples"))
             {
-                var sections = db.Sections.Include(s => s.Topic).Where(x => x.TopicId == topic.Id).ToList();
-                topic.Sections = sections;
+                var pharses = (IEnumerable<Pharse>)pharseService.GetAll();
+                pharses = (IEnumerable<Pharse>)pharseService.FilterPharsesWithName(pharses, searchString);
+
+                searchResult.ResultLength = pharses.Count();
+                searchResult.SearchType = searchType;
+                searchResult.ResultDatas = new List<ResultData>();
+                foreach (var item in pharses)
+                {
+                    var topic = topics.Where(s => s.Id == item.Section.TopicId).First();
+                    searchResult.ResultDatas.Add(new ResultData
+                    {
+                        ResultTitle = topic.Name + " / " + item.Section.Name + (searchType.Equals("pharses") ? "" : (" / " + item.Name)),
+                        ResultContent = (searchType.Equals("pharses") ? ("Pharse - " + item.Name) : ("Example - " + item.Example)),
+                        TopicId = topic.Id,
+                        SectionId = item.Section.Id
+                    });
+                }
             }
 
-            return topics;
+            return View(new HomeViewModel
+            {
+                Topics = topics,
+                CurrentSearch = searchResult
+            });
         }
     }
 }

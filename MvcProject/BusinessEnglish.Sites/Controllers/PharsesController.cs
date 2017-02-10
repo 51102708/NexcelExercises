@@ -1,15 +1,15 @@
-﻿using BusinessEnglish.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-
-namespace BusinessEnglish.Controllers
+﻿namespace BusinessEnglish.Sites.Controllers
 {
+    using BusinessEnglish.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+
     public class PharsesController : Controller
     {
         private EnglishDbContext db = new EnglishDbContext();
@@ -56,9 +56,6 @@ namespace BusinessEnglish.Controllers
             return View();
         }
 
-        // POST: Pharses/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Example,SectionId")] Pharse pharse)
@@ -90,9 +87,6 @@ namespace BusinessEnglish.Controllers
             return View(pharse);
         }
 
-        // POST: Pharses/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Example,SectionId")] Pharse pharse)
@@ -131,15 +125,6 @@ namespace BusinessEnglish.Controllers
             db.Pharses.Remove(pharse);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
