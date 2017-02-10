@@ -2,15 +2,15 @@
 {
     using System.Collections.Generic;
 
-    public interface IBaseService
+    public interface IBaseService<T>
     {
-        IEnumerable<object> GetAll();
+        IEnumerable<T> GetAll();
 
-        object Get(int id);
+        T Get(int id);
 
-        void Create(object obj);
+        void Create(T obj);
 
-        void Update(object obj);
+        void Update(T obj);
 
         void Delete(int id);
     }

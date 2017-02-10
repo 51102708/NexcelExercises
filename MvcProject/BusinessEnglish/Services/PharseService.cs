@@ -5,35 +5,40 @@
     using System.Data.Entity;
     using System.Linq;
 
-    public class PharseService : IBaseService
+    public class PharseService : IBaseService<Pharse>
     {
         private EnglishDbContext db = new EnglishDbContext();
 
-        public void Create(object obj)
+        public void Create(Pharse obj)
         {
-            db.Pharses.Add((Pharse)obj);
+            db.Pharses.Add(obj);
             db.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            db.Pharses.Remove((Pharse)Get(id));
+            var pharse = Get(id);
+            if (pharse == null)
+            {
+                return;
+            }
+            db.Pharses.Remove(pharse);
             db.SaveChanges();
         }
 
-        public object Get(int id)
+        public Pharse Get(int id)
         {
             return db.Pharses.Find(id);
         }
 
-        public IEnumerable<object> GetAll()
+        public IEnumerable<Pharse> GetAll()
         {
             return db.Pharses.Include(s => s.Section);
         }
 
-        public void Update(object obj)
+        public void Update(Pharse obj)
         {
-            db.Entry((Pharse)obj).State = EntityState.Modified;
+            db.Entry(obj).State = EntityState.Modified;
             db.SaveChanges();
         }
 

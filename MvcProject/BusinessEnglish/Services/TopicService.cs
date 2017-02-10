@@ -6,31 +6,35 @@
     using System.Data;
     using System.Data.Entity;
 
-    public class TopicService : IBaseService
+    public class TopicService : IBaseService<Topic>
     {
         private EnglishDbContext db = new EnglishDbContext();
 
-        public void Create(object obj)
+        public void Create(Topic obj)
         {
-            db.Topics.Add((Topic)obj);
+            db.Topics.Add(obj);
             db.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            Topic topic = db.Topics.Find(id);
+            var topic = db.Topics.Find(id);
+            if (topic == null)
+            {
+                return;
+            }
             db.Topics.Remove(topic);
             db.SaveChanges();
         }
 
-        public object Get(int id)
+        public Topic Get(int id)
         {
-            return db.Topics.Where(x => x.Id == id).ToList();
+            return db.Topics.Find(id);
         }
 
-        public IEnumerable<object> GetAll()
+        public IEnumerable<Topic> GetAll()
         {
-            var topics = (IEnumerable<Topic>)db.Topics.OrderBy(x => x.Id).ToList();
+            var topics = db.Topics.OrderBy(x => x.Id).ToList();
 
             foreach (var topic in topics)
             {
@@ -41,13 +45,13 @@
             return topics;
         }
 
-        public void Update(object obj)
+        public void Update(Topic obj)
         {
-            db.Entry((Topic)obj).State = EntityState.Modified;
+            db.Entry(obj).State = EntityState.Modified;
             db.SaveChanges();
         }
 
-        public IEnumerable<object> FilterTopicsWithName(IEnumerable<Topic> topics, string name)
+        public IEnumerable<Topic> FilterTopicsWithName(IEnumerable<Topic> topics, string name)
         {
             return topics.Where(s => s.Name.ToLower().Contains(name.ToLower()));
         }

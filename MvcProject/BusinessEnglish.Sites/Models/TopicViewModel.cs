@@ -1,8 +1,10 @@
 ﻿namespace BusinessEnglish.Sites.Models
 {
     using BusinessEnglish.Models;
+    using System.Collections.Generic;
 
-    public class TopicViewModel : Topic
+    public class TopicViewModel
     {
+        public IEnumerable<Topic> Topics { get; set; }
     }
 }

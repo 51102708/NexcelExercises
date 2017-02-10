@@ -1,13 +1,14 @@
-﻿@model IEnumerable<BusinessEnglish.Sites.Models.TopicViewModel>
+﻿@model IEnumerable<BusinessEnglish.Models.Topic>
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Topics";
 }
 
 <h2 class="text-right">
     <a href="#createModal" class='btn btn-default' data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-plus"></span> Create new</a>
 </h2>
+
 <div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title">Topics</h3>
@@ -19,7 +20,7 @@
     </div>
     <div class="panel-body form-inline">
         @using (Html.BeginForm("Index", "Topics", FormMethod.Get, new { @class = "input-group" }))
-        {
+            {
             @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Filter: Topic Name" })
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Filter</button>
@@ -50,10 +51,10 @@
                     <td>@(rowNumber++)</td>
                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
                     <td class="text-right">
-                        <a href="@Url.Action("Edit", "Topics", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a href="@Url.Action("Edit", "Topics", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> Edit</a>                      
+                        <a href="#deleteModal" data-delete-name="@item.Name"  data-delete-link="@Url.Action("Delete", "Topics", new { id = item.Id })" class="btn btn-danger" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-remove"></span> Delete</a>
 
-                        <a href="@Url.Action("Delete", "Topics", new { id = item.Id })" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                    </td>
+                     </td>
                 </tr>
             }
         </tbody>
@@ -62,6 +63,12 @@
 
 <div class="modal fade" id="createModal" role="dialog">
     <div class="modal-dialog">
-        @Html.Partial("_Create", new BusinessEnglish.Sites.Models.TopicViewModel())
+        @Html.Partial("_Create", new BusinessEnglish.Models.Topic())
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog">
+        @Html.Partial("_Delete")
     </div>
 </div>

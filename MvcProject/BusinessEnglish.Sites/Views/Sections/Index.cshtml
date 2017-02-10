@@ -73,14 +73,8 @@
     </table>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="createModal" role="dialog">
     <div class="modal-dialog">
         @Html.Partial("_Create", new BusinessEnglish.Models.Section())
     </div>
 </div>
-@section scripts{
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/scriptAdmin")
-
-}

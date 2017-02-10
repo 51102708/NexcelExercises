@@ -5,49 +5,54 @@
     using System.Data.Entity;
     using System.Linq;
 
-    public class SectionService : IBaseService
+    public class SectionService : IBaseService<Section>
     {
         private EnglishDbContext db = new EnglishDbContext();
 
-        public void Create(object obj)
+        public void Create(Section obj)
         {
-            db.Sections.Add((Section)obj);
+            db.Sections.Add(obj);
             db.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            db.Sections.Remove((Section)Get(id));
+            var section = Get(id);
+            if (section == null)
+            {
+                return;
+            }
+            db.Sections.Remove(section);
             db.SaveChanges();
         }
 
-        public object Get(int id)
+        public Section Get(int id)
         {
             return db.Sections.Find(id);
         }
 
-        public IEnumerable<object> GetAll()
+        public IEnumerable<Section> GetAll()
         {
-            return db.Sections.Include(s => s.Topic);
+            return db.Sections.Include(s => s.Topic).OrderBy(x => x.Topic.Name);
         }
 
-        public void Update(object obj)
+        public void Update(Section obj)
         {
-            db.Entry((Section)obj).State = EntityState.Modified;
+            db.Entry(obj).State = EntityState.Modified;
             db.SaveChanges();
         }
 
-        public IEnumerable<object> FilterSectionsById(IEnumerable<Section> sections, int id)
+        public IEnumerable<Section> FilterSectionsById(IEnumerable<Section> sections, int id)
         {
             return sections.Where(s => s.Id == id);
         }
 
-        public IEnumerable<object> FilterSectionsByTopicId(IEnumerable<Section> sections, int topicId)
+        public IEnumerable<Section> FilterSectionsByTopicId(IEnumerable<Section> sections, int topicId)
         {
             return sections.Where(s => s.TopicId == topicId);
         }
 
-        public IEnumerable<object> FilterSectionsWithName(IEnumerable<Section> sections, string name)
+        public IEnumerable<Section> FilterSectionsWithName(IEnumerable<Section> sections, string name)
         {
             return sections.Where(s => s.Name.ToLower().Contains(name.ToLower()));
         }

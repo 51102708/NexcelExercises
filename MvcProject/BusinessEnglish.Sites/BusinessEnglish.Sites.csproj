@@ -213,9 +213,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Topics\Create.cshtml" />
-    <Content Include="Views\Topics\Delete.cshtml" />
-    <Content Include="Views\Topics\Details.cshtml" />
     <Content Include="Views\Topics\Edit.cshtml" />
     <Content Include="Views\Topics\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
@@ -237,6 +234,7 @@
     <Content Include="Views\ClientUser\Details.cshtml" />
     <Content Include="Views\ClientUser\_Register.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Topics\_Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
