@@ -74,7 +74,7 @@
                     </td>
                     <td class="text-right">
                         <a href="@Url.Action("Edit", "Pharses", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                        <a href="@Url.Action("Delete", "Pharses", new { id = item.Id })" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                        <a href="#deleteModal" data-delete-name="@item.Name" data-delete-link="@Url.Action("Delete", "Pharses", new { id = item.Id })" class="btn btn-danger" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                     </td>
                 </tr>
             }
@@ -82,14 +82,14 @@
     </table>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="createModal" role="dialog">
     <div class="modal-dialog">
         @Html.Partial("_Create", new BusinessEnglish.Models.Pharse())
     </div>
 </div>
-@section scripts{
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/scriptAdmin")
 
-}
+<div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog">
+        @Html.Partial("_Delete")
+    </div>
+</div>

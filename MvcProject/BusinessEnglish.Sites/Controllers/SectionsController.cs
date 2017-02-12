@@ -1,6 +1,5 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
-    using System.Data.Entity;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
@@ -11,7 +10,6 @@
     {
         private SectionService sectionService;
         private TopicService topicService;
-        private EnglishDbContext db = new EnglishDbContext();
 
         public SectionsController()
         {
@@ -63,8 +61,6 @@
                 sectionService.Create(section);
                 return RedirectToAction("Index");
             }
-
-            //   ViewBag.TopicId = new SelectList(topicService.GetAll(), "Id", "Name", section.TopicId);
             return View(section);
         }
 
@@ -74,12 +70,12 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Section section = db.Sections.Find(id);
+            var section = sectionService.Get((int)id);
             if (section == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TopicId = new SelectList(db.Topics, "Id", "Name", section.TopicId);
+            ViewBag.TopicId = new SelectList(topicService.GetAll(), "Id", "Name", section.TopicId);
             return View(section);
         }
 
@@ -89,35 +85,17 @@
         {
             if (ModelState.IsValid)
             {
-                db.Entry(section).State = EntityState.Modified;
-                db.SaveChanges();
+                sectionService.Update(section);
                 return RedirectToAction("Index");
             }
-            ViewBag.TopicId = new SelectList(db.Topics, "Id", "Name", section.TopicId);
             return View(section);
         }
 
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Section section = db.Sections.Find(id);
-            if (section == null)
-            {
-                return HttpNotFound();
-            }
-            return View(section);
-        }
-
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
-            Section section = db.Sections.Find(id);
-            db.Sections.Remove(section);
-            db.SaveChanges();
+            sectionService.Delete(id);
             return RedirectToAction("Index");
         }
     }

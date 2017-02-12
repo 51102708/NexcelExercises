@@ -1,22 +1,33 @@
 ﻿@model BusinessEnglish.Sites.Models.HomeViewModel
 
-    <div class="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            @foreach (var topic in Model.Topics)
+<div class="sidebar-wrapper">
+    <ul>
+        @foreach (var topic in Model.Topics)
             {
-                <li>
-                    <a data-toggle="collapse" data-target="#topic-@topic.Id"><i class="glyphicon glyphicon-chevron-right"></i>@topic.Name</a>
-                    <ul class="sub-menu @(Model.CurrentTopicId == @topic.Id ? "in" : "collapse")"
-                        id="topic-@topic.Id">
-                        @foreach (var sec in topic.Sections)
+            <li>
+                <a data-toggle="collapse" data-target="#topic-@topic.Id"><i class="glyphicon glyphicon-chevron-right"></i>@topic.Name</a>
+                <ul class="sub-menu @(Model.CurrentTopicId == @topic.Id ? "in" : "collapse")"
+                    id="topic-@topic.Id">
+                    @foreach (var sec in topic.Sections)
+                    {
+                        if (Model.CurrentSectionId == sec.Id)
                         {
-                            @*<li><a href="#">@sec.Name</a></li>*@
-                            <li class="@(Model.CurrentSectionId == sec.Id ? "active" : "")">
+                            <li class="active">
+                                <a href="#">@sec.Name</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
                                 @Html.ActionLink(sec.Name, "Contents", "Home", new { topicId = @topic.Id, sectionId = sec.Id }, null)
                             </li>
                         }
-                    </ul>
-                </li>
-            }
-        </ul>
-    </div>
+                        @*<li class="@(Model.CurrentSectionId == sec.Id ? "active" : "")">
+                                @Html.ActionLink(sec.Name, "Contents", "Home", new { topicId = @topic.Id, sectionId = sec.Id }, null)
+                            </li>*@
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>

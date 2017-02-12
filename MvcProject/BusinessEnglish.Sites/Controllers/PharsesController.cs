@@ -1,59 +1,38 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
-    using BusinessEnglish.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Data.Entity;
-    using System.Linq;
     using System.Net;
-    using System.Web;
     using System.Web.Mvc;
+    using BusinessEnglish.Models;
+    using Services;
 
     public class PharsesController : Controller
     {
-        private EnglishDbContext db = new EnglishDbContext();
+        private SectionService sectionService;
+        private PharseService pharseService;
 
-        // GET: Pharses
+        public PharsesController()
+        {
+            sectionService = new SectionService();
+            pharseService = new PharseService();
+        }
+
         public ActionResult Index(string searchString, int? sectionId)
         {
-            var pharses = db.Pharses.Include(p => p.Section).OrderBy(x => x.Section.Name).ToList();
+            var pharses = pharseService.GetAll();
 
             if (!sectionId.Equals(null))
             {
-                pharses = pharses.Where(s => s.SectionId == sectionId).ToList();
+                pharses = pharseService.FilterPharsesBySectionId(pharses, (int)sectionId);
             }
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                pharses = pharses.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
+                pharses = pharseService.FilterPharsesWithName(pharses, searchString);
             }
 
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name");
+            ViewBag.SectionId = new SelectList(sectionService.GetAll(), "Id", "Name");
 
-            return View(pharses.ToList());
-        }
-
-        // GET: Pharses/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Pharse pharse = db.Pharses.Find(id);
-            if (pharse == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pharse);
-        }
-
-        // GET: Pharses/Create
-        public ActionResult Create()
-        {
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name");
-            return View();
+            return View(pharses);
         }
 
         [HttpPost]
@@ -62,28 +41,30 @@
         {
             if (ModelState.IsValid)
             {
-                db.Pharses.Add(pharse);
-                db.SaveChanges();
+                pharseService.Create(pharse);
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name", pharse.SectionId);
             return View(pharse);
         }
 
-        // GET: Pharses/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pharse pharse = db.Pharses.Find(id);
+
+            var pharse = pharseService.Get((int)id);
+
             if (pharse == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name", pharse.SectionId);
+
+            ViewBag.SectionId = new SelectList(sectionService.GetAll(), "Id", "Name", pharse.SectionId);
+
             return View(pharse);
         }
 
@@ -93,37 +74,20 @@
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pharse).State = EntityState.Modified;
-                db.SaveChanges();
+                pharseService.Update(pharse);
+
                 return RedirectToAction("Index");
             }
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name", pharse.SectionId);
+
             return View(pharse);
         }
 
-        // GET: Pharses/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Pharse pharse = db.Pharses.Find(id);
-            if (pharse == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pharse);
-        }
-
-        // POST: Pharses/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
-            Pharse pharse = db.Pharses.Find(id);
-            db.Pharses.Remove(pharse);
-            db.SaveChanges();
+            pharseService.Delete(id);
+
             return RedirectToAction("Index");
         }
     }

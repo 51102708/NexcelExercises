@@ -4,7 +4,6 @@
     using System.Web.Mvc;
     using BusinessEnglish.Models;
     using Services;
-    using System.Collections.Generic;
 
     public class TopicsController : Controller
     {
@@ -17,12 +16,13 @@
 
         public ActionResult Index(string searchString)
         {
-            var topics = (IEnumerable<Topic>)topicService.GetAll();
+            var topics = topicService.GetAll();
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                topics = (IEnumerable<Topic>)topicService.FilterTopicsWithName(topics, searchString);
+                topics = topicService.FilterTopicsWithName(topics, searchString);
             }
+
             return View(topics);
         }
 
@@ -44,11 +44,14 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var topic = (Topic)topicService.Get((int)id);
+
+            var topic = topicService.Get((int)id);
+
             if (topic == null)
             {
                 return HttpNotFound();
             }
+
             return View(topic);
         }
 
@@ -59,8 +62,10 @@
             if (ModelState.IsValid)
             {
                 topicService.Update(topic);
+
                 return RedirectToAction("Index");
             }
+
             return View(topic);
         }
 
@@ -69,6 +74,7 @@
         public ActionResult Delete(int id)
         {
             topicService.Delete(id);
+
             return RedirectToAction("Index");
         }
     }

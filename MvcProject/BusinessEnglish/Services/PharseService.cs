@@ -33,7 +33,7 @@
 
         public IEnumerable<Pharse> GetAll()
         {
-            return db.Pharses.Include(s => s.Section);
+            return db.Pharses.Include(s => s.Section).OrderBy(x => x.Section.Name);
         }
 
         public void Update(Pharse obj)
@@ -42,17 +42,17 @@
             db.SaveChanges();
         }
 
-        public IEnumerable<object> FilterPharsesById(IEnumerable<Pharse> pharses, int id)
+        public IEnumerable<Pharse> FilterPharsesById(IEnumerable<Pharse> pharses, int id)
         {
             return pharses.Where(s => s.Id == id);
         }
 
-        public IEnumerable<object> FilterPharsesBySectionId(IEnumerable<Pharse> pharses, int sectionId)
+        public IEnumerable<Pharse> FilterPharsesBySectionId(IEnumerable<Pharse> pharses, int sectionId)
         {
             return pharses.Where(s => s.SectionId == sectionId);
         }
 
-        public IEnumerable<object> FilterPharsesWithName(IEnumerable<Pharse> pharses, string name)
+        public IEnumerable<Pharse> FilterPharsesWithName(IEnumerable<Pharse> pharses, string name)
         {
             return pharses.Where(s => s.Name.ToLower().Contains(name.ToLower()));
         }

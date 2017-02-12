@@ -8,42 +8,32 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <!-- Navigation bar -->
+    <div class="navbar navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" id="btn-toggle" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggle icon-search" data-toggle="collapse" data-target="#search-form">
+                    <span class="glyphicon glyphicon-search"></span>
                 </button>
-                <a class="navbar-brand" href="/Home/Index"><small><span class="glyphicon glyphicon-briefcase icon-app"></span></small>English for Business</a>
-            </div>
-
-            @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "navbar-form navbar-left text-center" }))
-            {
-                <div class="form-group display-inline-block">
-                    <input type="text" name="searchString" class="form-control" placeholder="Search">
+                <a id="btn-toggle" href="#" class="navbar-toggle pull-left">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </a>
+                <div class="navbar-brand">
+                    <a href="/Home/Index">English for Business</a>
                 </div>
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="search-form">
+            @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "navbar-right col-sm-4 col-md-4 col-lg-3 search-form" }))
+            {
+                <div class="input-group">
+                    <input id="search-input" type="text" name="searchString" class="form-control" placeholder="Section, phrase, example...">
+                    <div class="input-group-btn">
+                        <button id="btn-search" class="btn btn-success" type="submit">Search</button>
+                    </div>
+                </div>
             }
 
-            @*<form class="navbar-form navbar-left">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>*@
-
-            <ul class="nav navbar-nav navbar-right text-center">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle color-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
-                    <ul class="dropdown-menu text-left">
-                        <li><a href="#registerModal" data-toggle="modal"><i class="glyphicon glyphicon-log-in"></i> Register</a></li>
-                        <li><a href="#" data-toggle="modal"><i class="glyphicon glyphicon-log-in"></i> Login</a></li>
-                    </ul>
-                </li>
-            </ul>
         </div>
     </div>
 
@@ -53,15 +43,10 @@
 
         <!-- Page Content -->
         <div class="page-content-wrapper">
-            <div class="container-fluid">
-                @RenderBody()
-            </div>
+            @RenderBody()
         </div>
-        <!-- /#page-content-wrapper -->
-        @*</div>*@
     </div>
 
-    <!-- Modal -->
     <div class="modal fade" id="registerModal" role="dialog">
         <div class="modal-dialog">
             @Html.Partial("~/Views/ClientUser/_Register.cshtml", new BusinessEnglish.Sites.Models.RegisterUser())

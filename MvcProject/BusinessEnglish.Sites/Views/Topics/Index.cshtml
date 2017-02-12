@@ -51,10 +51,9 @@
                     <td>@(rowNumber++)</td>
                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
                     <td class="text-right">
-                        <a href="@Url.Action("Edit", "Topics", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> Edit</a>                      
-                        <a href="#deleteModal" data-delete-name="@item.Name"  data-delete-link="@Url.Action("Delete", "Topics", new { id = item.Id })" class="btn btn-danger" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-
-                     </td>
+                        <a href="@Url.Action("Edit", "Topics", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a href="#deleteModal" data-delete-name="@item.Name" data-delete-link="@Url.Action("Delete", "Topics", new { id = item.Id })" class="btn btn-danger" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                    </td>
                 </tr>
             }
         </tbody>

@@ -25,7 +25,7 @@
         {
             return View(new HomeViewModel
             {
-                Topics = (IEnumerable<Topic>)topicService.GetAll()
+                Topics = topicService.GetAll()
             });
         }
 
@@ -36,14 +36,15 @@
                 return RedirectToAction("Index");
             }
 
-            var topics = (IEnumerable<Topic>)topicService.GetAll();
-            var sections = (IEnumerable<Section>)sectionService.GetAll();
-            var pharses = (IEnumerable<Pharse>)pharseService.GetAll();
-            sections = (IEnumerable<Section>)sectionService.FilterSectionsByTopicId(sections, (int)topicId);
-            sections = (IEnumerable<Section>)sectionService.FilterSectionsById(sections, (int)sectionId);
+            var topics = topicService.GetAll();
+            var sections = sectionService.GetAll();
+            var pharses = pharseService.GetAll();
+
+            sections = sectionService.FilterSectionsByTopicId(sections, (int)topicId);
+            sections = sectionService.FilterSectionsById(sections, (int)sectionId);
 
             var currentSection = sections.First();
-            currentSection.Pharses = (IEnumerable<Pharse>)pharseService.FilterPharsesBySectionId(pharses, (int)sectionId);
+            currentSection.Pharses = pharseService.FilterPharsesBySectionId(pharses, (int)sectionId);
 
             return View(new HomeViewModel
             {
@@ -67,19 +68,20 @@
                 SearchType = searchType
             };
 
-            var topics = (IEnumerable<Topic>)topicService.GetAll();
+            var topics = topicService.GetAll();
             string[] modelTypes = { "sections", "pharses", "examples" };
             if (searchType == null) { searchType = ""; }
             if (!modelTypes.Any(searchType.Equals))
             {
                 searchType = "sections";
             }
+
             searchType = searchType.ToLower();
 
             if (searchType.Equals("sections"))
             {
-                var sections = (IEnumerable<Section>)sectionService.GetAll();
-                sections = (IEnumerable<Section>)sectionService.FilterSectionsWithName(sections, searchString);
+                var sections = sectionService.GetAll();
+                sections = sectionService.FilterSectionsWithName(sections, searchString);
 
                 searchResult.ResultLength = sections.Count();
                 searchResult.SearchType = searchType;
@@ -98,8 +100,8 @@
 
             if (searchType.Equals("pharses") || searchType.Equals("examples"))
             {
-                var pharses = (IEnumerable<Pharse>)pharseService.GetAll();
-                pharses = (IEnumerable<Pharse>)pharseService.FilterPharsesWithName(pharses, searchString);
+                var pharses = pharseService.GetAll();
+                pharses = pharseService.FilterPharsesWithName(pharses, searchString);
 
                 searchResult.ResultLength = pharses.Count();
                 searchResult.SearchType = searchType;
