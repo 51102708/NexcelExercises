@@ -1,14 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta chraset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - WAYS TO SAY IT IN BUSINESS ENGLISH</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <!-- Navigation bar -->
     <div class="navbar navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -33,7 +32,6 @@
                     </div>
                 </div>
             }
-
         </div>
     </div>
 
@@ -47,17 +45,10 @@
         </div>
     </div>
 
-    <div class="modal fade" id="registerModal" role="dialog">
-        <div class="modal-dialog">
-            @Html.Partial("~/Views/ClientUser/_Register.cshtml", new BusinessEnglish.Sites.Models.RegisterUser())
-        </div>
-    </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/scriptAdmin")
     @RenderSection("scripts", required: false)
-
 </body>
 </html>

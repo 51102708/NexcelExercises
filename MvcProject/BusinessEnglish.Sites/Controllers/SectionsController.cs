@@ -1,11 +1,13 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
+    using BusinessEnglish.Models;
+    using Filters;
+    using Services;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
-    using BusinessEnglish.Models;
-    using Services;
 
+    [BasicAuthentication(Roles = "1")]
     public class SectionsController : Controller
     {
         private SectionService sectionService;
@@ -30,6 +32,7 @@
             {
                 sections = sectionService.FilterSectionsWithName(sections, searchString);
             }
+
             ViewBag.TopicId = new SelectList(topicService.GetAll(), "Id", "Name");
 
             return View(sections.ToList());
@@ -59,8 +62,10 @@
             if (ModelState.IsValid)
             {
                 sectionService.Create(section);
+
                 return RedirectToAction("Index");
             }
+
             return View(section);
         }
 
@@ -70,12 +75,16 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var section = sectionService.Get((int)id);
+
             if (section == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.TopicId = new SelectList(topicService.GetAll(), "Id", "Name", section.TopicId);
+
             return View(section);
         }
 
@@ -86,8 +95,10 @@
             if (ModelState.IsValid)
             {
                 sectionService.Update(section);
+
                 return RedirectToAction("Index");
             }
+
             return View(section);
         }
 

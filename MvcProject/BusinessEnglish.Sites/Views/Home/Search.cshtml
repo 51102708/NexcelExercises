@@ -16,7 +16,7 @@
             <ul class="nav nav-pills search-tab">
 
                 <li class="@(Model.CurrentSearch.SearchType == "sections" ? "active" : "")">@Html.ActionLink("Sections", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "sections" }, null)</li>
-                <li class="@(Model.CurrentSearch.SearchType == "pharses" ? "active" : "")">@Html.ActionLink("Pharses", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "pharses" }, null)</li>
+                <li class="@(Model.CurrentSearch.SearchType == "phrases" ? "active" : "")">@Html.ActionLink("Phrases", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "phrases" }, null)</li>
                 <li class="@(Model.CurrentSearch.SearchType == "examples" ? "active" : "")">@Html.ActionLink("Examples", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "examples" }, null)</li>
             </ul>
         </div>

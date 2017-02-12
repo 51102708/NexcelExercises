@@ -28,6 +28,7 @@
         public string ResultContent { get; set; }
 
         public int SectionId { get; set; }
+
         public int TopicId { get; set; }
     }
 }

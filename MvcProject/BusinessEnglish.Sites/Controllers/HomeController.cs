@@ -1,24 +1,23 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
-    using System.Linq;
-    using System.Data;
-    using System.Web.Mvc;
-    using Services;
     using Models;
-    using BusinessEnglish.Models;
+    using Services;
     using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
+    using System.Web.Mvc;
 
     public class HomeController : Controller
     {
         private TopicService topicService;
         private SectionService sectionService;
-        private PharseService pharseService;
+        private PhraseService phraseService;
 
         public HomeController()
         {
             topicService = new TopicService();
             sectionService = new SectionService();
-            pharseService = new PharseService();
+            phraseService = new PhraseService();
         }
 
         public ActionResult Index()
@@ -38,13 +37,13 @@
 
             var topics = topicService.GetAll();
             var sections = sectionService.GetAll();
-            var pharses = pharseService.GetAll();
+            var phrases = phraseService.GetAll();
 
             sections = sectionService.FilterSectionsByTopicId(sections, (int)topicId);
             sections = sectionService.FilterSectionsById(sections, (int)sectionId);
 
             var currentSection = sections.First();
-            currentSection.Pharses = pharseService.FilterPharsesBySectionId(pharses, (int)sectionId);
+            currentSection.Phrases = phraseService.FilterPhrasesBySectionId(phrases, (int)sectionId);
 
             return View(new HomeViewModel
             {
@@ -69,8 +68,13 @@
             };
 
             var topics = topicService.GetAll();
-            string[] modelTypes = { "sections", "pharses", "examples" };
-            if (searchType == null) { searchType = ""; }
+            string[] modelTypes = { "sections", "phrases", "examples" };
+
+            if (searchType == null)
+            {
+                searchType = string.Empty;
+            }
+
             if (!modelTypes.Any(searchType.Equals))
             {
                 searchType = "sections";
@@ -98,21 +102,21 @@
                 }
             }
 
-            if (searchType.Equals("pharses") || searchType.Equals("examples"))
+            if (searchType.Equals("phrases") || searchType.Equals("examples"))
             {
-                var pharses = pharseService.GetAll();
-                pharses = pharseService.FilterPharsesWithName(pharses, searchString);
+                var phrases = phraseService.GetAll();
+                phrases = phraseService.FilterPhrasesWithName(phrases, searchString);
 
-                searchResult.ResultLength = pharses.Count();
+                searchResult.ResultLength = phrases.Count();
                 searchResult.SearchType = searchType;
                 searchResult.ResultDatas = new List<ResultData>();
-                foreach (var item in pharses)
+                foreach (var item in phrases)
                 {
                     var topic = topics.Where(s => s.Id == item.Section.TopicId).First();
                     searchResult.ResultDatas.Add(new ResultData
                     {
-                        ResultTitle = topic.Name + " / " + item.Section.Name + (searchType.Equals("pharses") ? "" : (" / " + item.Name)),
-                        ResultContent = (searchType.Equals("pharses") ? ("Pharse - " + item.Name) : ("Example - " + item.Example)),
+                        ResultTitle = topic.Name + " / " + item.Section.Name + (searchType.Equals("phrases") ? string.Empty : (" / " + item.Name)),
+                        ResultContent = searchType.Equals("phrases") ? ("Phrase - " + item.Name) : ("Example - " + item.Example),
                         TopicId = topic.Id,
                         SectionId = item.Section.Id
                     });

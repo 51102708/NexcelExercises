@@ -18,10 +18,12 @@
         public void Delete(int id)
         {
             var section = Get(id);
+
             if (section == null)
             {
                 return;
             }
+
             db.Sections.Remove(section);
             db.SaveChanges();
         }

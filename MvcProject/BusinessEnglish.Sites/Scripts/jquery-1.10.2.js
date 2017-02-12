@@ -7808,7 +7808,7 @@ jQuery.extend({
 		global: true,
 		processData: true,
 		async: true,
-		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		contentType: "application/x-www-form-urlencoded; chraset=UTF-8",
 		/*
 		timeout: 0,
 		data: null,
@@ -8496,8 +8496,8 @@ jQuery.ajaxTransport( "script", function(s) {
 
 				script.async = true;
 
-				if ( s.scriptCharset ) {
-					script.charset = s.scriptCharset;
+				if ( s.scriptChraset ) {
+					script.chraset = s.scriptChraset;
 				}
 
 				script.src = s.url;

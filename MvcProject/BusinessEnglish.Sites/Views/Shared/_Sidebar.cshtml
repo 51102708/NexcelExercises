@@ -22,9 +22,6 @@
                                 @Html.ActionLink(sec.Name, "Contents", "Home", new { topicId = @topic.Id, sectionId = sec.Id }, null)
                             </li>
                         }
-                        @*<li class="@(Model.CurrentSectionId == sec.Id ? "active" : "")">
-                                @Html.ActionLink(sec.Name, "Contents", "Home", new { topicId = @topic.Id, sectionId = sec.Id }, null)
-                            </li>*@
                     }
                 </ul>
             </li>

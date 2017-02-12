@@ -2,9 +2,9 @@
 {
     using Models;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Data;
     using System.Data.Entity;
+    using System.Linq;
 
     public class TopicService : IBaseService<Topic>
     {
@@ -19,10 +19,12 @@
         public void Delete(int id)
         {
             var topic = db.Topics.Find(id);
+
             if (topic == null)
             {
                 return;
             }
+
             db.Topics.Remove(topic);
             db.SaveChanges();
         }

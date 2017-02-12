@@ -1,10 +1,12 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
+    using BusinessEnglish.Models;
+    using Filters;
+    using Services;
     using System.Net;
     using System.Web.Mvc;
-    using BusinessEnglish.Models;
-    using Services;
 
+    [BasicAuthentication(Roles = "1")]
     public class TopicsController : Controller
     {
         private TopicService topicService;
@@ -32,6 +34,7 @@
             if (ModelState.IsValid)
             {
                 topicService.Create(topic);
+
                 return RedirectToAction("Index");
             }
 

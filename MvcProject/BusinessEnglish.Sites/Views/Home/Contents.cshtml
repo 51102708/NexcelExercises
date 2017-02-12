@@ -11,10 +11,11 @@
     <h3 class="">@Model.CurrentSection.Name</h3>
 </div>
 
-@foreach (var item in @Model.CurrentSection.Pharses)
+@{int count = 1;}
+@foreach (var item in @Model.CurrentSection.Phrases)
 {
-    <div class="pharse-content">
-        <p class="pharse"><strong>@item.Name</strong></p>
+    <div class="phrase-content">
+        <p class="phrase"><strong>@(count++). @item.Name</strong></p>
         <blockquote class="example">Example: @item.Example</blockquote>
     </div>
 }

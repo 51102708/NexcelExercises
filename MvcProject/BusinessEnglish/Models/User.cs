@@ -13,10 +13,13 @@
 
         [Required(ErrorMessage = "Username required.")]
         [Display(Name = "User Name")]
-        public virtual string UserName { get; set; }
+        public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Username required.")]
-        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Password required.")]
         public string Password { get; set; }
+
+        public int UserRoleId { get; set; }
+
+        public UserRole UserRole { get; set; }
     }
 }

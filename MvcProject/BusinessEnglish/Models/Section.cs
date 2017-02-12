@@ -12,7 +12,9 @@
         public string Name { get; set; }
 
         public int TopicId { get; set; }
+
         public Topic Topic { get; set; }
-        public IEnumerable<Pharse> Pharses { get; set; }
+
+        public IEnumerable<Phrase> Phrases { get; set; }
     }
 }
