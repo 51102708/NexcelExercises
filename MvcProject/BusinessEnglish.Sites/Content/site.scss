@@ -1,4 +1,14 @@
-﻿html {
+﻿$sidebar-background-color: #f4f4f4;
+$sidebar-active-color: #e7e6dd;
+$navbar-background-color: #00293d;
+$navbar-button-color: #5cb85c;
+$navbar-font-color: #fff;
+$result-content-color: #000;
+$result-header-color: #0f6461;
+$result-tab-border-color: #d4d4d4;
+$section-title-color: #008080;
+
+html {
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
@@ -7,25 +17,18 @@
 }
 
 body {
-    //overflow-x: hidden;
     padding-bottom: 20px;
     font: 14px sans-serif;
 }
 
 a,
 a:hover {
-    color: #fff;
+    color: $navbar-font-color;
     text-decoration: none;
 }
 
-//**********************************************
-.display-inline-block {
-    display: inline-block;
-}
-
-//**********************************************
 .navbar {
-    background-color: #00293d;
+    background-color: $navbar-background-color;
     margin-bottom: 0;
 
     #btn-toggle {
@@ -34,7 +37,7 @@ a:hover {
     }
 
     .icon-search {
-        color: white;
+        color: $navbar-font-color;
         padding: 9px 12px;
         border: 1px solid;
     }
@@ -44,7 +47,7 @@ a:hover {
         padding-right: 0;
 
         a:hover {
-            color: #5cb85c;
+            color: $navbar-button-color;
         }
     }
 
@@ -66,7 +69,7 @@ a:hover {
         height: 100%;
         margin-left: -250px;
         overflow-y: auto;
-        background: #f4f4f4;
+        background: $sidebar-background-color;
         transition: all 0.5s ease;
 
         ul {
@@ -83,12 +86,12 @@ a:hover {
             a {
                 font-size: 12px;
                 display: block;
-                color: #00293d;
+                color: $navbar-background-color;
             }
 
             a:hover {
-                color: #fff;
-                background: #5cb85c;
+                color: $navbar-font-color;
+                background: $navbar-button-color;
             }
         }
 
@@ -97,7 +100,7 @@ a:hover {
         }
 
         .active {
-            background: #e7e6dd;
+            background: $sidebar-active-color;
         }
     }
 
@@ -115,9 +118,9 @@ a:hover {
 
         .section-title h3 {
             font-weight: bold;
-            color: #fff;
+            color: $navbar-font-color;
             padding: 8px 15px;
-            background-color: #008080;
+            background-color: $section-title-color;
         }
 
         .phrase-content {
@@ -125,13 +128,13 @@ a:hover {
         }
 
         .search-tab > li > a {
-            color: #0f6461;
+            color: $result-header-color;
             padding: 10px 10px;
         }
 
         .search-tab > li.active > a {
-            color: #fff;
-            background-color: #0f6461;
+            color: $navbar-font-color;
+            background-color: $result-header-color;
         }
 
         .result-list > li {
@@ -139,7 +142,7 @@ a:hover {
         }
 
         .result-list > li > a {
-            border: 1px solid #d4d4d4;
+            border: 1px solid $result-tab-border-color;
             border-radius: 2px;
             box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
         }
@@ -151,13 +154,13 @@ a:hover {
         }
 
         .result-list > li > a .result-title {
-            color: #0f6461;
+            color: $result-header-color;
             font-size: 1.2em;
             margin-bottom: 5px;
         }
 
         .result-list > li > a .result-content {
-            color: #000;
+            color: $result-content-color;
         }
     }
 }

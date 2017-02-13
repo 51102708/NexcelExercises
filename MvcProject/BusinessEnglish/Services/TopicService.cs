@@ -12,6 +12,7 @@
 
         public void Create(Topic obj)
         {
+            db.Topics.Find(obj);
             db.Topics.Add(obj);
             db.SaveChanges();
         }

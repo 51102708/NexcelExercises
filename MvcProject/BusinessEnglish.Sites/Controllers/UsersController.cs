@@ -9,7 +9,7 @@
     [BasicAuthentication(Roles = "1")]
     public class UsersController : Controller
     {
-        private UserService userService = new UserService();
+        private UserService userService;
 
         public UsersController()
         {

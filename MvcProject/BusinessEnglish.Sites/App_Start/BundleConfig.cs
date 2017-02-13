@@ -5,7 +5,6 @@ namespace BusinessEnglish.Sites
 {
     public class BundleConfig
     {
-        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -32,7 +31,7 @@ namespace BusinessEnglish.Sites
                       "~/Content/siteAdmin.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/scriptAdmin").Include(
-                        "~/Scripts/scriptAdmin.js"));
+                        "~/Scripts/my/scriptAdmin.js"));
         }
     }
 }

@@ -5,7 +5,7 @@
         @foreach (var topic in Model.Topics)
             {
             <li>
-                <a data-toggle="collapse" data-target="#topic-@topic.Id"><i class="glyphicon glyphicon-chevron-right"></i>@topic.Name</a>
+                <a data-toggle="collapse" data-target="#topic-@topic.Id"><i class="glyphicon glyphicon-th-large"></i> @topic.Name</a>
                 <ul class="sub-menu @(Model.CurrentTopicId == @topic.Id ? "in" : "collapse")"
                     id="topic-@topic.Id">
                     @foreach (var sec in topic.Sections)

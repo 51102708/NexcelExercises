@@ -4,7 +4,7 @@
 
 body {
     padding-bottom: 20px;
-    font: 400 14px/1.8 Lato, sans-serif;
+    font: 14px sans-serif;
 }
 
 .body-content {
@@ -28,7 +28,7 @@ body {
     color: #fff;
 }
 
-.navbar-inverse .navbar-nav>li>a {
+.navbar-inverse .navbar-nav > li > a {
     color: aquamarine;
 }
 
@@ -63,6 +63,7 @@ body {
     margin-left: 5px;
 }
 
-.panel-body {
-    /*display: none;*/
+.login-wrapper {
+    max-width: 450px;
+    margin: 100px auto;
 }

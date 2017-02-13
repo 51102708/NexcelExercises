@@ -13,9 +13,6 @@ a:hover {
   color: #fff;
   text-decoration: none; }
 
-.display-inline-block {
-  display: inline-block; }
-
 .navbar {
   background-color: #00293d;
   margin-bottom: 0; }
@@ -23,7 +20,7 @@ a:hover {
     padding: 6px 12px;
     margin-right: 0; }
   .navbar .icon-search {
-    color: white;
+    color: #fff;
     padding: 9px 12px;
     border: 1px solid; }
   .navbar .navbar-brand {

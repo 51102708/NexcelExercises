@@ -25,8 +25,16 @@
         {
             if (Request.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Topics");
+                HttpCookie httpCookie = HttpContext.Request?.Cookies[FormsAuthentication.FormsCookieName];
+
+                if (IsAdminUser(httpCookie))
+                {
+                    return RedirectToAction("Index", "Topics");
+                }
+
+                return RedirectToAction("Unauthorized");
             }
+
             return View();
         }
 
@@ -39,9 +47,9 @@
                 return RedirectToAction("Index", "Topics");
             }
 
-            ModelState.AddModelError("invalid_msg", "Invalid Username or Password");
+            ModelState.AddModelError(string.Empty, "Invalid Username or Password");
 
-            return RedirectToAction("Login");
+            return View("Login");
         }
 
         public ActionResult Logout()
@@ -52,6 +60,11 @@
             Response.Cookies.Add(authCookie);
 
             return RedirectToAction("Login");
+        }
+
+        public ActionResult Unauthorized()
+        {
+            return View();
         }
 
         private bool ValidateUser(AdminViewModel user)
@@ -75,6 +88,22 @@
 
                     Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket));
 
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        [NonAction]
+        private bool IsAdminUser(HttpCookie httpCookie)
+        {
+            if (httpCookie != null)
+            {
+                var ticket = FormsAuthentication.Decrypt(httpCookie?.Value);
+
+                if (ticket.UserData.Equals("1"))
+                {
                     return true;
                 }
             }
