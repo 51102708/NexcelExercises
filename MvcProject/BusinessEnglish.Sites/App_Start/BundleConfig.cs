@@ -1,9 +1,8 @@
-﻿using System.Web;
-using System.Web.Optimization;
-
-namespace BusinessEnglish.Sites
+﻿namespace BusinessEnglish.Sites
 {
-    public class BundleConfig
+    using System.Web.Optimization;
+
+    public static class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {

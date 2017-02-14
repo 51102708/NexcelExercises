@@ -1,17 +1,17 @@
-﻿@model IEnumerable<BusinessEnglish.Models.Section>
+﻿@model IEnumerable<BusinessEnglish.Services.Models.Section>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = StringResources.SectionTitle;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2 class="text-right">
-    <a href="#createModal" class='btn btn-default' data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-plus"></span> Create new</a>
+    <a href="#createModal" class='btn btn-default' data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-plus"></span> @StringResources.CreateNew</a>
 </h2>
 
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h2 class="panel-title">Sections</h2>
+        <h2 class="panel-title">@StringResources.Sections</h2>
         <div class="pull-right">
             <span class="clickable filter" id="icon-filter" title="Toggle table filter">
                 <i class="glyphicon glyphicon-filter"></i>
@@ -22,16 +22,16 @@
         @using (Html.BeginForm("Index", "Sections", FormMethod.Get))
         {
             <div class="input-group">
-                <span class="input-group-addon">Topic Name</span>
+                <span class="input-group-addon">@StringResources.TopicName</span>
                 @Html.DropDownList("TopicId", null, "-- All --", new { @class = "form-control" })
             </div>
             <br />
             <div class="input-group">
-                <span class="input-group-addon">Section Name</span>
+                <span class="input-group-addon">@StringResources.SectionName</span>
                 @Html.TextBox("searchString", null, new { @class = "form-control" })
             </div>
             <br />
-            <button class="btn btn-default" type="submit">Filter</button>
+            <button class="btn btn-default" type="submit">@StringResources.Filter</button>
         }
     </div>
     <table class="table table-hover" id="task-table">
@@ -52,7 +52,7 @@
             @if (Model.Count() == 0)
             {
                 <tr>
-                    <td>No results found</td>
+                    <td>@StringResources.NoResultsFound</td>
                 </tr>
             }
             @{int rowNumber = 1;}
@@ -62,10 +62,10 @@
                     <td>@(rowNumber++)</td>
 
                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                    <td>                        @Html.DisplayFor(modelItem => item.Topic.Name)                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Topic.Name)</td>
                     <td class="text-right">
-                        <a href="@Url.Action("Edit", "Sections", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                        <a href="#deleteModal" data-delete-name="@item.Name" data-delete-link="@Url.Action("Delete", "Sections", new { id = item.Id })" class="btn btn-danger" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                        <a href="@Url.Action("Edit", "Sections", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> @StringResources.Edit</a>
+                        <a href="#deleteModal" data-delete-name="@item.Name" data-delete-link="@Url.Action("Delete", "Sections", new { id = item.Id })" class="btn btn-danger" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-remove"></span> @StringResources.Delete</a>
                     </td>
                 </tr>
             }
@@ -75,7 +75,7 @@
 
 <div class="modal fade" id="createModal" role="dialog">
     <div class="modal-dialog">
-        @Html.Partial("_Create", new BusinessEnglish.Models.Section())
+        @Html.Partial("_Create", new BusinessEnglish.Services.Models.Section())
     </div>
 </div>
 

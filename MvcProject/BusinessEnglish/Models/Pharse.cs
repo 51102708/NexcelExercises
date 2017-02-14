@@ -1,12 +1,13 @@
-﻿namespace BusinessEnglish.Models
+﻿namespace BusinessEnglish.Services.Models
 {
+    using Resources;
     using System.ComponentModel.DataAnnotations;
 
     public class Phrase
     {
         public int Id { get; set; }
 
-        [Display(Name = "Phrase")]
+        [Display(ResourceType = typeof(StringResources), Name = "PhraseName")]
         public string Name { get; set; }
 
         [Required]

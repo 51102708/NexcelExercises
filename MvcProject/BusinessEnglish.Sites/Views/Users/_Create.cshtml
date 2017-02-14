@@ -1,9 +1,9 @@
-﻿@model BusinessEnglish.Models.User
+﻿@model BusinessEnglish.Services.Models.User
 
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h4 class="modal-title">Create new User</h4>
+        <h4 class="modal-title">@StringResources.CreateNewUser</h4>
     </div>
     @using (Html.BeginForm("Create", "Users", FormMethod.Post, new { @class = "form-horizontal" }))
     {
@@ -30,8 +30,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Create</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" type="submit">@StringResources.Create</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">@StringResources.Cancel</button>
         </div>
     }
 </div>

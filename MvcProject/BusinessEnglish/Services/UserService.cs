@@ -7,58 +7,77 @@
 
     public class UserService : IBaseService<User>
     {
-        private EnglishDbContext db = new EnglishDbContext();
-
         public void Create(User obj)
         {
-            db.Users.Add(obj);
-            db.SaveChanges();
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                db.Users.Add(obj);
+                db.SaveChanges();
+            }
         }
 
         public void Delete(int id)
         {
-            var user = db.Users.Find(id);
-
-            if (user == null)
+            using (EnglishDbContext db = new EnglishDbContext())
             {
-                return;
-            }
+                var user = db.Users.Find(id);
 
-            db.Users.Remove(user);
-            db.SaveChanges();
+                if (user == null)
+                {
+                    return;
+                }
+
+                db.Users.Remove(user);
+                db.SaveChanges();
+            }
         }
 
         public User Get(int id)
         {
-            return db.Users.Find(id);
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                return db.Users.Find(id);
+            }
         }
 
         public User Get(string userName)
         {
-            var users = db.Users.Where(s => s.UserName.ToLower().Contains(userName.ToLower()));
-
-            if (users.Count() > 0)
+            using (EnglishDbContext db = new EnglishDbContext())
             {
-                return users.ToList().First();
-            }
+                var users = db.Users.Where(s => s.UserName.ToLower().Contains(userName.ToLower()));
 
-            return null;
+                if (users.Count() > 0)
+                {
+                    return users.ToList().First();
+                }
+
+                return null;
+            }
         }
 
         public IEnumerable<User> GetAll()
         {
-            return db.Users.Include(s => s.UserRole).OrderBy(x => x.UserRole.RoleName);
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                return db.Users.Include(s => s.UserRole).OrderBy(x => x.UserRole.RoleName);
+            }
         }
 
         public IEnumerable<UserRole> GetAllRoles()
         {
-            return db.UserRoles.OrderBy(x => x.Id);
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                return db.UserRoles.OrderBy(x => x.Id);
+            }
         }
 
         public void Update(User obj)
         {
-            db.Entry(obj).State = EntityState.Modified;
-            db.SaveChanges();
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                db.Entry(obj).State = EntityState.Modified;
+                db.SaveChanges();
+            }
         }
     }
 }

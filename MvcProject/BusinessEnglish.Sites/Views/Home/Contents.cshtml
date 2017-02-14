@@ -1,6 +1,6 @@
 ﻿@model BusinessEnglish.Sites.Models.HomeViewModel
 @{
-    ViewBag.Title = "Contents";
+    ViewBag.Title = StringResources.ContentTitle;
 }
 
 @section Sidebar {
@@ -16,6 +16,6 @@
 {
     <div class="phrase-content">
         <p class="phrase"><strong>@(count++). @item.Name</strong></p>
-        <blockquote class="example">Example: @item.Example</blockquote>
+        <blockquote class="example">@StringResources.Example: @item.Example</blockquote>
     </div>
 }

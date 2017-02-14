@@ -1,7 +1,7 @@
-﻿@model BusinessEnglish.Sites.Models.AdminViewModel
+﻿@model BusinessEnglish.Sites.ViewModels.Admin.LoginViewModel
 
 @{
-    ViewBag.Title = "Login - Administrator";
+    ViewBag.Title = StringResources.LoginTitle;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="login-wrapper">
@@ -10,7 +10,7 @@
         @Html.AntiForgeryToken()
         <div class="modal-content">
             <div class="modal-header">
-                <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> @StringResources.Login</h4>
             </div>
             <div class="modal-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -28,7 +28,7 @@
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
 
-                <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> @StringResources.Login</button>
             </div>
         </div>
     }

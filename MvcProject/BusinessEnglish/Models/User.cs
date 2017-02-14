@@ -1,21 +1,17 @@
-﻿namespace BusinessEnglish.Models
+﻿namespace BusinessEnglish.Services.Models
 {
-    using System;
-    using System.Collections.Generic;
+    using Resources;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class User
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Username required.")]
-        [Display(Name = "User Name")]
+        [Required(ErrorMessageResourceType = typeof(StringResources), ErrorMessageResourceName = "UsernameRequired")]
+        [Display(ResourceType = typeof(StringResources), Name = "UserName")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Password required.")]
+        [Required(ErrorMessageResourceType = typeof(StringResources), ErrorMessageResourceName = "PasswordRequired")]
         public string Password { get; set; }
 
         public int UserRoleId { get; set; }

@@ -1,16 +1,16 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
-    using BusinessEnglish.Models;
     using Filters;
     using Services;
+    using Services.Models;
     using System.Net;
     using System.Web.Mvc;
 
     [BasicAuthentication(Roles = "1")]
     public class PhrasesController : Controller
     {
-        private SectionService sectionService;
-        private PhraseService phraseService;
+        private readonly SectionService sectionService;
+        private readonly PhraseService phraseService;
 
         public PhrasesController()
         {

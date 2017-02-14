@@ -1,5 +1,6 @@
-﻿namespace BusinessEnglish.Models
+﻿namespace BusinessEnglish.Services.Models
 {
+    using Resources;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -8,7 +9,7 @@
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Topic Name")]
+        [Display(ResourceType = typeof(StringResources), Name = "TopicName")]
         public string Name { get; set; }
 
         public IEnumerable<Section> Sections { get; set; }

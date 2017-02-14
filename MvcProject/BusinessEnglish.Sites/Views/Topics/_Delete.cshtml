@@ -2,14 +2,14 @@
     @Html.AntiForgeryToken()
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h4 class="modal-title">Delete</h4>
+        <h4 class="modal-title">@StringResources.Delete</h4>
     </div>
 
     <div class="modal-body">
-        <h4 class="form-group">Are you sure you want to delete Topic: <span name="labelName"></span>?</h4>
+        <h4 class="form-group">@StringResources.ConfirmDeleteMessage @StringResources.Topic: <span name="labelName"></span>?</h4>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-danger" type="submit">Delete</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger" type="submit">@StringResources.Delete</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@StringResources.Cancel</button>
     </div>
 </form>

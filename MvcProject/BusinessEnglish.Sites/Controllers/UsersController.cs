@@ -1,15 +1,15 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
-    using BusinessEnglish.Models;
     using Filters;
     using Services;
+    using Services.Models;
     using System.Net;
     using System.Web.Mvc;
 
     [BasicAuthentication(Roles = "1")]
     public class UsersController : Controller
     {
-        private UserService userService;
+        private readonly UserService userService;
 
         public UsersController()
         {

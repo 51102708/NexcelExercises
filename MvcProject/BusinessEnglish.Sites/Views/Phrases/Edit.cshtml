@@ -1,18 +1,18 @@
-﻿@model BusinessEnglish.Models.Phrase
+﻿@model BusinessEnglish.Services.Models.Phrase
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = StringResources.Edit;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>@StringResources.Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Phrase</h4>
+        <h4>@StringResources.Phrase</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -50,5 +50,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(StringResources.BackToList, "Index")
 </div>

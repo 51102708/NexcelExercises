@@ -16,6 +16,7 @@ $('#btn-search').click(function (e) {
 $('#deleteModal').on('show.bs.modal', function (e) {
     var deleteName = $(e.relatedTarget).data('delete-name');
     $(e.currentTarget).find('span[name="labelName"]').text(deleteName);
+
     var deleteLink = $(e.relatedTarget).data('delete-link');
     $(e.currentTarget).find('form').attr("action", deleteLink);
 });

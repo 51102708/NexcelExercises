@@ -3,10 +3,10 @@
 {
     <div class="navbar-collapse collapse text-center">
         <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Topics", "Index", "Topics")</li>
-            <li>@Html.ActionLink("Sections", "Index", "Sections")</li>
-            <li>@Html.ActionLink("Phrases", "Index", "Phrases")</li>
-            <li>@Html.ActionLink("Users", "Index", "Users")</li>
+            <li>@Html.ActionLink(StringResources.Topics, "Index", "Topics")</li>
+            <li>@Html.ActionLink(StringResources.Sections, "Index", "Sections")</li>
+            <li>@Html.ActionLink(StringResources.Phrases, "Index", "Phrases")</li>
+            <li>@Html.ActionLink(StringResources.Users, "Index", "Users")</li>
         </ul>
         @using (Html.BeginForm("Logout", "Admin", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
         {
@@ -16,10 +16,10 @@
                 <li>
                     <a href="#">
                         <span class="glyphicon glyphicon-user"></span>
-                        Hello, @User.Identity.GetUserName()
+                        @StringResources.Hello, @User.Identity.GetUserName()
                     </a>
                 </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">@StringResources.LogOut</a></li>
             </ul>
         }
     </div>

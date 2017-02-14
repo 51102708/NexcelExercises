@@ -1,15 +1,16 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
-    using Models;
+    using Resources;
     using Services;
     using System;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Security;
+    using ViewModels.Admin;
 
     public class AdminController : Controller
     {
-        private UserService userService = new UserService();
+        private UserService userService;
 
         public AdminController()
         {
@@ -40,14 +41,14 @@
 
         [HttpPost]
         [ActionName("Login")]
-        public ActionResult ExecuteLogin(AdminViewModel user)
+        public ActionResult ExecuteLogin(LoginViewModel user)
         {
             if (ModelState.IsValid && ValidateUser(user))
             {
                 return RedirectToAction("Index", "Topics");
             }
 
-            ModelState.AddModelError(string.Empty, "Invalid Username or Password");
+            ModelState.AddModelError(string.Empty, StringResources.InvalidUsernamePassword);
 
             return View("Login");
         }
@@ -67,7 +68,7 @@
             return View();
         }
 
-        private bool ValidateUser(AdminViewModel user)
+        private bool ValidateUser(LoginViewModel user)
         {
             var currentUser = userService.Get(user.UserName);
 
@@ -75,7 +76,7 @@
             {
                 if (currentUser.UserName.ToLower().Equals(user.UserName.ToLower()) && currentUser.Password.ToLower().Equals(user.Password.ToLower()))
                 {
-                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                    var ticket = new FormsAuthenticationTicket(
                     1,
                     currentUser.UserName,
                     DateTime.Now,
@@ -84,7 +85,7 @@
                     currentUser.UserRoleId.ToString(),
                     FormsAuthentication.FormsCookiePath);
 
-                    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+                    var encryptedTicket = FormsAuthentication.Encrypt(ticket);
 
                     Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket));
 

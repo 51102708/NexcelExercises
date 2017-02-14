@@ -1,10 +1,14 @@
-﻿html {
+﻿$navbar-background-color: #00293d;
+$navbar-brand-color: #fff;
+$navbar-font-color: #7FFFD4;
+
+html {
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 body {
     padding-bottom: 20px;
-    font: 14px sans-serif;
+    font: 14px Arial, Helvetica, sans-serif;
 }
 
 .body-content {
@@ -20,30 +24,30 @@ body {
 }
 
 .navbar {
-    background-color: #00293d;
+    background-color: $navbar-background-color;
     margin-bottom: 0;
 }
 
 .navbar-inverse .navbar-brand {
-    color: #fff;
+    color: $navbar-brand-color;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: aquamarine;
+    color: $navbar-font-color;
 }
 
 .navbar-inverse .navbar-toggle .icon-bar {
-    background-color: aquamarine;
+    background-color: $navbar-font-color;
 }
 
 .navbar-inverse .navbar-toggle {
-    border-color: aquamarine;
+    border-color: $navbar-font-color;
 }
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-    color: aquamarine;
-    background-color: #00293d;
+    color: $navbar-font-color;
+    background-color: $navbar-background-color;
 }
 
 .display-inline-block {

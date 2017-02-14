@@ -1,8 +1,8 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
-    using BusinessEnglish.Models;
     using Filters;
     using Services;
+    using Services.Models;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
@@ -10,8 +10,8 @@
     [BasicAuthentication(Roles = "1")]
     public class SectionsController : Controller
     {
-        private SectionService sectionService;
-        private TopicService topicService;
+        private readonly SectionService sectionService;
+        private readonly TopicService topicService;
 
         public SectionsController()
         {

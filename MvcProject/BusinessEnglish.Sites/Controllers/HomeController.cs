@@ -1,17 +1,17 @@
 ﻿namespace BusinessEnglish.Sites.Controllers
 {
     using Models;
+    using Resources;
     using Services;
     using System.Collections.Generic;
-    using System.Data;
     using System.Linq;
     using System.Web.Mvc;
 
     public class HomeController : Controller
     {
-        private TopicService topicService;
-        private SectionService sectionService;
-        private PhraseService phraseService;
+        private readonly TopicService topicService;
+        private readonly SectionService sectionService;
+        private readonly PhraseService phraseService;
 
         public HomeController()
         {
@@ -61,65 +61,28 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            var searchResult = new SearchResultModel
-            {
-                SearchString = searchString,
-                SearchType = searchType
-            };
-
             var topics = topicService.GetAll();
-            string[] modelTypes = { "sections", "phrases", "examples" };
+            var searchResult = new SearchResult();
 
             if (searchType == null)
             {
-                searchType = string.Empty;
+                searchResult = SearchBySection(searchString);
             }
-
-            if (!modelTypes.Any(searchType.Equals))
+            else
             {
-                searchType = "sections";
-            }
-
-            searchType = searchType.ToLower();
-
-            if (searchType.Equals("sections"))
-            {
-                var sections = sectionService.GetAll();
-                sections = sectionService.FilterSectionsWithName(sections, searchString);
-
-                searchResult.ResultLength = sections.Count();
-                searchResult.SearchType = searchType;
-                searchResult.ResultDatas = new List<ResultData>();
-                foreach (var item in sections)
+                if (searchType.Equals("section"))
                 {
-                    searchResult.ResultDatas.Add(new ResultData
-                    {
-                        ResultTitle = "TOPIC: " + item.Topic.Name,
-                        ResultContent = "Section - " + item.Name,
-                        TopicId = item.TopicId,
-                        SectionId = item.Id
-                    });
+                    searchResult = SearchBySection(searchString);
                 }
-            }
 
-            if (searchType.Equals("phrases") || searchType.Equals("examples"))
-            {
-                var phrases = phraseService.GetAll();
-                phrases = phraseService.FilterPhrasesWithName(phrases, searchString);
-
-                searchResult.ResultLength = phrases.Count();
-                searchResult.SearchType = searchType;
-                searchResult.ResultDatas = new List<ResultData>();
-                foreach (var item in phrases)
+                if (searchType.Equals("phrase"))
                 {
-                    var topic = topics.Where(s => s.Id == item.Section.TopicId).First();
-                    searchResult.ResultDatas.Add(new ResultData
-                    {
-                        ResultTitle = topic.Name + " / " + item.Section.Name + (searchType.Equals("phrases") ? string.Empty : (" / " + item.Name)),
-                        ResultContent = searchType.Equals("phrases") ? ("Phrase - " + item.Name) : ("Example - " + item.Example),
-                        TopicId = topic.Id,
-                        SectionId = item.Section.Id
-                    });
+                    searchResult = SearchByPhrase(searchString);
+                }
+
+                if (searchType.Equals("example"))
+                {
+                    searchResult = SearchByExample(searchString);
                 }
             }
 
@@ -128,6 +91,95 @@
                 Topics = topics,
                 CurrentSearch = searchResult
             });
+        }
+
+        [NonAction]
+        public SearchResult SearchBySection(string searchString)
+        {
+            var searchResult = new SearchResult
+            {
+                SearchString = searchString,
+                SearchType = "section"
+            };
+
+            var sections = sectionService.GetAll();
+            sections = sectionService.FilterSectionsWithName(sections, searchString);
+
+            searchResult.ResultLength = sections.Count();
+            searchResult.ResultData = new List<SearchResultData>();
+
+            foreach (var item in sections)
+            {
+                searchResult.ResultData.Add(new SearchResultData
+                {
+                    ResultTitle = StringResources.Topic.ToUpper() + ": " + item.Topic.Name,
+                    ResultContent = StringResources.Section + " - " + item.Name,
+                    TopicId = item.TopicId,
+                    SectionId = item.Id
+                });
+            }
+
+            return searchResult;
+        }
+
+        [NonAction]
+        public SearchResult SearchByPhrase(string searchString)
+        {
+            var searchResult = new SearchResult
+            {
+                SearchString = searchString,
+                SearchType = "phrase"
+            };
+
+            var phrases = phraseService.GetAll();
+            phrases = phraseService.FilterPhrasesWithName(phrases, searchString);
+
+            searchResult.ResultLength = phrases.Count();
+            searchResult.ResultData = new List<SearchResultData>();
+
+            foreach (var item in phrases)
+            {
+                var topic = topicService.Get(item.Section.TopicId);
+                searchResult.ResultData.Add(new SearchResultData
+                {
+                    ResultTitle = topic.Name + " / " + item.Section.Name,
+                    ResultContent = StringResources.Phrase + " - " + item.Name,
+                    TopicId = topic.Id,
+                    SectionId = item.Section.Id
+                });
+            }
+
+            return searchResult;
+        }
+
+        [NonAction]
+        public SearchResult SearchByExample(string searchString)
+        {
+            var searchResult = new SearchResult
+            {
+                SearchString = searchString,
+                SearchType = "example"
+            };
+
+            var phrases = phraseService.GetAll();
+            phrases = phraseService.FilterPhrasesWithName(phrases, searchString);
+
+            searchResult.ResultLength = phrases.Count();
+            searchResult.ResultData = new List<SearchResultData>();
+
+            foreach (var item in phrases)
+            {
+                var topic = topicService.Get(item.Section.TopicId);
+                searchResult.ResultData.Add(new SearchResultData
+                {
+                    ResultTitle = topic.Name + " / " + item.Section.Name + " / " + item.Name,
+                    ResultContent = StringResources.Example + " - " + item.Example,
+                    TopicId = topic.Id,
+                    SectionId = item.Section.Id
+                });
+            }
+
+            return searchResult;
         }
     }
 }

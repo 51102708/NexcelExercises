@@ -1,10 +1,6 @@
-﻿namespace BusinessEnglish.Models
+﻿namespace BusinessEnglish.Services.Models
 {
-    using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
-    using System.Linq;
-    using System.Web;
 
     public class EnglishDbContext : DbContext
     {

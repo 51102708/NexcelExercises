@@ -7,12 +7,13 @@
 
     public class PhraseService : IBaseService<Phrase>
     {
-        private EnglishDbContext db = new EnglishDbContext();
-
         public void Create(Phrase obj)
         {
-            db.Phrases.Add(obj);
-            db.SaveChanges();
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                db.Phrases.Add(obj);
+                db.SaveChanges();
+            }
         }
 
         public void Delete(int id)
@@ -24,24 +25,36 @@
                 return;
             }
 
-            db.Phrases.Remove(phrase);
-            db.SaveChanges();
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                db.Phrases.Remove(phrase);
+                db.SaveChanges();
+            }
         }
 
         public Phrase Get(int id)
         {
-            return db.Phrases.Find(id);
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                return db.Phrases.Find(id);
+            }
         }
 
         public IEnumerable<Phrase> GetAll()
         {
-            return db.Phrases.Include(s => s.Section).OrderBy(x => x.Section.Name);
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                return db.Phrases.Include(s => s.Section).OrderBy(x => x.Section.Name);
+            }
         }
 
         public void Update(Phrase obj)
         {
-            db.Entry(obj).State = EntityState.Modified;
-            db.SaveChanges();
+            using (EnglishDbContext db = new EnglishDbContext())
+            {
+                db.Entry(obj).State = EntityState.Modified;
+                db.SaveChanges();
+            }
         }
 
         public IEnumerable<Phrase> FilterPhrasesById(IEnumerable<Phrase> phrases, int id)

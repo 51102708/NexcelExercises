@@ -5,8 +5,8 @@
     using System.Web.Mvc;
     using System.Web.Security;
 
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
-    public class BasicAuthenticationAttribute : AuthorizeAttribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
+    public sealed class BasicAuthenticationAttribute : AuthorizeAttribute
     {
         public new string Roles { get; set; }
 
@@ -17,6 +17,7 @@
             if (filterContext.HttpContext == null)
             {
                 RedirectToLoginPage(filterContext);
+
                 return;
             }
 
@@ -53,6 +54,7 @@
         private void RedirectToLoginPage(AuthorizationContext filterContext)
         {
             var loginUrl = !string.IsNullOrWhiteSpace(FormsAuthentication.LoginUrl) ? FormsAuthentication.LoginUrl : "~/Admin/Login";
+
             filterContext.Result = new RedirectResult(loginUrl);
         }
     }
