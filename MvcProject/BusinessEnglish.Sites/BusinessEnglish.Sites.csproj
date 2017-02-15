@@ -149,6 +149,10 @@
     <Compile Include="ViewModels\Sections\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\English.mdf" />
+    <Content Include="App_Data\English_log.ldf">
+      <DependentUpon>English.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\site.css" />
@@ -214,9 +218,7 @@
     <Content Include="Views\Users\_Delete.cshtml" />
     <Content Include="Views\Admin\Unauthorized.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
