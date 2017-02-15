@@ -1,12 +1,12 @@
-﻿@model BusinessEnglish.Sites.Models.HomeViewModel
+﻿@model BusinessEnglish.Sites.ViewModels.Home.HomeViewModel
 
-@{
-    ViewBag.Title = StringResources.HomepageTitle;
+    @{
+        ViewBag.Title = StringResources.HomepageTitle;
 
-}
+    }
 
-@section Sidebar {
-    @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
-}
+    @section Sidebar {
+        @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
+    }
 
-<img src="~/images/app-logo.jpg" style="margin: 0 auto; max-width:1024px; height: 100%; border-bottom: 1px solid #000; border-right: 1px solid #000;" alt="App Logo" />
+    <img src="~/images/app-logo.jpg" style="margin: 0 auto; max-width:1024px; height: 100%; border-bottom: 1px solid #000; border-right: 1px solid #000;" alt="App Logo" />

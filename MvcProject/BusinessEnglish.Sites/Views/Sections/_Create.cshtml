@@ -1,4 +1,4 @@
-﻿@model BusinessEnglish.Services.Models.Section
+﻿@model BusinessEnglish.Sites.ViewModels.Sections.CreateViewModel
 
 <div class="modal-content">
     <div class="modal-header">
@@ -19,7 +19,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.TopicId, StringResources.TopicName)
 
-                @Html.DropDownList("TopicId", null, new { @class = "form-control" })
+                @Html.DropDownList("TopicId", Model.Topics, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TopicId, "", new { @class = "text-danger" })
             </div>
         </div>

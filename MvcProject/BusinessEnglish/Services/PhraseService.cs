@@ -18,15 +18,15 @@
 
         public void Delete(int id)
         {
-            var phrase = Get(id);
-
-            if (phrase == null)
-            {
-                return;
-            }
-
             using (EnglishDbContext db = new EnglishDbContext())
             {
+                var phrase = db.Phrases.FirstOrDefault(x => x.Id == id);
+
+                if (phrase == null)
+                {
+                    return;
+                }
+
                 db.Phrases.Remove(phrase);
                 db.SaveChanges();
             }
@@ -44,7 +44,7 @@
         {
             using (EnglishDbContext db = new EnglishDbContext())
             {
-                return db.Phrases.Include(s => s.Section).OrderBy(x => x.Section.Name);
+                return db.Phrases.Include(s => s.Section).OrderBy(x => x.Section.Name).ToList();
             }
         }
 

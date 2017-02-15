@@ -3,9 +3,9 @@
     using Filters;
     using Services;
     using Services.Models;
-    using System.Linq;
     using System.Net;
     using System.Web.Mvc;
+    using ViewModels.Sections;
 
     [BasicAuthentication(Roles = "1")]
     public class SectionsController : Controller
@@ -33,35 +33,24 @@
                 sections = sectionService.FilterSectionsWithName(sections, searchString);
             }
 
-            ViewBag.TopicId = new SelectList(topicService.GetAll(), "Id", "Name");
-
-            return View(sections.ToList());
-        }
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
+            return View(new IndexViewModel
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var section = sectionService.Get((int)id);
-
-            if (section == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(section);
+                Sections = sections,
+                Topics = new SelectList(topicService.GetAll(), "Id", "Name")
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,TopicId")] Section section)
+        public ActionResult Create([Bind(Include = "Name,TopicId")] CreateViewModel section)
         {
             if (ModelState.IsValid)
             {
-                sectionService.Create(section);
+                sectionService.Create(new Section
+                {
+                    Name = section.Name,
+                    TopicId = section.TopicId
+                });
 
                 return RedirectToAction("Index");
             }
@@ -83,18 +72,27 @@
                 return HttpNotFound();
             }
 
-            ViewBag.TopicId = new SelectList(topicService.GetAll(), "Id", "Name", section.TopicId);
-
-            return View(section);
+            return View(new EditViewModel
+            {
+                Id = section.Id,
+                Name = section.Name,
+                TopicId = section.TopicId,
+                Topics = new SelectList(topicService.GetAll(), "Id", "Name", section.TopicId)
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,TopicId")] Section section)
+        public ActionResult Edit([Bind(Include = "Id,Name,TopicId")] EditViewModel section)
         {
             if (ModelState.IsValid)
             {
-                sectionService.Update(section);
+                sectionService.Update(new Section
+                {
+                    Id = section.Id,
+                    Name = section.Name,
+                    TopicId = section.TopicId
+                });
 
                 return RedirectToAction("Index");
             }

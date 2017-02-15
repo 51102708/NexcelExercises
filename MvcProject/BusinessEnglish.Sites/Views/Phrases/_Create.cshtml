@@ -1,4 +1,4 @@
-﻿@model BusinessEnglish.Services.Models.Phrase
+﻿@model BusinessEnglish.Sites.ViewModels.Phrases.CreateViewModel
 
 <div class="modal-content">
     <div class="modal-header">
@@ -27,13 +27,13 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.SectionId, "Section Name")
 
-                @Html.DropDownList("SectionId", null, new { @class = "form-control" })
+                @Html.DropDownList("SectionId", Model.Sections, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.SectionId, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">@StringResources.Create</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">@StringResources.Cancel</button>
-        </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit">@StringResources.Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@StringResources.Cancel</button>
+            </div>
     }
 </div>

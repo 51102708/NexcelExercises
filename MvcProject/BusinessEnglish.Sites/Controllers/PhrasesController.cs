@@ -5,6 +5,7 @@
     using Services.Models;
     using System.Net;
     using System.Web.Mvc;
+    using ViewModels.Phrases;
 
     [BasicAuthentication(Roles = "1")]
     public class PhrasesController : Controller
@@ -32,18 +33,25 @@
                 phrases = phraseService.FilterPhrasesWithName(phrases, searchString);
             }
 
-            ViewBag.SectionId = new SelectList(sectionService.GetAll(), "Id", "Name");
-
-            return View(phrases);
+            return View(new IndexViewModel
+            {
+                Phrases = phrases,
+                Sections = new SelectList(sectionService.GetAll(), "Id", "Name")
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Example,SectionId")] Phrase phrase)
+        public ActionResult Create([Bind(Include = "Name,Example,SectionId")] CreateViewModel phrase)
         {
             if (ModelState.IsValid)
             {
-                phraseService.Create(phrase);
+                phraseService.Create(new Phrase
+                {
+                    Name = phrase.Name,
+                    Example = phrase.Example,
+                    SectionId = phrase.SectionId
+                });
 
                 return RedirectToAction("Index");
             }
@@ -65,18 +73,29 @@
                 return HttpNotFound();
             }
 
-            ViewBag.SectionId = new SelectList(sectionService.GetAll(), "Id", "Name", phrase.SectionId);
-
-            return View(phrase);
+            return View(new EditViewModel
+            {
+                Id = phrase.Id,
+                Name = phrase.Name,
+                Example = phrase.Example,
+                SectionId = phrase.SectionId,
+                Sections = new SelectList(sectionService.GetAll(), "Id", "Name", phrase.SectionId)
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Example,SectionId")] Phrase phrase)
+        public ActionResult Edit([Bind(Include = "Id,Name,Example,SectionId")] EditViewModel phrase)
         {
             if (ModelState.IsValid)
             {
-                phraseService.Update(phrase);
+                phraseService.Update(new Phrase
+                {
+                    Id = phrase.Id,
+                    Name = phrase.Name,
+                    Example = phrase.Example,
+                    SectionId = phrase.SectionId
+                });
 
                 return RedirectToAction("Index");
             }

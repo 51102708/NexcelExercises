@@ -1,4 +1,4 @@
-﻿namespace BusinessEnglish.Sites.Models
+﻿namespace BusinessEnglish.Sites.ViewModels
 {
     using Services.Models;
     using System.Collections.Generic;

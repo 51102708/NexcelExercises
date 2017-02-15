@@ -1,38 +1,38 @@
-﻿@model BusinessEnglish.Sites.Models.HomeViewModel
+﻿@model BusinessEnglish.Sites.ViewModels.Home.HomeViewModel
 
-@{
-    ViewBag.Title = StringResources.SearchTitle;
-}
+    @{
+        ViewBag.Title = StringResources.SearchTitle;
+    }
 
-@section Sidebar {
-    @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
-}
+    @section Sidebar {
+        @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
+    }
 
-<h2>@StringResources.SearchResults</h2>
+    <h2>@StringResources.SearchResults</h2>
 
-<hr />
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <ul class="nav nav-pills search-tab">
+    <hr />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <ul class="nav nav-pills search-tab">
 
-            <li class="@(Model.CurrentSearch.SearchType == "section" ? "active" : "")">@Html.ActionLink("Sections", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "section" }, null)</li>
-            <li class="@(Model.CurrentSearch.SearchType == "phrase" ? "active" : "")">@Html.ActionLink("Phrases", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "phrase" }, null)</li>
-            <li class="@(Model.CurrentSearch.SearchType == "example" ? "active" : "")">@Html.ActionLink("Examples", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "example" }, null)</li>
-        </ul>
-    </div>
-    <div class="panel-body form-inline">
-        <p><strong>@Model.CurrentSearch.ResultLength</strong> @StringResources.SearchResultsTerm <strong>"@Model.CurrentSearch.SearchString"</strong></p>
+                <li class="@(Model.CurrentSearch.SearchType == "section" ? "active" : "")">@Html.ActionLink("Sections", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "section" }, null)</li>
+                <li class="@(Model.CurrentSearch.SearchType == "phrase" ? "active" : "")">@Html.ActionLink("Phrases", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "phrase" }, null)</li>
+                <li class="@(Model.CurrentSearch.SearchType == "example" ? "active" : "")">@Html.ActionLink("Examples", "Search", "Home", new { searchString = @Model.CurrentSearch.SearchString, searchType = "example" }, null)</li>
+            </ul>
+        </div>
+        <div class="panel-body form-inline">
+            <p><strong>@Model.CurrentSearch.ResultLength</strong> @StringResources.SearchResultsTerm <strong>"@Model.CurrentSearch.SearchString"</strong></p>
 
-        <ul class="nav nav-stacked result-list">
-            @foreach (var item in Model.CurrentSearch.ResultData)
+            <ul class="nav nav-stacked result-list">
+                @foreach (var item in Model.CurrentSearch.ResultData)
             {
-                <li>
-                    <a href="@Url.Action("Contents", "Home", new { topicId = item.TopicId, sectionId = item.SectionId })">
-                        <p class="result-title">@item.ResultTitle</p>
-                        <p class="result-content">@item.ResultContent</p>
-                    </a>
-                </li>
-            }
-        </ul>
+                    <li>
+                        <a href="@Url.Action("Contents", "Home", new { topicId = item.TopicId, sectionId = item.SectionId })">
+                            <p class="result-title">@item.ResultTitle</p>
+                            <p class="result-content">@item.ResultContent</p>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
-</div>

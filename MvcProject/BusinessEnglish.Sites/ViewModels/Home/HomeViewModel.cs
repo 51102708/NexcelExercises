@@ -1,4 +1,6 @@
-﻿namespace BusinessEnglish.Sites.Models
+﻿using BusinessEnglish.Sites.Models;
+
+namespace BusinessEnglish.Sites.ViewModels.Home
 {
     public class HomeViewModel : BaseViewModel
     {

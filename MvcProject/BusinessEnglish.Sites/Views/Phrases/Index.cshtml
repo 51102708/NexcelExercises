@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BusinessEnglish.Services.Models.Phrase>
+﻿@model BusinessEnglish.Sites.ViewModels.Phrases.IndexViewModel
 
 @{
     ViewBag.Title = StringResources.PhraseTitle;
@@ -20,10 +20,10 @@
     </div>
     <div class="panel-body form-inline">
         @using (Html.BeginForm("Index", "Phrases", FormMethod.Get))
-        {
+            {
             <div class="input-group">
                 <span class="input-group-addon">@StringResources.SectionName</span>
-                @Html.DropDownList("SectionId", null, "-- All --", new { @class = "form-control" })
+                @Html.DropDownList("SectionId", Model.Sections, "-- All --", new { @class = "form-control" })
             </div>
             <br />
             <div class="input-group">
@@ -39,26 +39,26 @@
             <tr>
                 <th>#</th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Phrases.FirstOrDefault().Name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Example)
+                    @Html.DisplayNameFor(model => model.Phrases.FirstOrDefault().Example)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Section.Name)
+                    @Html.DisplayNameFor(model => model.Phrases.FirstOrDefault().Section.Name)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @if (Model.Count() == 0)
+            @if (Model.Phrases.Count() == 0)
             {
                 <tr>
                     <td>@StringResources.NoResultsFound</td>
                 </tr>
             }
             @{int rowNumber = 1;}
-            @foreach (var item in Model)
+            @foreach (var item in Model.Phrases)
             {
                 <tr>
                     <td>@(rowNumber++)</td>
@@ -84,7 +84,7 @@
 
 <div class="modal fade" id="createModal" role="dialog">
     <div class="modal-dialog">
-        @Html.Partial("_Create", new BusinessEnglish.Services.Models.Phrase())
+        @Html.Partial("_Create", new BusinessEnglish.Sites.ViewModels.Phrases.CreateViewModel { Sections = Model.Sections })
     </div>
 </div>
 
