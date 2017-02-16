@@ -1,3 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions>
+  <Function Key="Products">
+    <Setting Key="Query_TenMostExpensiveProducts" SpName="Ten Most Expensive Products" DbName="NORTHWIND">
+      <Mapping DataField="TenMostExpensiveProducts" ObjectProperty="Name" />
+      <Mapping DataField="UnitPrice" ObjectProperty="UnitPrice" />
+    </Setting>
+  </Function>
+
+  <Function Key="ProductWithCategory">
+    <Setting Key="Query_ProductWithCategory" SpName="Products_GetProductWithCategory" DbName="NORTHWIND">
+      <Mapping DataField="ProductID" ObjectProperty="Id" />
+      <Mapping DataField="ProductName" ObjectProperty="ProductName" />
+      <Mapping DataField="SupplierID" ObjectProperty="SupplierID" />
+      <Mapping DataField="QuantityPerUnit" ObjectProperty="QuantityPerUnit" />
+      <Mapping DataField="UnitPrice" ObjectProperty="UnitPrice" />
+      <Mapping DataField="UnitsInStock" ObjectProperty="UnitsInStock" />
+      <Mapping DataField="UnitsOnOrder" ObjectProperty="UnitsOnOrder" />
+      <Mapping DataField="ReorderLevel" ObjectProperty="ReorderLevel" />
+      <Mapping DataField="Discontinued" ObjectProperty="Discontinued" />
+      <Mapping DataField="CategoryID" ObjectProperty="Id" Class="Category" />
+      <Mapping DataField="CategoryName" ObjectProperty="CategoryName" Class="Category" />
+      <Mapping DataField="Description" ObjectProperty="Description" Class="Category" />
+      <Mapping DataField="Picture" ObjectProperty="Picture" Class="Category" />
+    </Setting>
+  </Function>
 </Functions>

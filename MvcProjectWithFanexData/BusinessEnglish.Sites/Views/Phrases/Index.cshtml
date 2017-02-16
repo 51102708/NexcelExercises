@@ -1,0 +1,95 @@
+﻿@model BusinessEnglish.Sites.ViewModels.Phrases.IndexViewModel
+
+@{
+    ViewBag.Title = StringResources.PhraseTitle;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-right">
+    <a href="#createModal" class='btn btn-default' data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-plus"></span> @StringResources.CreateNew</a>
+</h2>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">@StringResources.Phrases</h2>
+        <div class="pull-right">
+            <span class="clickable filter" id="icon-filter" title="Toggle table filter">
+                <i class="glyphicon glyphicon-filter"></i>
+            </span>
+        </div>
+    </div>
+    <div class="panel-body form-inline">
+        @using (Html.BeginForm("Index", "Phrases", FormMethod.Get))
+            {
+            <div class="input-group">
+                <span class="input-group-addon">@StringResources.SectionName</span>
+                @Html.DropDownList("SectionId", Model.Sections, "-- All --", new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">@StringResources.PhraseName</span>
+                @Html.TextBox("searchString", null, new { @class = "form-control" })
+            </div>
+            <br />
+            <button class="btn btn-default" type="submit">@StringResources.Filter</button>
+        }
+    </div>
+    <table class="table table-hover" id="task-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phrases.FirstOrDefault().Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phrases.FirstOrDefault().Example)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phrases.FirstOrDefault().Section.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Phrases.Count() == 0)
+            {
+                <tr>
+                    <td>@StringResources.NoResultsFound</td>
+                </tr>
+            }
+            @{int rowNumber = 1;}
+            @foreach (var item in Model.Phrases)
+            {
+                <tr>
+                    <td>@(rowNumber++)</td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Example)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Section.Name)
+                    </td>
+                    <td class="text-right">
+                        <a href="@Url.Action("Edit", "Phrases", new { id = item.Id })" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span> @StringResources.Edit</a>
+                        <a href="#deleteModal" data-delete-name="@item.Name" data-delete-link="@Url.Action("Delete", "Phrases", new { id = item.Id })" class="btn btn-danger" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-remove"></span> @StringResources.Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="createModal" role="dialog">
+    <div class="modal-dialog">
+        @Html.Partial("_Create", new BusinessEnglish.Sites.ViewModels.Phrases.CreateViewModel { Sections = Model.Sections })
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog">
+        @Html.Partial("_Delete")
+    </div>
+</div>

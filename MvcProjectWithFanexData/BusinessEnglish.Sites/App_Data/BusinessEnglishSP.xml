@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Key="Products">
+    <Setting Key="Query_TenMostExpensiveProducts" SpName="Ten Most Expensive Products" DbName="NORTHWIND">
+      <Mapping DataField="TenMostExpensiveProducts" ObjectProperty="Name" />
+      <Mapping DataField="UnitPrice" ObjectProperty="UnitPrice" />
+    </Setting>
+  </Function>
+</Functions>

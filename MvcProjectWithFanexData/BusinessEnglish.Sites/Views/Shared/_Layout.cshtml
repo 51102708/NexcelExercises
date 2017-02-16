@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta chraset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @StringResources.AppTitle</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle icon-search" data-toggle="collapse" data-target="#search-form">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <a id="btn-toggle" href="#" class="navbar-toggle pull-left">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </a>
+                <div class="navbar-brand">
+                    <a href="@Url.Action("Index", "Home")">@StringResources.AppName</a>
+                </div>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="search-form">
+            @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "navbar-right col-sm-4 col-md-4 col-lg-3 search-form" }))
+            {
+                <div class="input-group">
+                    <input id="search-input" type="text" name="searchString" class="form-control" placeholder="@StringResources.Section, @StringResources.Phrase, @StringResources.Example...">
+                    <div class="input-group-btn">
+                        <button id="btn-search" class="btn btn-success" type="submit">@StringResources.Search</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="container-fluid body-content">
+        @RenderSection("Sidebar", true)
+
+        <div class="page-content-wrapper">
+            @RenderBody()
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/scriptAdmin")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

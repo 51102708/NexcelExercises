@@ -1,0 +1,30 @@
+﻿@model BusinessEnglish.Sites.ViewModels.Home.HomeViewModel
+
+<div class="sidebar-wrapper">
+    <ul>
+        @foreach (var topic in Model.Topics)
+            {
+            <li>
+                <a data-toggle="collapse" data-target="#topic-@topic.Id"><i class="glyphicon glyphicon-th-large"></i> @topic.Name</a>
+                <ul class="sub-menu @(Model.CurrentTopicId == @topic.Id ? "in" : "collapse")"
+                    id="topic-@topic.Id">
+                    @foreach (var sec in topic.Sections)
+                    {
+                        if (Model.CurrentSectionId == sec.Id)
+                        {
+                            <li class="active">
+                                <a href="#">@sec.Name</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                @Html.ActionLink(sec.Name, "Contents", "Home", new { topicId = @topic.Id, sectionId = sec.Id }, null)
+                            </li>
+                        }
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,21 @@
+﻿@model BusinessEnglish.Sites.ViewModels.Home.HomeViewModel
+@{
+    ViewBag.Title = StringResources.ContentTitle;
+}
+
+@section Sidebar {
+    @Html.Partial("~/Views/Shared/_Sidebar.cshtml", Model)
+}
+
+<div class="section-title">
+    <h3 class="">@Model.CurrentSection.Name</h3>
+</div>
+
+@{int count = 1;}
+@foreach (var item in @Model.CurrentSection.Phrases)
+{
+    <div class="phrase-content">
+        <p class="phrase"><strong>@(count++). @item.Name</strong></p>
+        <blockquote class="example">@StringResources.Example: @item.Example</blockquote>
+    </div>
+}
