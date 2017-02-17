@@ -52,6 +52,10 @@
       <HintPath>..\packages\Fanex.Data.2.0.3\lib\net452\Fanex.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Data.Repository, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Data.Repository.1.0.1\lib\net452\Fanex.Data.Repository.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -160,7 +164,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NorthwindController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,8 +215,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Northwind\GetTenMostExpansiveProducts.cshtml" />
     <Content Include="Views\Demo\Multimapping.cshtml" />
+    <Content Include="Views\Demo\NormalQuery.cshtml" />
+    <Content Include="Views\Demo\Repository.cshtml" />
+    <Content Include="Views\Demo\RepositoryMulti.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

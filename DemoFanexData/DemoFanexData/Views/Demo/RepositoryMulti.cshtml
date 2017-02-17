@@ -1,0 +1,117 @@
+﻿@model DemoFanexData.Core.Models.ProductsAndCategories
+
+@{
+    ViewBag.Title = "RepositoryMulti";
+}
+
+<h2>RepositoryMulti</h2>
+
+<p>
+    Categories
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.FirstOrDefault().Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.FirstOrDefault().CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.FirstOrDefault().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.FirstOrDefault().Picture)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Categories)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Picture)
+            </td>
+        </tr>
+    }
+</table>
+<hr />
+<p>Products</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().SupplierID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().CategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().QuantityPerUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().UnitsInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().UnitsOnOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().ReorderLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Discontinued)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReorderLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discontinued)
+            </td>
+        </tr>
+    }
+</table>

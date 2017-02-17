@@ -1,90 +1,39 @@
 ﻿namespace DemoFanexData.Controllers
 {
+    using Core.Services;
     using System.Web.Mvc;
 
     public class DemoController : Controller
     {
+        private ProductService productService;
+
+        public DemoController()
+        {
+            productService = new ProductService();
+        }
+
+        //Normal query
+        public ActionResult NormalQuery()
+        {
+            return View(productService.GetTenMostExpensiveProducts());
+        }
+
+        //Multimapping
         public ActionResult Multimapping()
         {
-            return View();
+            return View(productService.GetProductWithCategory(1));
         }
 
-        // GET: Demo
-        public ActionResult Index()
+        //Repository - Normal
+        public ActionResult Repository()
         {
-            return View();
+            return View(productService.GetAll());
         }
 
-        // GET: Demo/Details/5
-        public ActionResult Details(int id)
+        //Repository - Multiple
+        public ActionResult RepositoryMulti()
         {
-            return View();
-        }
-
-        // GET: Demo/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Demo/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Demo/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Demo/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Demo/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Demo/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(productService.GetAllProductsAndCategories());
         }
     }
 }
